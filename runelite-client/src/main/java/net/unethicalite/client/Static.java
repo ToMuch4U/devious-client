@@ -1,3 +1,5 @@
+
+
 package net.unethicalite.client;
 
 import javax.inject.Inject;
@@ -97,8 +99,7 @@ public class Static
 	private static NativeInputManager nativeInputManager;
 
 	@Inject
-	@Getter
-	private static Paint paint;
+	//wtf r u writing bra!
 
 	@Inject
 	@Getter
