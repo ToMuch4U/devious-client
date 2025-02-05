@@ -5,110 +5,111 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("nt")
+@ObfuscatedName("nc")
 @Implements("WidgetDefinition")
-public class WidgetDefinition
-{
-	@ObfuscatedName("ac")
+public class WidgetDefinition {
+	@ObfuscatedName("aj")
+	static boolean[] field3741;
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "Lom;"
+		descriptor = "Lok;"
 	)
 	@Export("widgetArchive")
 	AbstractArchive widgetArchive;
-	@ObfuscatedName("al")
+	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
-		descriptor = "Lom;"
+		descriptor = "Lok;"
 	)
-	AbstractArchive field3579;
+	AbstractArchive field3736;
+	@ObfuscatedName("ag")
+	@ObfuscatedSignature(
+		descriptor = "Lok;"
+	)
+	AbstractArchive field3743;
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "Lom;"
+		descriptor = "Lok;"
 	)
-	AbstractArchive field3580;
-	@ObfuscatedName("ax")
+	AbstractArchive field3748;
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "Lom;"
+		descriptor = "Lok;"
 	)
-	AbstractArchive field3581;
-	@ObfuscatedName("ao")
+	AbstractArchive field3738;
+	@ObfuscatedName("an")
 	@ObfuscatedSignature(
-		descriptor = "Lom;"
-	)
-	AbstractArchive field3582;
-	@ObfuscatedName("ah")
-	@ObfuscatedSignature(
-		descriptor = "[[Lnm;"
+		descriptor = "[[Lnx;"
 	)
 	@Export("Widget_interfaceComponents")
 	public Widget[][] Widget_interfaceComponents;
+	@ObfuscatedName("av")
+	Map field3742;
 	@ObfuscatedName("ab")
-	Map field3588;
-	@ObfuscatedName("am")
 	@ObfuscatedSignature(
-		descriptor = "Llr;"
+		descriptor = "Lmo;"
 	)
 	@Export("Widget_cachedSprites")
 	EvictingDualNodeHashTable Widget_cachedSprites;
-	@ObfuscatedName("av")
+	@ObfuscatedName("ai")
 	@ObfuscatedSignature(
-		descriptor = "Llr;"
+		descriptor = "Lmo;"
 	)
 	@Export("Widget_cachedModels")
 	EvictingDualNodeHashTable Widget_cachedModels;
-	@ObfuscatedName("ag")
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "Llr;"
+		descriptor = "Lmo;"
 	)
 	@Export("Widget_cachedFonts")
 	EvictingDualNodeHashTable Widget_cachedFonts;
-	@ObfuscatedName("aa")
+	@ObfuscatedName("au")
 	@ObfuscatedSignature(
-		descriptor = "Llr;"
+		descriptor = "Lmo;"
 	)
 	@Export("Widget_cachedSpriteMasks")
 	EvictingDualNodeHashTable Widget_cachedSpriteMasks;
-	@ObfuscatedName("ap")
+	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
-		descriptor = "Lqe;"
+		descriptor = "Lrb;"
 	)
-	class438 field3578;
-	@ObfuscatedName("ay")
+	class461 field3747;
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "Lqe;"
+		descriptor = "Lrb;"
 	)
-	class438 field3590;
+	class461 field3745;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lom;Lom;Lom;Lom;Lom;)V"
+		descriptor = "(Lok;Lok;Lok;Lok;Lok;)V"
 	)
 	public WidgetDefinition(AbstractArchive var1, AbstractArchive var2, AbstractArchive var3, AbstractArchive var4, AbstractArchive var5) {
-		this.field3588 = new HashMap();
+		this.field3742 = new HashMap();
 		this.Widget_cachedSprites = new EvictingDualNodeHashTable(200);
 		this.Widget_cachedModels = new EvictingDualNodeHashTable(50);
 		this.Widget_cachedFonts = new EvictingDualNodeHashTable(20);
 		this.Widget_cachedSpriteMasks = new EvictingDualNodeHashTable(8);
-		this.field3578 = new class438(10, class436.field4651);
-		this.field3590 = new class438(10, class436.field4651);
+		this.field3747 = new class461(10, class459.field4897);
+		this.field3745 = new class461(10, class459.field4897);
 		int var6 = 0;
 		if (var1 != null) {
 			this.widgetArchive = var1;
-			this.field3580 = var2;
-			this.field3581 = var3;
-			this.field3582 = var4;
-			this.field3579 = var5;
+			this.field3743 = var2;
+			this.field3748 = var3;
+			this.field3738 = var4;
+			this.field3736 = var5;
 			var6 = this.widgetArchive.getGroupCount();
 		}
 
 		this.Widget_interfaceComponents = new Widget[var6][];
-		AbstractUserComparator.field4699 = new boolean[var6];
+		field3741 = new boolean[var6];
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "(II)Lnm;",
-		garbageValue = "-836235004"
+		descriptor = "(II)Lnx;",
+		garbageValue = "2107009714"
 	)
-	public Widget method6240(int var1) {
+	public Widget method6519(int var1) {
 		int var2 = var1 >> 16;
 		int var3 = var1 & 65535;
 		if (this.Widget_interfaceComponents[var2] == null || this.Widget_interfaceComponents[var2][var3] == null) {
@@ -121,14 +122,14 @@ public class WidgetDefinition
 		return this.Widget_interfaceComponents[var2][var3];
 	}
 
-	@ObfuscatedName("al")
+	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
-		descriptor = "(III)Lnm;",
-		garbageValue = "-356739593"
+		descriptor = "(IIB)Lnx;",
+		garbageValue = "12"
 	)
 	@Export("getWidgetChild")
 	public Widget getWidgetChild(int var1, int var2) {
-		Widget var3 = this.method6240(var1);
+		Widget var3 = this.method6519(var1);
 		if (var2 == -1) {
 			return var3;
 		} else {
@@ -136,21 +137,21 @@ public class WidgetDefinition
 		}
 	}
 
-	@ObfuscatedName("ak")
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "(IS)Z",
-		garbageValue = "-8971"
+		descriptor = "(II)Z",
+		garbageValue = "548444335"
 	)
 	@Export("loadInterface")
 	public boolean loadInterface(int var1) {
-		if (AbstractUserComparator.field4699[var1]) {
+		if (field3741[var1]) {
 			return true;
 		} else if (!this.widgetArchive.tryLoadGroup(var1)) {
 			return false;
 		} else {
 			int var2 = this.widgetArchive.getGroupFileCount(var1);
 			if (var2 == 0) {
-				AbstractUserComparator.field4699[var1] = true;
+				field3741[var1] = true;
 				return true;
 			} else {
 				if (this.Widget_interfaceComponents[var1] == null) {
@@ -169,31 +170,31 @@ public class WidgetDefinition
 								this.Widget_interfaceComponents[var1][var3].decodeLegacy(new Buffer(var4));
 							}
 
-							if (this.field3579 != null) {
-								byte[] var5 = this.field3579.takeFile(var1, var3);
+							if (this.field3736 != null) {
+								byte[] var5 = this.field3736.takeFile(var1, var3);
 								if (var5 != null && var5.length > 0) {
-									this.Widget_interfaceComponents[var1][var3].method6651(new Buffer(var5));
-									this.field3588.put(this.Widget_interfaceComponents[var1][var3].field3677, var1);
+									this.Widget_interfaceComponents[var1][var3].method6858(new Buffer(var5));
+									this.field3742.put(this.Widget_interfaceComponents[var1][var3].field3832, var1);
 								}
 							}
 						}
 					}
 				}
 
-				AbstractUserComparator.field4699[var1] = true;
+				field3741[var1] = true;
 				return true;
 			}
 		}
 	}
 
-	@ObfuscatedName("ax")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(II)V",
-		garbageValue = "1200843852"
+		descriptor = "(IB)V",
+		garbageValue = "-70"
 	)
-	public void method6243(int var1) {
+	public void method6512(int var1) {
 		if (var1 != -1) {
-			if (AbstractUserComparator.field4699[var1]) {
+			if (field3741[var1]) {
 				this.widgetArchive.clearFilesGroup(var1);
 				if (this.Widget_interfaceComponents[var1] != null) {
 					for (int var2 = 0; var2 < this.Widget_interfaceComponents[var1].length; ++var2) {
@@ -203,47 +204,30 @@ public class WidgetDefinition
 					}
 
 					this.Widget_interfaceComponents[var1] = null;
-					AbstractUserComparator.field4699[var1] = false;
+					field3741[var1] = false;
 				}
 			}
 		}
 	}
 
-	@ObfuscatedName("ao")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "-17"
+		descriptor = "(S)V",
+		garbageValue = "-8377"
 	)
-	public void method6252() {
+	public void method6516() {
 		this.Widget_cachedSprites.clear();
 		this.Widget_cachedModels.clear();
 		this.Widget_cachedFonts.clear();
 		this.Widget_cachedSpriteMasks.clear();
 	}
 
-	@ObfuscatedName("lr")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "(III)Ljava/lang/String;",
-		garbageValue = "-1362915838"
+		descriptor = "(III)I",
+		garbageValue = "-1624931069"
 	)
-	static final String method6257(int var0, int var1) {
-		int var2 = var1 - var0;
-		if (var2 < -9) {
-			return Client.colorStartTag(16711680);
-		} else if (var2 < -6) {
-			return Client.colorStartTag(16723968);
-		} else if (var2 < -3) {
-			return Client.colorStartTag(16740352);
-		} else if (var2 < 0) {
-			return Client.colorStartTag(16756736);
-		} else if (var2 > 9) {
-			return Client.colorStartTag(65280);
-		} else if (var2 > 6) {
-			return Client.colorStartTag(4259584);
-		} else if (var2 > 3) {
-			return Client.colorStartTag(8453888);
-		} else {
-			return var2 > 0 ? Client.colorStartTag(12648192) : Client.colorStartTag(16776960);
-		}
+	public static int method6511(int var0, int var1) {
+		return (int)Math.round(Math.atan2((double)var0, (double)var1) * 2607.5945876176133D) & 16383;
 	}
 }

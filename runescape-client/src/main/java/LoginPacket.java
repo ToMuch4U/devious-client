@@ -4,73 +4,64 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("mi")
+@ObfuscatedName("fc")
 @Implements("LoginPacket")
-public class LoginPacket implements class307 {
-	@ObfuscatedName("ac")
+public class LoginPacket extends class147 {
+	@ObfuscatedName("ap")
+	@Export("SpriteBuffer_yOffsets")
+	public static int[] SpriteBuffer_yOffsets;
+	@ObfuscatedName("fr")
 	@ObfuscatedSignature(
-		descriptor = "Lmi;"
+		descriptor = "Loz;"
 	)
-	public static final LoginPacket field3387;
-	@ObfuscatedName("al")
-	@ObfuscatedSignature(
-		descriptor = "Lmi;"
-	)
-	static final LoginPacket field3385;
-	@ObfuscatedName("ak")
-	@ObfuscatedSignature(
-		descriptor = "Lmi;"
-	)
-	public static final LoginPacket field3386;
-	@ObfuscatedName("ax")
-	@ObfuscatedSignature(
-		descriptor = "Lmi;"
-	)
-	public static final LoginPacket field3391;
-	@ObfuscatedName("ao")
-	@ObfuscatedSignature(
-		descriptor = "Lmi;"
-	)
-	public static final LoginPacket field3388;
-	@ObfuscatedName("ah")
-	@ObfuscatedSignature(
-		descriptor = "Lmi;"
-	)
-	static final LoginPacket field3389;
-	@ObfuscatedName("ab")
-	@ObfuscatedSignature(
-		descriptor = "[Lmi;"
-	)
-	@Export("LoginPacket_indexedValues")
-	static final LoginPacket[] LoginPacket_indexedValues;
-	@ObfuscatedName("ar")
+	static Archive field1684;
+	@ObfuscatedName("je")
 	@ObfuscatedGetter(
-		intValue = 800355475
+		intValue = 1778310617
 	)
-	@Export("id")
-	public final int id;
+	static int field1682;
+	@ObfuscatedName("aq")
+	@ObfuscatedGetter(
+		longValue = 3441742155483086295L
+	)
+	long field1685;
+	@ObfuscatedName("ad")
+	String field1683;
+	// $FF: synthetic field
+	@ObfuscatedSignature(
+		descriptor = "Lfn;"
+	)
+	final class150 this$0;
 
-	static {
-		field3387 = new LoginPacket(14, 0);
-		field3385 = new LoginPacket(15, 4);
-		field3386 = new LoginPacket(16, -2);
-		field3391 = new LoginPacket(18, -2);
-		field3388 = new LoginPacket(19, -2);
-		field3389 = new LoginPacket(27, 0);
-		LoginPacket_indexedValues = new LoginPacket[32];
-		LoginPacket[] var0 = FloorOverlayDefinition.method4147();
-
-		for (int var1 = 0; var1 < var0.length; ++var1) {
-			LoginPacket_indexedValues[var0[var1].id] = var0[var1];
-		}
-
+	@ObfuscatedSignature(
+		descriptor = "(Lfn;)V"
+	)
+	LoginPacket(class150 var1) {
+		this.this$0 = var1;
+		this.field1685 = -1L;
+		this.field1683 = null;
 	}
 
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "(II)V",
-		garbageValue = "0"
+		descriptor = "(Lvp;B)V",
+		garbageValue = "118"
 	)
-	LoginPacket(int var1, int var2) {
-		this.id = var1;
+	void vmethod3528(Buffer var1) {
+		if (var1.readUnsignedByte() != 255) {
+			--var1.offset;
+			this.field1685 = var1.readLong();
+		}
+
+		this.field1683 = var1.readStringCp1252NullTerminatedOrNull();
+	}
+
+	@ObfuscatedName("ad")
+	@ObfuscatedSignature(
+		descriptor = "(Lgk;B)V",
+		garbageValue = "3"
+	)
+	void vmethod3530(ClanSettings var1) {
+		var1.method3378(this.field1685, this.field1683, 0);
 	}
 }

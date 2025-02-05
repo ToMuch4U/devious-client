@@ -3,25 +3,10 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("et")
+@ObfuscatedName("er")
 @Implements("UserComparator8")
 public class UserComparator8 extends AbstractUserComparator {
-	@ObfuscatedName("as")
-	@ObfuscatedSignature(
-		descriptor = "[Ltl;"
-	)
-	@Export("JagexCache_idxFiles")
-	public static BufferedFile[] JagexCache_idxFiles;
-	@ObfuscatedName("ev")
-	@Export("mouseCam")
-	static boolean mouseCam;
-	@ObfuscatedName("kn")
-	@ObfuscatedSignature(
-		descriptor = "[Lud;"
-	)
-	@Export("headIconHintSprites")
-	static SpritePixels[] headIconHintSprites;
-	@ObfuscatedName("ac")
+	@ObfuscatedName("aq")
 	@Export("reversed")
 	final boolean reversed;
 
@@ -29,10 +14,10 @@ public class UserComparator8 extends AbstractUserComparator {
 		this.reversed = var1;
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "(Lri;Lri;B)I",
-		garbageValue = "0"
+		descriptor = "(Lsh;Lsh;I)I",
+		garbageValue = "1919618517"
 	)
 	@Export("compareBuddy")
 	int compareBuddy(Buddy var1, Buddy var2) {
@@ -51,76 +36,38 @@ public class UserComparator8 extends AbstractUserComparator {
 		return this.compareBuddy((Buddy)var1, (Buddy)var2);
 	}
 
-	@ObfuscatedName("kn")
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "0"
+		descriptor = "(ZB)V",
+		garbageValue = "11"
 	)
-	static final void method2890() {
-		for (PendingSpawn var0 = (PendingSpawn)Client.pendingSpawns.last(); var0 != null; var0 = (PendingSpawn)Client.pendingSpawns.previous()) {
-			if (var0.hitpoints > 0) {
-				--var0.hitpoints;
-			}
+	@Export("updateLoginStatusUsernameRemembered")
+	static void updateLoginStatusUsernameRemembered(boolean var0) {
+		byte var1 = 0;
+		boolean var2 = class105.clientPreferences.getEULA() >= Client.field637;
+		if (!var2) {
+			var1 = 12;
+		} else if (class415.client.containsAccessAndRefreshToken() || class415.client.otlTokenRequesterInitialized() || class415.client.containsSessionAndCharacterId()) {
+			var1 = 10;
+		}
 
-			boolean var1;
-			int var2;
-			int var3;
-			ObjectComposition var4;
-			if (var0.hitpoints == 0) {
-				if (var0.objectId >= 0) {
-					var2 = var0.objectId;
-					var3 = var0.field1176;
-					var4 = class91.getObjectDefinition(var2);
-					if (var3 == 11) {
-						var3 = 10;
-					}
+		class163.updateLoginIndex(var1);
+		if (var0) {
+			Login.Login_username = "";
+			Login.Login_password = "";
+			class6.otpMedium = 0;
+			class146.otp = "";
+		}
 
-					if (var3 >= 5 && var3 <= 8) {
-						var3 = 4;
-					}
-
-					var1 = var4.method4007(var3);
-					if (!var1) {
-						continue;
-					}
-				}
-
-				class115.addPendingSpawnToScene(var0.plane, var0.type, var0.x, var0.y, var0.objectId, var0.field1178, var0.field1176, var0.field1180);
-				var0.remove();
+		if (Login.Login_username == null || Login.Login_username.length() <= 0) {
+			if (class105.clientPreferences.getRememberedUsername() != null) {
+				Login.Login_username = class105.clientPreferences.getRememberedUsername();
+				Client.Login_isUsernameRemembered = true;
 			} else {
-				if (var0.delay > 0) {
-					--var0.delay;
-				}
-
-				if (var0.delay == 0 && var0.x >= 1 && var0.y >= 1 && var0.x <= 102 && var0.y <= 102) {
-					if (var0.field1177 >= 0) {
-						var2 = var0.field1177;
-						var3 = var0.field1173;
-						var4 = class91.getObjectDefinition(var2);
-						if (var3 == 11) {
-							var3 = 10;
-						}
-
-						if (var3 >= 5 && var3 <= 8) {
-							var3 = 4;
-						}
-
-						var1 = var4.method4007(var3);
-						if (!var1) {
-							continue;
-						}
-					}
-
-					class115.addPendingSpawnToScene(var0.plane, var0.type, var0.x, var0.y, var0.field1177, var0.field1170, var0.field1173, var0.field1180);
-					var0.delay = -1;
-					if (var0.objectId == var0.field1177 && var0.objectId == -1) {
-						var0.remove();
-					} else if (var0.objectId == var0.field1177 && var0.field1170 == var0.field1178 && var0.field1173 == var0.field1176) {
-						var0.remove();
-					}
-				}
+				Client.Login_isUsernameRemembered = false;
 			}
 		}
 
+		UserComparator4.focusPasswordWhenUsernameFilled();
 	}
 }

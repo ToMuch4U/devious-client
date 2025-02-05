@@ -4,13 +4,20 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("oj")
+@ObfuscatedName("px")
 @Implements("GrandExchangeOfferUnitPriceComparator")
 final class GrandExchangeOfferUnitPriceComparator implements Comparator {
-	@ObfuscatedName("ac")
+	@ObfuscatedName("dk")
 	@ObfuscatedSignature(
-		descriptor = "(Lod;Lod;I)I",
-		garbageValue = "-1207503699"
+		descriptor = "[Lvv;"
+	)
+	@Export("worldSelectStars")
+	static IndexedSprite[] worldSelectStars;
+
+	@ObfuscatedName("aq")
+	@ObfuscatedSignature(
+		descriptor = "(Lpm;Lpm;I)I",
+		garbageValue = "-441372308"
 	)
 	@Export("compare_bridged")
 	int compare_bridged(GrandExchangeEvent var1, GrandExchangeEvent var2) {
@@ -23,26 +30,5 @@ final class GrandExchangeOfferUnitPriceComparator implements Comparator {
 
 	public boolean equals(Object var1) {
 		return super.equals(var1);
-	}
-
-	@ObfuscatedName("ao")
-	@ObfuscatedSignature(
-		descriptor = "(IIIIB)I",
-		garbageValue = "73"
-	)
-	static final int method7115(int var0, int var1, int var2, int var3) {
-		return var2 * var1 - var3 * var0 >> 16;
-	}
-
-	@ObfuscatedName("ah")
-	@ObfuscatedSignature(
-		descriptor = "(IB)V",
-		garbageValue = "-21"
-	)
-	static void method7111(int var0) {
-		ItemContainer var1 = (ItemContainer)ItemContainer.itemContainers.get((long)var0);
-		if (var1 != null) {
-			var1.remove();
-		}
 	}
 }

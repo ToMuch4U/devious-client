@@ -1,12 +1,24 @@
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ee")
+@ObfuscatedName("ep")
 @Implements("UserComparator9")
 public class UserComparator9 extends AbstractUserComparator {
-	@ObfuscatedName("ac")
+	@ObfuscatedName("aj")
+	@ObfuscatedSignature(
+		descriptor = "Lvv;"
+	)
+	static IndexedSprite field1506;
+	@ObfuscatedName("ns")
+	@ObfuscatedGetter(
+		intValue = -1236472029
+	)
+	@Export("menuY")
+	static int menuY;
+	@ObfuscatedName("aq")
 	@Export("reversed")
 	final boolean reversed;
 
@@ -14,10 +26,10 @@ public class UserComparator9 extends AbstractUserComparator {
 		this.reversed = var1;
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "(Lri;Lri;I)I",
-		garbageValue = "1813564346"
+		descriptor = "(Lsh;Lsh;I)I",
+		garbageValue = "1637037113"
 	)
 	@Export("compareBuddy")
 	int compareBuddy(Buddy var1, Buddy var2) {
@@ -32,76 +44,21 @@ public class UserComparator9 extends AbstractUserComparator {
 		return this.compareBuddy((Buddy)var1, (Buddy)var2);
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "(Lom;Lom;Lom;I)V",
-		garbageValue = "-1363426561"
+		descriptor = "(DDII)[D",
+		garbageValue = "-1504286701"
 	)
-	public static void method2917(AbstractArchive var0, AbstractArchive var1, AbstractArchive var2) {
-		HitSplatDefinition.HitSplatDefinition_archive = var0;
-		HitSplatDefinition.field2167 = var1;
-		class135.HitSplatDefinition_fontsArchive = var2;
-	}
+	public static double[] method3018(double var0, double var2, int var4) {
+		int var5 = var4 * 2 + 1;
+		double[] var6 = new double[var5];
+		int var7 = -var4;
 
-	@ObfuscatedName("ac")
-	@ObfuscatedSignature(
-		descriptor = "(II)Lva;",
-		garbageValue = "1793860244"
-	)
-	public static PrivateChatMode method2919(int var0) {
-		PrivateChatMode[] var1 = new PrivateChatMode[]{PrivateChatMode.field5272, PrivateChatMode.field5273, PrivateChatMode.field5274};
-		PrivateChatMode[] var2 = var1;
-
-		for (int var3 = 0; var3 < var2.length; ++var3) {
-			PrivateChatMode var4 = var2[var3];
-			if (var0 == var4.field5271) {
-				return var4;
-			}
+		for (int var8 = 0; var7 <= var4; ++var8) {
+			var6[var8] = WorldMapArea.method4698((double)var7, var0, var2);
+			++var7;
 		}
 
-		return null;
-	}
-
-	@ObfuscatedName("al")
-	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "1897883590"
-	)
-	public static void method2912() {
-		class212.field2136.clear();
-	}
-
-	@ObfuscatedName("mc")
-	@ObfuscatedSignature(
-		descriptor = "(Lnm;I)Z",
-		garbageValue = "1578685634"
-	)
-	@Export("runCs1")
-	static final boolean runCs1(Widget var0) {
-		if (var0.cs1Comparisons == null) {
-			return false;
-		} else {
-			for (int var1 = 0; var1 < var0.cs1Comparisons.length; ++var1) {
-				int var2 = VarcInt.method3681(var0, var1);
-				int var3 = var0.cs1ComparisonValues[var1];
-				if (var0.cs1Comparisons[var1] == 2) {
-					if (var2 >= var3) {
-						return false;
-					}
-				} else if (var0.cs1Comparisons[var1] == 3) {
-					if (var2 <= var3) {
-						return false;
-					}
-				} else if (var0.cs1Comparisons[var1] == 4) {
-					if (var2 == var3) {
-						return false;
-					}
-				} else if (var3 != var2) {
-					return false;
-				}
-			}
-
-			return true;
-		}
+		return var6;
 	}
 }

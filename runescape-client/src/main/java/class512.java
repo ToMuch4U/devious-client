@@ -1,104 +1,71 @@
-import java.util.Iterator;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("tx")
-public class class512 extends class470 implements class297 {
-	@ObfuscatedName("al")
-	@ObfuscatedSignature(
-		descriptor = "Lom;"
-	)
-	final AbstractArchive field5061;
-	@ObfuscatedName("ak")
-	@ObfuscatedSignature(
-		descriptor = "Lls;"
-	)
-	final DemotingHashTable field5059;
-	@ObfuscatedName("ax")
+@ObfuscatedName("tq")
+public abstract class class512 {
+	@ObfuscatedName("av")
 	@ObfuscatedGetter(
-		intValue = 922003367
+		intValue = -1131756953
 	)
-	final int field5060;
+	int field5138;
+	@ObfuscatedName("ab")
+	@ObfuscatedGetter(
+		intValue = -932997329
+	)
+	int field5140;
+	@ObfuscatedName("ai")
+	double field5139;
+	@ObfuscatedName("ae")
+	@ObfuscatedGetter(
+		intValue = -386333095
+	)
+	int field5141;
 
-	@ObfuscatedSignature(
-		descriptor = "(Lnp;ILoa;Lom;)V"
-	)
-	public class512(StudioGame var1, int var2, Language var3, AbstractArchive var4) {
-		super(var1, var3, var4 != null ? var4.getGroupFileCount(var2) : 0);
-		this.field5059 = new DemotingHashTable(64);
-		this.field5061 = var4;
-		this.field5060 = var2;
+	class512(int var1, int var2) {
+		this.field5138 = 0;
+		this.field5140 = 0;
+		this.field5139 = 0.0D;
+		this.field5141 = 0;
+		this.field5138 = var1;
+		this.field5140 = 0;
+		this.field5141 = var2 >= 0 && var2 <= 27 ? var2 : 0;
+		this.field5139 = HttpHeaders.method8363(this.field5140, this.field5138, this.field5141);
 	}
 
-	@ObfuscatedName("ac")
-	@ObfuscatedSignature(
-		descriptor = "(II)Lsl;",
-		garbageValue = "-799452482"
-	)
-	protected class472 vmethod8991(int var1) {
-		synchronized(this.field5059) {
-			class471 var2 = (class471)this.field5059.get((long)var1);
-			if (var2 == null) {
-				var2 = this.method8992(var1);
-				this.field5059.method5815(var2, (long)var1);
-			}
-
-			return var2;
-		}
-	}
-
-	@ObfuscatedName("aa")
-	@ObfuscatedSignature(
-		descriptor = "(IB)Lsw;",
-		garbageValue = "37"
-	)
-	class471 method8992(int var1) {
-		byte[] var2 = this.field5061.takeFile(this.field5060, var1);
-		class471 var3 = new class471(var1);
-		if (var2 != null) {
-			var3.method8465(new Buffer(var2));
-		}
-
-		return var3;
-	}
-
-	@ObfuscatedName("ap")
+	@ObfuscatedName("ai")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "-585456351"
+		garbageValue = "2145790593"
 	)
-	public void method8993() {
-		synchronized(this.field5059) {
-			this.field5059.clear();
+	public void method8974() {
+		if (this.field5140 < this.field5138) {
+			++this.field5140;
+			this.field5139 = HttpHeaders.method8363(this.field5140, this.field5138, this.field5141);
 		}
+
 	}
 
-	public Iterator iterator() {
-		return new class511(this);
-	}
-
-	@ObfuscatedName("ah")
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "(B)[Lun;",
-		garbageValue = "2"
+		descriptor = "(I)D",
+		garbageValue = "1207550874"
 	)
-	public static IndexedSprite[] method9001() {
-		IndexedSprite[] var0 = new IndexedSprite[class544.SpriteBuffer_spriteCount];
+	double method8971() {
+		return this.field5139;
+	}
 
-		for (int var1 = 0; var1 < class544.SpriteBuffer_spriteCount; ++var1) {
-			IndexedSprite var2 = var0[var1] = new IndexedSprite();
-			var2.width = class159.SpriteBuffer_spriteWidth;
-			var2.height = class500.SpriteBuffer_spriteHeight;
-			var2.xOffset = class326.SpriteBuffer_xOffsets[var1];
-			var2.yOffset = ModelData0.SpriteBuffer_yOffsets[var1];
-			var2.subWidth = class59.SpriteBuffer_spriteWidths[var1];
-			var2.subHeight = class544.SpriteBuffer_spriteHeights[var1];
-			var2.palette = class372.SpriteBuffer_spritePalette;
-			var2.pixels = AddRequestTask.SpriteBuffer_pixels[var1];
+	@ObfuscatedName("ow")
+	@ObfuscatedSignature(
+		descriptor = "(IB)V",
+		garbageValue = "1"
+	)
+	static void method8981(int var0) {
+		for (IntegerNode var1 = (IntegerNode)Client.widgetFlags.first(); var1 != null; var1 = (IntegerNode)Client.widgetFlags.next()) {
+			if ((var1.key >> 48 & 65535L) == (long)var0) {
+				var1.remove();
+			}
 		}
 
-		class407.method7453();
-		return var0;
 	}
 }

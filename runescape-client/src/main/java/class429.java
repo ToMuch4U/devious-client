@@ -1,34 +1,54 @@
-import net.runelite.mapping.Export;
+import java.util.ConcurrentModificationException;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("qr")
-public class class429 {
-	@ObfuscatedName("ap")
+@ObfuscatedName("qc")
+public class class429 implements Iterator {
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "(ZI)V",
-		garbageValue = "2019999842"
+		descriptor = "Lqq;"
 	)
-	@Export("Login_promptCredentials")
-	static void Login_promptCredentials(boolean var0) {
-		if (!class159.client.containsAccessAndRefreshToken() && !class159.client.method1249() && !class159.client.containsSessionAndCharacterId()) {
-			Login.Login_response1 = "";
-			Login.Login_response2 = "Enter your username/email & password.";
-			Login.Login_response3 = "";
-			GameEngine.method647(2);
-			if (var0) {
-				Login.Login_password = "";
-			}
+	class430 field4732;
+	@ObfuscatedName("ad")
+	@ObfuscatedGetter(
+		intValue = 317340959
+	)
+	int field4733;
+	@ObfuscatedName("ag")
+	@ObfuscatedGetter(
+		intValue = 1536068071
+	)
+	int field4734;
 
-			class188.method3619();
-			if (Client.Login_isUsernameRemembered && Login.Login_username != null && Login.Login_username.length() > 0) {
-				Login.currentLoginField = 1;
-			} else {
-				Login.currentLoginField = 0;
-			}
+	@ObfuscatedSignature(
+		descriptor = "(Lqq;)V"
+	)
+	class429(class430 var1) {
+		this.field4733 = 0;
+		this.field4734 = this.field4732.field4739;
+		this.field4732 = var1;
+	}
 
+	public void remove() {
+		throw new UnsupportedOperationException();
+	}
+
+	public Object next() {
+		if (this.field4732.field4739 != this.field4734) {
+			throw new ConcurrentModificationException();
+		} else if (this.field4733 < this.field4732.field4737) {
+			Object var1 = this.field4732.field4735[this.field4733].field4730;
+			++this.field4733;
+			return var1;
 		} else {
-			GameEngine.method647(10);
+			throw new NoSuchElementException();
 		}
+	}
+
+	public boolean hasNext() {
+		return this.field4733 < this.field4732.field4737;
 	}
 }

@@ -102,6 +102,9 @@ public interface RSWidget extends Widget
 //	@Override
 //	String[] getActions();
 
+	@Import("actions")
+	void setActions(String[] actions);
+
 	@Import("buttonText")
 	String getRSButtonText();
 
@@ -562,6 +565,10 @@ public interface RSWidget extends Widget
 	@Import("onDrag")
 	@Override
 	void setOnDragListener(Object[] o);
+
+	@Import("onScroll")
+	@Override
+	void setOnScrollWheelListener(Object[] o);
 
 	@Import("parent")
 	@Override

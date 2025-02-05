@@ -28,6 +28,7 @@ import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.BufferProvider;
 import net.runelite.api.Client;
 import net.runelite.api.MainBufferProvider;
+import net.runelite.api.Projection;
 import net.runelite.api.Renderable;
 import net.runelite.api.Skill;
 import net.runelite.api.events.BeforeMenuRender;
@@ -40,6 +41,7 @@ import net.runelite.api.events.PostClientTick;
 import net.runelite.api.events.ScriptCallbackEvent;
 import net.runelite.api.hooks.Callbacks;
 import net.runelite.api.hooks.DrawCallbacks;
+import net.runelite.api.widgets.ComponentID;
 import net.runelite.api.widgets.Widget;
 import net.runelite.api.widgets.WidgetItem;
 import net.runelite.api.worldmap.WorldMap;
@@ -74,8 +76,6 @@ import java.awt.image.BufferedImage;
 import java.awt.image.VolatileImage;
 import java.util.ArrayList;
 import java.util.List;
-
-import static net.runelite.api.widgets.WidgetInfo.WORLD_MAP_VIEW;
 
 /**
  * This class contains field required for mixins and runelite hooks to work.
@@ -197,16 +197,16 @@ public class MinimalHooks implements Callbacks
 		}
 	}
 
-	public static void renderDraw(Renderable renderable, int orientation, int pitchSin, int pitchCos, int yawSin, int yawCos, int x, int y, int z, long hash)
+	public static void renderDraw(Projection projection, Renderable renderable, int orientation, int x, int y, int z, long hash)
 	{
 		DrawCallbacks drawCallbacks = client.getDrawCallbacks();
 		if (drawCallbacks != null)
 		{
-			drawCallbacks.draw(renderable, orientation, pitchSin, pitchCos, yawSin, yawCos, x, y, z, hash);
+			drawCallbacks.draw(projection, client.getTopLevelWorldView().getScene(), renderable, orientation, x, y, z, hash);
 		}
 		else
 		{
-			renderable.draw(orientation, pitchSin, pitchCos, yawSin, yawCos, x, y, z, hash);
+			projection.draw(renderable, orientation, x, y, z, hash);
 		}
 	}
 
@@ -280,6 +280,12 @@ public class MinimalHooks implements Callbacks
 		eventBus.post(BEFORE_RENDER);
 	}
 
+	@Override
+	public void serverTick()
+	{
+		this.shouldProcessGameTick = true;
+	}
+
 	/**
 	 * When the world map opens it loads about ~100mb of data into memory, which
 	 * represents about half of the total memory allocated by the client.
@@ -290,7 +296,7 @@ public class MinimalHooks implements Callbacks
 	 */
 	private void checkWorldMap()
 	{
-		Widget widget = client.getWidget(WORLD_MAP_VIEW);
+		Widget widget = client.getWidget(ComponentID.WORLD_MAP_MAPVIEW);
 
 		if (widget != null)
 		{
@@ -552,7 +558,7 @@ public class MinimalHooks implements Callbacks
 			// The NPC update event seem to run every server tick,
 			// but having the game tick event after all packets
 			// have been processed is typically more useful.
-			shouldProcessGameTick = true;
+			//shouldProcessGameTick = true;
 		}
 
 		// Replay deferred events, otherwise if two npc

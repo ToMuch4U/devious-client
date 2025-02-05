@@ -4,212 +4,162 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("qq")
+@ObfuscatedName("ri")
 @Implements("Timer")
 public class Timer {
-	@ObfuscatedName("ac")
+	@ObfuscatedName("aq")
 	@ObfuscatedGetter(
-		longValue = -4306889190787913315L
+		longValue = 4967844252508248949L
 	)
-	long field4609;
-	@ObfuscatedName("al")
+	long field4854;
+	@ObfuscatedName("ad")
 	@ObfuscatedGetter(
-		longValue = -3876844548973792619L
+		longValue = -7702364636721094597L
 	)
-	long field4610;
+	long field4852;
+	@ObfuscatedName("ag")
+	public boolean field4859;
 	@ObfuscatedName("ak")
-	public boolean field4617;
-	@ObfuscatedName("ax")
 	@ObfuscatedGetter(
-		longValue = 4594506903784360007L
+		longValue = 3838602930801498373L
 	)
-	long field4612;
-	@ObfuscatedName("ao")
+	long field4857;
+	@ObfuscatedName("ap")
 	@ObfuscatedGetter(
-		longValue = 937263286774196801L
+		longValue = 3868601707168331443L
 	)
-	long field4613;
-	@ObfuscatedName("ah")
+	long field4855;
+	@ObfuscatedName("an")
 	@ObfuscatedGetter(
-		longValue = -8607907730093070279L
+		longValue = 8299523440899943207L
 	)
-	long field4611;
-	@ObfuscatedName("ar")
+	long field4856;
+	@ObfuscatedName("aj")
 	@ObfuscatedGetter(
-		intValue = 1368088575
+		intValue = 1130866977
 	)
-	int field4615;
-	@ObfuscatedName("ab")
-	@ObfuscatedGetter(
-		intValue = 390686835
-	)
-	int field4616;
-	@ObfuscatedName("am")
-	@ObfuscatedGetter(
-		intValue = 23894051
-	)
-	int field4614;
+	int field4853;
 	@ObfuscatedName("av")
 	@ObfuscatedGetter(
-		intValue = 1679316281
+		intValue = 121779419
 	)
-	int field4618;
+	int field4858;
+	@ObfuscatedName("ab")
+	@ObfuscatedGetter(
+		intValue = 1169960417
+	)
+	int field4851;
+	@ObfuscatedName("ai")
+	@ObfuscatedGetter(
+		intValue = 366870427
+	)
+	int field4860;
 
 	public Timer() {
-		this.field4609 = -1L;
-		this.field4610 = -1L;
-		this.field4617 = false;
-		this.field4612 = 0L;
-		this.field4613 = 0L;
-		this.field4611 = 0L;
-		this.field4615 = 0;
-		this.field4616 = 0;
-		this.field4614 = 0;
-		this.field4618 = 0;
+		this.field4854 = -1L;
+		this.field4852 = -1L;
+		this.field4859 = false;
+		this.field4857 = 0L;
+		this.field4855 = 0L;
+		this.field4856 = 0L;
+		this.field4853 = 0;
+		this.field4858 = 0;
+		this.field4851 = 0;
+		this.field4860 = 0;
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "281982191"
+		garbageValue = "33555427"
 	)
-	public void method7832() {
-		this.field4609 = GrandExchangeOfferTotalQuantityComparator.method7049();
+	public void method8328() {
+		this.field4854 = WorldMapData_1.method4861();
 	}
 
-	@ObfuscatedName("al")
+	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "8"
+		descriptor = "(I)V",
+		garbageValue = "-489815838"
 	)
-	public void method7836() {
-		if (-1L != this.field4609) {
-			this.field4613 = GrandExchangeOfferTotalQuantityComparator.method7049() - this.field4609;
-			this.field4609 = -1L;
+	public void method8338() {
+		if (-1L != this.field4854) {
+			this.field4855 = WorldMapData_1.method4861() - this.field4854;
+			this.field4854 = -1L;
 		}
 
+	}
+
+	@ObfuscatedName("ag")
+	@ObfuscatedSignature(
+		descriptor = "(II)V",
+		garbageValue = "-2134692845"
+	)
+	public void method8334(int var1) {
+		this.field4852 = WorldMapData_1.method4861();
+		this.field4853 = var1;
 	}
 
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(IB)V",
-		garbageValue = "49"
-	)
-	public void method7833(int var1) {
-		this.field4610 = GrandExchangeOfferTotalQuantityComparator.method7049();
-		this.field4615 = var1;
-	}
-
-	@ObfuscatedName("ax")
-	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "-1876587712"
+		garbageValue = "-389245349"
 	)
-	public void method7834() {
-		if (-1L != this.field4610) {
-			this.field4612 = GrandExchangeOfferTotalQuantityComparator.method7049() - this.field4610;
-			this.field4610 = -1L;
+	public void method8331() {
+		if (this.field4852 != -1L) {
+			this.field4857 = WorldMapData_1.method4861() - this.field4852;
+			this.field4852 = -1L;
 		}
 
-		++this.field4614;
-		this.field4617 = true;
+		++this.field4851;
+		this.field4859 = true;
 	}
 
-	@ObfuscatedName("ao")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "-699557437"
+		garbageValue = "-1134261599"
 	)
-	public void method7835() {
-		this.field4617 = false;
-		this.field4616 = 0;
+	public void method8332() {
+		this.field4859 = false;
+		this.field4858 = 0;
 	}
 
-	@ObfuscatedName("ah")
+	@ObfuscatedName("an")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "-1309820962"
+		descriptor = "(B)V",
+		garbageValue = "-100"
 	)
-	public void method7837() {
-		this.method7834();
+	public void method8333() {
+		this.method8331();
 	}
 
-	@ObfuscatedName("ar")
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
-		descriptor = "(Lul;I)V",
-		garbageValue = "1951350671"
+		descriptor = "(Lvp;B)V",
+		garbageValue = "-87"
 	)
 	@Export("write")
 	public void write(Buffer var1) {
-		long var2 = this.field4613;
-		var2 /= 10L;
-		if (var2 < 0L) {
-			var2 = 0L;
-		} else if (var2 > 65535L) {
-			var2 = 65535L;
-		}
-
-		var1.writeShort((int)var2);
-		long var4 = this.field4612;
-		var4 /= 10L;
-		if (var4 < 0L) {
-			var4 = 0L;
-		} else if (var4 > 65535L) {
-			var4 = 65535L;
-		}
-
-		var1.writeShort((int)var4);
-		long var6 = this.field4611;
-		var6 /= 10L;
-		if (var6 < 0L) {
-			var6 = 0L;
-		} else if (var6 > 65535L) {
-			var6 = 65535L;
-		}
-
-		var1.writeShort((int)var6);
-		var1.writeShort(this.field4615);
-		var1.writeShort(this.field4616);
-		var1.writeShort(this.field4614);
-		var1.writeShort(this.field4618);
+		class432.method8013(var1, this.field4855);
+		class432.method8013(var1, this.field4857);
+		class432.method8013(var1, this.field4856);
+		var1.writeShort(this.field4853);
+		var1.writeShort(this.field4858);
+		var1.writeShort(this.field4851);
+		var1.writeShort(this.field4860);
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("lt")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/CharSequence;I)Ljava/lang/String;",
-		garbageValue = "-2042986049"
+		descriptor = "(III)Ljv;",
+		garbageValue = "807271628"
 	)
-	public static String method7850(CharSequence var0) {
-		int var1 = var0.length();
-		StringBuilder var2 = new StringBuilder(var1);
-
-		for (int var3 = 0; var3 < var1; ++var3) {
-			char var4 = var0.charAt(var3);
-			if ((var4 < 'a' || var4 > 'z') && (var4 < 'A' || var4 > 'Z') && (var4 < '0' || var4 > '9') && var4 != '.' && var4 != '-' && var4 != '*' && var4 != '_') {
-				if (var4 == ' ') {
-					var2.append('+');
-				} else {
-					byte var5 = Actor.charToByteCp1252(var4);
-					var2.append('%');
-					int var6 = var5 >> 4 & 15;
-					if (var6 >= 10) {
-						var2.append((char)(var6 + 55));
-					} else {
-						var2.append((char)(var6 + 48));
-					}
-
-					var6 = var5 & 15;
-					if (var6 >= 10) {
-						var2.append((char)(var6 + 55));
-					} else {
-						var2.append((char)(var6 + 48));
-					}
-				}
-			} else {
-				var2.append(var4);
-			}
-		}
-
-		return var2.toString();
+	static RouteStrategy method8348(int var0, int var1) {
+		Client.field645.approxDestinationX = var0;
+		Client.field645.approxDestinationY = var1;
+		Client.field645.approxDestinationSizeX = 1;
+		Client.field645.approxDestinationSizeX = 1;
+		return Client.field645;
 	}
 }

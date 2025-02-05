@@ -6,16 +6,16 @@ import net.runelite.mapping.ObfuscatedSignature;
 @ObfuscatedName("dk")
 @Implements("ItemContainer")
 public class ItemContainer extends Node {
-	@ObfuscatedName("ac")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "Ltf;"
+		descriptor = "Lup;"
 	)
 	@Export("itemContainers")
 	static NodeHashTable itemContainers;
-	@ObfuscatedName("al")
+	@ObfuscatedName("ad")
 	@Export("ids")
 	int[] ids;
-	@ObfuscatedName("ak")
+	@ObfuscatedName("ag")
 	@Export("quantities")
 	int[] quantities;
 
@@ -28,23 +28,24 @@ public class ItemContainer extends Node {
 		this.quantities = new int[]{0};
 	}
 
-	@ObfuscatedName("cg")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "(Ltr;I)Ljava/lang/Object;",
-		garbageValue = "1234966456"
+		descriptor = "(II)Lhc;",
+		garbageValue = "-2087182582"
 	)
-	static Object method2290(class517 var0) {
-		if (var0 == null) {
-			throw new IllegalStateException("popValueOfType() failure - null baseVarType");
+	public static VarbitComposition method2361(int var0) {
+		VarbitComposition var1 = (VarbitComposition)VarbitComposition.VarbitDefinition_cached.get((long)var0);
+		if (var1 != null) {
+			return var1;
 		} else {
-			switch(var0.field5068) {
-			case 0:
-				return Interpreter.Interpreter_stringStack[--class180.Interpreter_stringStackSize];
-			case 2:
-				return Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
-			default:
-				throw new IllegalStateException("popValueOfType() failure - unsupported type");
+			byte[] var2 = VarbitComposition.VarbitDefinition_archive.takeFile(14, var0);
+			var1 = new VarbitComposition();
+			if (var2 != null) {
+				var1.decode(new Buffer(var2));
 			}
+
+			VarbitComposition.VarbitDefinition_cached.put(var1, (long)var0);
+			return var1;
 		}
 	}
 }

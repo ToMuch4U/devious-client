@@ -1,42 +1,36 @@
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("db")
+@ObfuscatedName("dl")
 @Implements("HealthBar")
 public class HealthBar extends Node {
-	@ObfuscatedName("ap")
-	@ObfuscatedGetter(
-		intValue = 782417661
-	)
-	static int field1312;
-	@ObfuscatedName("ak")
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "Lhj;"
+		descriptor = "Lhy;"
 	)
 	@Export("definition")
 	HealthBarDefinition definition;
-	@ObfuscatedName("ax")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "Lpy;"
+		descriptor = "Lpi;"
 	)
 	@Export("updates")
 	IterableNodeDeque updates;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lhj;)V"
+		descriptor = "(Lhy;)V"
 	)
 	HealthBar(HealthBarDefinition var1) {
 		this.updates = new IterableNodeDeque();
 		this.definition = var1;
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "(IIIII)V",
-		garbageValue = "-495031119"
+		descriptor = "(IIIIB)V",
+		garbageValue = "-91"
 	)
 	@Export("put")
 	void put(int var1, int var2, int var3, int var4) {
@@ -69,10 +63,10 @@ public class HealthBar extends Node {
 		}
 	}
 
-	@ObfuscatedName("al")
+	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
-		descriptor = "(IB)Ldt;",
-		garbageValue = "-24"
+		descriptor = "(II)Ldh;",
+		garbageValue = "-1106798823"
 	)
 	@Export("get")
 	HealthBarUpdate get(int var1) {
@@ -83,7 +77,7 @@ public class HealthBar extends Node {
 				var2 = var3;
 			}
 
-			if (this.definition.int5 + var2.cycle + var2.cycleOffset > var1) {
+			if (this.definition.int5 + var2.cycleOffset + var2.cycle > var1) {
 				return var2;
 			} else {
 				var2.remove();
@@ -94,78 +88,39 @@ public class HealthBar extends Node {
 		}
 	}
 
-	@ObfuscatedName("ak")
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "(I)Z",
-		garbageValue = "-1212431293"
+		descriptor = "(B)Z",
+		garbageValue = "97"
 	)
 	@Export("isEmpty")
 	boolean isEmpty() {
-		return this.updates.method7247();
+		return this.updates.method7494();
 	}
 
-	@ObfuscatedName("al")
+	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
-		descriptor = "(IIS)I",
-		garbageValue = "-21237"
+		descriptor = "(III)V",
+		garbageValue = "1657967277"
 	)
-	public static int method2618(int var0, int var1) {
-		return (int)Math.round(Math.atan2((double)var0, (double)var1) * 2607.5945876176133D) & 16383;
-	}
+	@Export("changeWorldSelectSorting")
+	static void changeWorldSelectSorting(int var0, int var1) {
+		int[] var2 = new int[4];
+		int[] var3 = new int[4];
+		var2[0] = var0;
+		var3[0] = var1;
+		int var4 = 1;
 
-	@ObfuscatedName("ak")
-	@ObfuscatedSignature(
-		descriptor = "(II)I",
-		garbageValue = "-1762849549"
-	)
-	public static int method2616(int var0) {
-		long var2 = ViewportMouse.ViewportMouse_entityTags[var0];
-		int var1 = (int)(var2 >>> 0 & 127L);
-		return var1;
-	}
-
-	@ObfuscatedName("ak")
-	@ObfuscatedSignature(
-		descriptor = "(IS)I",
-		garbageValue = "28917"
-	)
-	public static int method2619(int var0) {
-		return (var0 & class523.field5093) - 1;
-	}
-
-	@ObfuscatedName("ah")
-	@ObfuscatedSignature(
-		descriptor = "(Lul;IB)V",
-		garbageValue = "1"
-	)
-	public static void method2617(Buffer var0, int var1) {
-		if (JagexCache.JagexCache_randomDat != null) {
-			try {
-				JagexCache.JagexCache_randomDat.seek(0L);
-				JagexCache.JagexCache_randomDat.write(var0.array, var1, 24);
-			} catch (Exception var3) {
+		for (int var5 = 0; var5 < 4; ++var5) {
+			if (World.World_sortOption1[var5] != var0) {
+				var2[var4] = World.World_sortOption1[var5];
+				var3[var4] = World.World_sortOption2[var5];
+				++var4;
 			}
 		}
 
-	}
-
-	@ObfuscatedName("ar")
-	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "516067263"
-	)
-	public static void method2615() {
-		try {
-			JagexCache.JagexCache_dat2File.close();
-
-			for (int var0 = 0; var0 < UrlRequester.field1438; ++var0) {
-				UserComparator8.JagexCache_idxFiles[var0].close();
-			}
-
-			JagexCache.JagexCache_idx255File.close();
-			JagexCache.JagexCache_randomDat.close();
-		} catch (Exception var2) {
-		}
-
+		World.World_sortOption1 = var2;
+		World.World_sortOption2 = var3;
+		AbstractWorldMapData.sortWorlds(class357.World_worlds, 0, class357.World_worlds.length - 1, World.World_sortOption1, World.World_sortOption2);
 	}
 }

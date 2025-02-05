@@ -1,205 +1,141 @@
+import java.security.SecureRandom;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("fc")
-public class class150 extends class145 {
-	@ObfuscatedName("ac")
+@ObfuscatedName("fn")
+public class class150 {
+	@ObfuscatedName("hf")
+	static SecureRandom field1711;
+	@ObfuscatedName("aq")
 	@ObfuscatedGetter(
-		intValue = -530195071
+		longValue = -7654640470494452803L
 	)
-	int field1678;
-	@ObfuscatedName("al")
+	long field1709;
+	@ObfuscatedName("ad")
 	@ObfuscatedGetter(
-		intValue = 305260667
+		intValue = -356524575
 	)
-	int field1674;
-	@ObfuscatedName("ak")
-	@ObfuscatedGetter(
-		intValue = 1815038205
-	)
-	int field1675;
-	@ObfuscatedName("ax")
-	@ObfuscatedGetter(
-		intValue = -532414831
-	)
-	int field1677;
-	// $FF: synthetic field
+	public int field1707;
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "Lff;"
+		descriptor = "Lpi;"
 	)
-	final class148 this$0;
+	IterableNodeDeque field1708;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lff;)V"
+		descriptor = "(Lvp;)V"
 	)
-	class150(class148 var1) {
-		this.this$0 = var1;
+	public class150(Buffer var1) {
+		this.field1707 = -1;
+		this.field1708 = new IterableNodeDeque();
+		this.method3283(var1);
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "(Lul;I)V",
-		garbageValue = "-11659242"
+		descriptor = "(Lvp;I)V",
+		garbageValue = "-2002945409"
 	)
-	void vmethod3414(Buffer var1) {
-		this.field1678 = var1.readInt();
-		this.field1677 = var1.readInt();
-		this.field1674 = var1.readUnsignedByte();
-		this.field1675 = var1.readUnsignedByte();
-	}
+	void method3283(Buffer var1) {
+		this.field1709 = var1.readLong();
+		this.field1707 = var1.readInt();
 
-	@ObfuscatedName("al")
-	@ObfuscatedSignature(
-		descriptor = "(Lgi;I)V",
-		garbageValue = "21847466"
-	)
-	void vmethod3415(ClanSettings var1) {
-		var1.method3252(this.field1678, this.field1677, this.field1674, this.field1675);
-	}
-
-	@ObfuscatedName("ac")
-	@ObfuscatedSignature(
-		descriptor = "(IB)Lha;",
-		garbageValue = "84"
-	)
-	@Export("VarpDefinition_get")
-	public static VarpDefinition VarpDefinition_get(int var0) {
-		VarpDefinition var1 = (VarpDefinition)VarpDefinition.VarpDefinition_cached.get((long)var0);
-		if (var1 != null) {
-			return var1;
-		} else {
-			byte[] var2 = VarpDefinition.VarpDefinition_archive.takeFile(16, var0);
-			var1 = new VarpDefinition();
-			if (var2 != null) {
-				var1.decode(new Buffer(var2));
-			}
-
-			VarpDefinition.VarpDefinition_cached.put(var1, (long)var0);
-			return var1;
-		}
-	}
-
-	@ObfuscatedName("ac")
-	@ObfuscatedSignature(
-		descriptor = "(Lul;Ljava/lang/String;I)I",
-		garbageValue = "-1376508948"
-	)
-	public static int method3192(Buffer var0, String var1) {
-		int var2 = var0.offset;
-		int var4 = var1.length();
-		byte[] var5 = new byte[var4];
-
-		for (int var6 = 0; var6 < var4; ++var6) {
-			char var7 = var1.charAt(var6);
-			if (var7 > 0 && var7 < 128 || var7 >= 160 && var7 <= 255) {
-				var5[var6] = (byte)var7;
-			} else if (var7 == 8364) {
-				var5[var6] = -128;
-			} else if (var7 == 8218) {
-				var5[var6] = -126;
-			} else if (var7 == 402) {
-				var5[var6] = -125;
-			} else if (var7 == 8222) {
-				var5[var6] = -124;
-			} else if (var7 == 8230) {
-				var5[var6] = -123;
-			} else if (var7 == 8224) {
-				var5[var6] = -122;
-			} else if (var7 == 8225) {
-				var5[var6] = -121;
-			} else if (var7 == 710) {
-				var5[var6] = -120;
-			} else if (var7 == 8240) {
-				var5[var6] = -119;
-			} else if (var7 == 352) {
-				var5[var6] = -118;
-			} else if (var7 == 8249) {
-				var5[var6] = -117;
-			} else if (var7 == 338) {
-				var5[var6] = -116;
-			} else if (var7 == 381) {
-				var5[var6] = -114;
-			} else if (var7 == 8216) {
-				var5[var6] = -111;
-			} else if (var7 == 8217) {
-				var5[var6] = -110;
-			} else if (var7 == 8220) {
-				var5[var6] = -109;
-			} else if (var7 == 8221) {
-				var5[var6] = -108;
-			} else if (var7 == 8226) {
-				var5[var6] = -107;
-			} else if (var7 == 8211) {
-				var5[var6] = -106;
-			} else if (var7 == 8212) {
-				var5[var6] = -105;
-			} else if (var7 == 732) {
-				var5[var6] = -104;
-			} else if (var7 == 8482) {
-				var5[var6] = -103;
-			} else if (var7 == 353) {
-				var5[var6] = -102;
-			} else if (var7 == 8250) {
-				var5[var6] = -101;
-			} else if (var7 == 339) {
-				var5[var6] = -100;
-			} else if (var7 == 382) {
-				var5[var6] = -98;
-			} else if (var7 == 376) {
-				var5[var6] = -97;
+		for (int var2 = var1.readUnsignedByte(); var2 != 0; var2 = var1.readUnsignedByte()) {
+			Object var3;
+			if (var2 == 3) {
+				var3 = new class169(this);
+			} else if (var2 == 1) {
+				var3 = new LoginPacket(this);
+			} else if (var2 == 13) {
+				var3 = new class162(this);
+			} else if (var2 == 4) {
+				var3 = new class154(this);
+			} else if (var2 == 6) {
+				var3 = new class161(this);
+			} else if (var2 == 5) {
+				var3 = new class146(this);
+			} else if (var2 == 2) {
+				var3 = new class151(this);
+			} else if (var2 == 7) {
+				var3 = new class144(this);
+			} else if (var2 == 14) {
+				var3 = new class148(this);
+			} else if (var2 == 8) {
+				var3 = new class165(this);
+			} else if (var2 == 9) {
+				var3 = new class171(this);
+			} else if (var2 == 10) {
+				var3 = new class157(this);
+			} else if (var2 == 11) {
+				var3 = new class152(this);
+			} else if (var2 == 12) {
+				var3 = new class156(this);
 			} else {
-				var5[var6] = 63;
+				if (var2 != 15) {
+					throw new RuntimeException("");
+				}
+
+				var3 = new class166(this);
 			}
+
+			((class147)var3).vmethod3528(var1);
+			this.field1708.addFirst((Node)var3);
 		}
 
-		var0.writeSmartByteShort(var5.length);
-		var0.offset += class349.huffman.compress(var5, 0, var5.length, var0.array, var0.offset);
-		return var0.offset - var2;
 	}
 
-	@ObfuscatedName("cu")
+	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
-		descriptor = "(ILds;ZI)I",
-		garbageValue = "-1670051292"
+		descriptor = "(Lgk;B)V",
+		garbageValue = "34"
 	)
-	static int method3186(int var0, Script var1, boolean var2) {
-		return 2;
-	}
-
-	@ObfuscatedName("jn")
-	@ObfuscatedSignature(
-		descriptor = "(IIII)V",
-		garbageValue = "-405650921"
-	)
-	@Export("worldToScreen")
-	static final void worldToScreen(int var0, int var1, int var2) {
-		if (var0 >= 128 && var1 >= 128 && var0 <= 13056 && var1 <= 13056) {
-			int var3 = class115.getTileHeight(var0, var1, class87.Client_plane) - var2;
-			var0 -= Client.cameraX;
-			var3 -= class17.cameraY;
-			var1 -= WorldMapArea.cameraZ;
-			int var4 = Rasterizer3D.Rasterizer3D_sine[class365.cameraPitch];
-			int var5 = Rasterizer3D.Rasterizer3D_cosine[class365.cameraPitch];
-			int var6 = Rasterizer3D.Rasterizer3D_sine[WallDecoration.cameraYaw];
-			int var7 = Rasterizer3D.Rasterizer3D_cosine[WallDecoration.cameraYaw];
-			int var8 = var6 * var1 + var0 * var7 >> 16;
-			var1 = var7 * var1 - var0 * var6 >> 16;
-			var0 = var8;
-			var8 = var5 * var3 - var4 * var1 >> 16;
-			var1 = var3 * var4 + var5 * var1 >> 16;
-			if (var1 >= 50) {
-				Client.viewportTempX = var0 * Client.viewportZoom / var1 + Client.viewportWidth / 2;
-				Client.viewportTempY = var8 * Client.viewportZoom / var1 + Client.viewportHeight / 2;
-			} else {
-				Client.viewportTempX = -1;
-				Client.viewportTempY = -1;
+	public void method3286(ClanSettings var1) {
+		if (this.field1709 == var1.field1761 && this.field1707 == var1.field1762) {
+			for (class147 var2 = (class147)this.field1708.last(); var2 != null; var2 = (class147)this.field1708.previous()) {
+				var2.vmethod3530(var1);
 			}
 
+			++var1.field1762;
 		} else {
-			Client.viewportTempX = -1;
-			Client.viewportTempY = -1;
+			throw new RuntimeException("");
 		}
+	}
+
+	@ObfuscatedName("aq")
+	@ObfuscatedSignature(
+		descriptor = "(I)[Lmp;",
+		garbageValue = "735390197"
+	)
+	@Export("ServerPacket_values")
+	public static ServerPacket[] ServerPacket_values() {
+		return new ServerPacket[]{ServerPacket.REFLECTION_CHECKER, ServerPacket.UPDATE_ZONE_FULL_FOLLOWS, ServerPacket.LOGOUT_FULL, ServerPacket.UPDATE_REBOOT_TIMER, ServerPacket.field3460, ServerPacket.field3405, ServerPacket.field3406, ServerPacket.field3484, ServerPacket.field3408, ServerPacket.field3409, ServerPacket.UPDATE_INV_STOP_TRANSIT, ServerPacket.field3411, ServerPacket.field3412, ServerPacket.field3413, ServerPacket.field3523, ServerPacket.field3415, ServerPacket.MESSAGE_PRIVATE, ServerPacket.UPDATE_ZONE_PARTIAL_ENCLOSED, ServerPacket.MESSAGE_PRIVATE_ECHO, ServerPacket.MINIMAP_FLAG_SET, ServerPacket.NPC_INFO_LARGE_VIEWPORT_2, ServerPacket.field3421, ServerPacket.field3422, ServerPacket.UPDATE_STAT, ServerPacket.IF_SETSCROLLPOS, ServerPacket.VARP_SMALL, ServerPacket.UPDATE_INV_PARTIAL, ServerPacket.field3468, ServerPacket.field3428, ServerPacket.field3429, ServerPacket.RUNCLIENTSCRIPT, ServerPacket.field3427, ServerPacket.NPC_INFO_SMALL_VIEWPORT_1, ServerPacket.field3433, ServerPacket.URL_OPEN, ServerPacket.IF_MOVESUB, ServerPacket.field3436, ServerPacket.field3437, ServerPacket.field3438, ServerPacket.field3439, ServerPacket.MESSAGE_FRIENDS_CHAT, ServerPacket.field3472, ServerPacket.field3404, ServerPacket.field3443, ServerPacket.VARP_LARGE, ServerPacket.PLAYER_INFO, ServerPacket.DYNAMICOBJECT_SPAWN, ServerPacket.CAM_LOOKAT, ServerPacket.field3448, ServerPacket.field3449, ServerPacket.field3450, ServerPacket.IF_SETANGLE, ServerPacket.field3495, ServerPacket.NPC_SET_SEQUENCE, ServerPacket.UPDATE_INV_CLEAR, ServerPacket.MINIMAP_TOGGLE, ServerPacket.field3456, ServerPacket.IF_SETPOSITION, ServerPacket.UPDATE_FRIENDLIST, ServerPacket.field3459, ServerPacket.UPDATE_IGNORELIST, ServerPacket.IF_SETPLAYERHEAD, ServerPacket.UPDATE_UID192, ServerPacket.IF_SETMODEL, ServerPacket.field3414, ServerPacket.field3478, ServerPacket.field3463, ServerPacket.field3442, ServerPacket.field3400, ServerPacket.LOGOUT, ServerPacket.field3470, ServerPacket.field3471, ServerPacket.TRIGGER_ONDIALOG_ABORT, ServerPacket.field3434, ServerPacket.PING_STATISTICS_REQUEST, ServerPacket.field3500, ServerPacket.GRAPHICSOBJECT_SPAWN, ServerPacket.field3477, ServerPacket.field3519, ServerPacket.SYNC_CLIENT_VARCACHE, ServerPacket.field3480, ServerPacket.field3481, ServerPacket.SET_PRIVCHATMODE, ServerPacket.field3420, ServerPacket.MIDI_SONG, ServerPacket.UPDATE_STOCKMARKET_SLOT, ServerPacket.IF_SETCOLOUR, ServerPacket.field3487, ServerPacket.field3488, ServerPacket.field3489, ServerPacket.field3452, ServerPacket.field3491, ServerPacket.field3407, ServerPacket.field3493, ServerPacket.field3494, ServerPacket.MESSAGE_GAME, ServerPacket.IF_CLOSESUB, ServerPacket.field3497, ServerPacket.REBUILD_NORMAL, ServerPacket.CAM_SETANGLE, ServerPacket.IF_SETNPCHEAD, ServerPacket.UPDATE_INV_FULL, ServerPacket.field3502, ServerPacket.field3503, ServerPacket.field3529, ServerPacket.IF_SETOBJECT, ServerPacket.field3506, ServerPacket.field3507, ServerPacket.field3485, ServerPacket.CHAT_FILTER_SETTINGS, ServerPacket.field3402, ServerPacket.RESET_CLIENT_VARCACHE, ServerPacket.field3512, ServerPacket.EVENT_WORLDHOP, ServerPacket.field3514, ServerPacket.NPC_SPOTANIM, ServerPacket.PLAYER_SPOTANIM, ServerPacket.field3492, ServerPacket.PROJECTILE_SPAWN, ServerPacket.SET_PLAYER_OP, ServerPacket.CAM_RESET, ServerPacket.REBUILD_REGION, ServerPacket.IF_SETHIDE, ServerPacket.field3444, ServerPacket.field3524, ServerPacket.field3525, ServerPacket.HINT_ARROW, ServerPacket.field3527, ServerPacket.field3528, ServerPacket.field3535, ServerPacket.field3530, ServerPacket.field3531, ServerPacket.field3532, ServerPacket.field3423};
+	}
+
+	@ObfuscatedName("aq")
+	@ObfuscatedSignature(
+		descriptor = "(III)Ljp;",
+		garbageValue = "-1428513345"
+	)
+	public static class234 method3284(int var0, int var1) {
+		int var2 = var0 - var1 & 2047;
+		class239 var3 = class239.field2522;
+		if (var2 > 1024) {
+			var2 = 2048 - var2;
+			var3 = class239.field2521;
+		}
+
+		return new class234(var3, var2);
+	}
+
+	@ObfuscatedName("ps")
+	@ObfuscatedSignature(
+		descriptor = "(B)V",
+		garbageValue = "32"
+	)
+	static void method3288() {
+		Client.packetWriter.addNode(class170.getPacketBufferNode(ClientPacket.FREECAM_EXIT, Client.packetWriter.isaacCipher));
+		Client.oculusOrbState = 0;
 	}
 }

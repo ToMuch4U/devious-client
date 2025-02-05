@@ -4,25 +4,25 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("cn")
+@ObfuscatedName("cd")
 @Implements("ScriptFrame")
 public class ScriptFrame {
-	@ObfuscatedName("ac")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "Lds;"
+		descriptor = "Ldg;"
 	)
 	@Export("script")
 	Script script;
-	@ObfuscatedName("al")
+	@ObfuscatedName("ad")
 	@ObfuscatedGetter(
-		intValue = 1126556493
+		intValue = 758237961
 	)
 	@Export("pc")
 	int pc;
-	@ObfuscatedName("ak")
+	@ObfuscatedName("ag")
 	@Export("intLocals")
 	int[] intLocals;
-	@ObfuscatedName("ax")
+	@ObfuscatedName("ak")
 	@Export("stringLocals")
 	String[] stringLocals;
 
@@ -30,27 +30,38 @@ public class ScriptFrame {
 		this.pc = -1;
 	}
 
-	@ObfuscatedName("ab")
+	@ObfuscatedName("an")
 	@ObfuscatedSignature(
-		descriptor = "(I)Z",
-		garbageValue = "1603981165"
+		descriptor = "([[[IIIII)V",
+		garbageValue = "702035000"
 	)
-	public static boolean method1194() {
-		return !class319.field3440.isEmpty();
-	}
-
-	@ObfuscatedName("ag")
-	@ObfuscatedSignature(
-		descriptor = "(Lnm;IIII)V",
-		garbageValue = "1957450993"
-	)
-	@Export("Widget_setKeyRate")
-	static final void Widget_setKeyRate(Widget var0, int var1, int var2, int var3) {
-		if (var0.field3770 == null) {
-			throw new RuntimeException();
-		} else {
-			var0.field3770[var1] = var2;
-			var0.field3800[var1] = var3;
+	static final void method1193(int[][][] var0, int var1, int var2, int var3) {
+		int var4;
+		for (var4 = 0; var4 < 8; ++var4) {
+			for (int var5 = 0; var5 < 8; ++var5) {
+				var0[var1][var4 + var2][var3 + var5] = 0;
+			}
 		}
+
+		if (var2 > 0) {
+			for (var4 = 1; var4 < 8; ++var4) {
+				var0[var1][var2][var3 + var4] = var0[var1][var2 - 1][var3 + var4];
+			}
+		}
+
+		if (var3 > 0) {
+			for (var4 = 1; var4 < 8; ++var4) {
+				var0[var1][var4 + var2][var3] = var0[var1][var4 + var2][var3 - 1];
+			}
+		}
+
+		if (var2 > 0 && var0[var1][var2 - 1][var3] != 0) {
+			var0[var1][var2][var3] = var0[var1][var2 - 1][var3];
+		} else if (var3 > 0 && var0[var1][var2][var3 - 1] != 0) {
+			var0[var1][var2][var3] = var0[var1][var2][var3 - 1];
+		} else if (var2 > 0 && var3 > 0 && var0[var1][var2 - 1][var3 - 1] != 0) {
+			var0[var1][var2][var3] = var0[var1][var2 - 1][var3 - 1];
+		}
+
 	}
 }

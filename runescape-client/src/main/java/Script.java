@@ -1,58 +1,58 @@
+import java.util.ArrayList;
+import java.util.Iterator;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ds")
+@ObfuscatedName("dg")
 @Implements("Script")
 public class Script extends DualNode {
-	@ObfuscatedName("ac")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "Llr;"
+		descriptor = "Lmo;"
 	)
 	@Export("Script_cached")
 	static EvictingDualNodeHashTable Script_cached;
-	@ObfuscatedName("ay")
-	static int[] field1008;
-	@ObfuscatedName("al")
-	String field1004;
-	@ObfuscatedName("ak")
+	@ObfuscatedName("ad")
+	String field1011;
+	@ObfuscatedName("ag")
 	@Export("opcodes")
 	int[] opcodes;
-	@ObfuscatedName("ax")
+	@ObfuscatedName("ak")
 	@Export("intOperands")
 	int[] intOperands;
-	@ObfuscatedName("ao")
+	@ObfuscatedName("ap")
 	@Export("stringOperands")
 	String[] stringOperands;
-	@ObfuscatedName("ah")
+	@ObfuscatedName("an")
 	@ObfuscatedGetter(
-		intValue = -1799598971
+		intValue = -1746577925
 	)
 	@Export("localIntCount")
 	int localIntCount;
-	@ObfuscatedName("ar")
+	@ObfuscatedName("aj")
 	@ObfuscatedGetter(
-		intValue = -1300060503
+		intValue = -1287810367
 	)
 	@Export("localStringCount")
 	int localStringCount;
-	@ObfuscatedName("ab")
+	@ObfuscatedName("av")
 	@ObfuscatedGetter(
-		intValue = 1220003295
+		intValue = 63573081
 	)
 	@Export("intArgumentCount")
 	int intArgumentCount;
-	@ObfuscatedName("am")
+	@ObfuscatedName("ab")
 	@ObfuscatedGetter(
-		intValue = -1530472731
+		intValue = -1982128447
 	)
 	@Export("stringArgumentCount")
 	int stringArgumentCount;
-	@ObfuscatedName("av")
+	@ObfuscatedName("ai")
 	@ObfuscatedSignature(
-		descriptor = "[Ltp;"
+		descriptor = "[Lth;"
 	)
 	@Export("switches")
 	IterableNodeHashTable[] switches;
@@ -64,44 +64,55 @@ public class Script extends DualNode {
 	Script() {
 	}
 
-	@ObfuscatedName("ao")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "(II)[Ltp;",
-		garbageValue = "-902364502"
+		descriptor = "(II)[Lth;",
+		garbageValue = "978095262"
 	)
 	@Export("newIterableNodeHashTable")
 	IterableNodeHashTable[] newIterableNodeHashTable(int var1) {
 		return new IterableNodeHashTable[var1];
 	}
 
-	@ObfuscatedName("aj")
+	@ObfuscatedName("nx")
 	@ObfuscatedSignature(
-		descriptor = "(ZI)V",
-		garbageValue = "-1816632175"
+		descriptor = "(IB)V",
+		garbageValue = "-8"
 	)
-	static void method2215(boolean var0) {
-		if (var0) {
-			class74.method2113();
-		} else {
-			for (int var1 = 0; var1 < class319.musicSongs.size(); ++var1) {
-				MusicSong var2 = (MusicSong)class319.musicSongs.get(var1);
-				if (var2 == null) {
-					class319.musicSongs.remove(var1);
-					--var1;
-				} else if (var2.field3550) {
-					if (var2.midiPcmStream.field3450 > 0) {
-						--var2.midiPcmStream.field3450;
+	@Export("setMusicVolume")
+	static final void setMusicVolume(int var0) {
+		var0 = Math.min(Math.max(var0, 0), 255);
+		if (var0 != class105.clientPreferences.getMusicVolume()) {
+			if (class105.clientPreferences.getMusicVolume() == 0 && class243.method4563()) {
+				Archive var1 = class199.archive6;
+				if (!class330.field3585.isEmpty()) {
+					ArrayList var2 = new ArrayList();
+					Iterator var3 = class330.field3585.iterator();
+
+					while (var3.hasNext()) {
+						MusicSong var4 = (MusicSong)var3.next();
+						var4.field3710 = false;
+						var4.field3709 = false;
+						var4.field3715 = false;
+						var4.field3712 = false;
+						var4.musicTrackArchive = var1;
+						var4.musicTrackVolume = var0;
+						var4.field3704 = 0.0F;
+						var2.add(var4);
 					}
 
-					var2.midiPcmStream.clear();
-					var2.midiPcmStream.method6044();
-					var2.midiPcmStream.setPcmStreamVolume(0);
-					class319.musicSongs.remove(var1);
-					--var1;
-				} else {
-					var2.field3550 = true;
+					FontName.method9220(var2, class330.musicPlayerStatus, class330.field3589, class330.field3590, class330.field3586, false);
 				}
+
+				Client.playingJingle = false;
+			} else if (var0 == 0) {
+				class137.method3187(0, 0);
+				Client.playingJingle = false;
+			} else {
+				HttpResponse.method300(var0);
 			}
+
+			class105.clientPreferences.updateMusicVolume(var0);
 		}
 
 	}

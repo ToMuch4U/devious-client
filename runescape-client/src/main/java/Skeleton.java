@@ -4,38 +4,37 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ju")
+@ObfuscatedName("ko")
 @Implements("Skeleton")
 public class Skeleton extends Node {
-	@ObfuscatedName("wr")
-	@ObfuscatedSignature(
-		descriptor = "Lsx;"
-	)
-	@Export("platformInfo")
-	static PlatformInfo platformInfo;
-	@ObfuscatedName("ah")
+	@ObfuscatedName("ia")
 	@ObfuscatedGetter(
-		intValue = 1064870909
+		intValue = -104959579
+	)
+	static int field2915;
+	@ObfuscatedName("an")
+	@ObfuscatedGetter(
+		intValue = 303187343
 	)
 	@Export("id")
 	int id;
-	@ObfuscatedName("ar")
+	@ObfuscatedName("aj")
 	@ObfuscatedGetter(
-		intValue = -553331405
+		intValue = 360049709
 	)
 	@Export("count")
 	int count;
-	@ObfuscatedName("ab")
+	@ObfuscatedName("av")
 	@Export("transformTypes")
 	int[] transformTypes;
-	@ObfuscatedName("am")
+	@ObfuscatedName("ab")
 	@Export("labels")
 	int[][] labels;
-	@ObfuscatedName("av")
+	@ObfuscatedName("ai")
 	@ObfuscatedSignature(
-		descriptor = "Ljr;"
+		descriptor = "Lkj;"
 	)
-	class241 field2581;
+	class279 field2914;
 
 	public Skeleton(int var1, byte[] var2) {
 		this.id = var1;
@@ -62,27 +61,27 @@ public class Skeleton extends Node {
 		if (var3.offset < var3.array.length) {
 			var4 = var3.readUnsignedShort();
 			if (var4 > 0) {
-				this.field2581 = new class241(var3, var4);
+				this.field2914 = new class279(var3, var4);
 			}
 		}
 
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "(I)I",
-		garbageValue = "-1245812999"
+		descriptor = "(B)I",
+		garbageValue = "-21"
 	)
-	public int method4654() {
+	public int method5406() {
 		return this.count;
 	}
 
-	@ObfuscatedName("al")
+	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
-		descriptor = "(B)Ljr;",
-		garbageValue = "-13"
+		descriptor = "(I)Lkj;",
+		garbageValue = "1927354495"
 	)
-	public class241 method4657() {
-		return this.field2581;
+	public class279 method5407() {
+		return this.field2914;
 	}
 }

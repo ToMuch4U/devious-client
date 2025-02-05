@@ -1,34 +1,38 @@
+import java.io.InputStream;
+import java.io.OutputStreamWriter;
+import java.net.URL;
+import java.net.URLConnection;
 import java.util.Comparator;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("cm")
+@ObfuscatedName("cs")
 @Implements("GrandExchangeOfferOwnWorldComparator")
 public class GrandExchangeOfferOwnWorldComparator implements Comparator {
-	@ObfuscatedName("fv")
+	@ObfuscatedName("ih")
 	@ObfuscatedSignature(
-		descriptor = "Lok;"
+		descriptor = "Lqh;"
 	)
-	static Archive field515;
-	@ObfuscatedName("va")
-	@ObfuscatedGetter(
-		intValue = 44170089
+	@Export("fontPlain11")
+	static Font fontPlain11;
+	@ObfuscatedName("os")
+	@ObfuscatedSignature(
+		descriptor = "Lnx;"
 	)
-	static int field516;
-	@ObfuscatedName("ac")
+	static Widget field466;
+	@ObfuscatedName("aq")
 	@Export("filterWorlds")
 	boolean filterWorlds;
 
 	GrandExchangeOfferOwnWorldComparator() {
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "(Lod;Lod;S)I",
-		garbageValue = "255"
+		descriptor = "(Lpm;Lpm;I)I",
+		garbageValue = "-1263083412"
 	)
 	@Export("compare_bridged")
 	int compare_bridged(GrandExchangeEvent var1, GrandExchangeEvent var2) {
@@ -49,91 +53,70 @@ public class GrandExchangeOfferOwnWorldComparator implements Comparator {
 		}
 	}
 
-	public int compare(Object var1, Object var2) {
-		return this.compare_bridged((GrandExchangeEvent)var1, (GrandExchangeEvent)var2);
-	}
-
 	public boolean equals(Object var1) {
 		return super.equals(var1);
 	}
 
-	@ObfuscatedName("ao")
-	@ObfuscatedSignature(
-		descriptor = "(II)I",
-		garbageValue = "-2097816691"
-	)
-	public static int method1242(int var0) {
-		return SecureRandomFuture.Entity_unpackID(ViewportMouse.ViewportMouse_entityTags[var0]);
+	public int compare(Object var1, Object var2) {
+		return this.compare_bridged((GrandExchangeEvent)var1, (GrandExchangeEvent)var2);
 	}
 
-	@ObfuscatedName("cq")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "(IB)Ljava/lang/Object;",
-		garbageValue = "29"
+		descriptor = "(I)J",
+		garbageValue = "-2098483687"
 	)
-	static Object method1241(int var0) {
-		return ItemContainer.method2290((class517)SequenceDefinition.findEnumerated(class517.method9047(), var0));
+	static long method1234() {
+		try {
+			URL var0 = new URL(LoginState.method1248("services", false) + "m=accountappeal/login.ws");
+			URLConnection var1 = var0.openConnection();
+			var1.setRequestProperty("connection", "close");
+			var1.setDoInput(true);
+			var1.setDoOutput(true);
+			var1.setConnectTimeout(5000);
+			OutputStreamWriter var2 = new OutputStreamWriter(var1.getOutputStream());
+			var2.write("data1=req");
+			var2.flush();
+			InputStream var3 = var1.getInputStream();
+			Buffer var4 = new Buffer(new byte[1000]);
+
+			do {
+				int var5 = var3.read(var4.array, var4.offset, 1000 - var4.offset);
+				if (var5 == -1) {
+					var4.offset = 0;
+					long var7 = var4.readLong();
+					return var7;
+				}
+
+				var4.offset += var5;
+			} while(var4.offset < 1000);
+
+			return 0L;
+		} catch (Exception var9) {
+			return 0L;
+		}
 	}
 
-	@ObfuscatedName("kb")
+	@ObfuscatedName("jb")
 	@ObfuscatedSignature(
-		descriptor = "(Ldw;I)V",
-		garbageValue = "-1344994052"
+		descriptor = "(I)V",
+		garbageValue = "18890283"
 	)
-	static final void method1237(PendingSpawn var0) {
-		long var1 = 0L;
-		int var3 = -1;
-		int var4 = 0;
-		int var5 = 0;
-		if (var0.type == 0) {
-			var1 = class10.scene.getBoundaryObjectTag(var0.plane, var0.x, var0.y);
+	static void method1227() {
+		if (VertexNormal.worldMap != null) {
+			VertexNormal.worldMap.method9011(class511.topLevelWorldView.plane, (StudioGame.field4084.vmethod8670() >> 7) + class511.topLevelWorldView.baseX, (StudioGame.field4084.vmethod8671() >> 7) + class511.topLevelWorldView.baseY, false);
+			VertexNormal.worldMap.loadCache();
 		}
 
-		if (var0.type == 1) {
-			var1 = class10.scene.getWallDecorationTag(var0.plane, var0.x, var0.y);
-		}
-
-		if (var0.type == 2) {
-			var1 = class10.scene.getGameObjectTag(var0.plane, var0.x, var0.y);
-		}
-
-		if (var0.type == 3) {
-			var1 = class10.scene.getFloorDecorationTag(var0.plane, var0.x, var0.y);
-		}
-
-		if (var1 != 0L) {
-			int var6 = class10.scene.getObjectFlags(var0.plane, var0.x, var0.y, var1);
-			var3 = SecureRandomFuture.Entity_unpackID(var1);
-			var4 = var6 & 31;
-			var5 = var6 >> 6 & 3;
-		}
-
-		var0.objectId = var3;
-		var0.field1176 = var4;
-		var0.field1178 = var5;
 	}
 
-	@ObfuscatedName("ni")
+	@ObfuscatedName("jz")
 	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "81"
+		descriptor = "(B)I",
+		garbageValue = "1"
 	)
-	static final void method1240() {
-		PacketBufferNode var0 = ClanChannelMember.getPacketBufferNode(ClientPacket.CLOSE_MODAL, Client.packetWriter.isaacCipher);
-		Client.packetWriter.addNode(var0);
-		Interpreter.field883 = true;
-
-		for (InterfaceParent var1 = (InterfaceParent)Client.interfaceParents.first(); var1 != null; var1 = (InterfaceParent)Client.interfaceParents.next()) {
-			if (var1.type == 0 || var1.type == 3) {
-				ArchiveDisk.closeInterface(var1, true);
-			}
-		}
-
-		if (Client.meslayerContinueWidget != null) {
-			ClanChannelMember.invalidateWidget(Client.meslayerContinueWidget);
-			Client.meslayerContinueWidget = null;
-		}
-
-		Interpreter.field883 = false;
+	@Export("getWindowedMode")
+	static int getWindowedMode() {
+		return Client.isResizable ? 2 : 1;
 	}
 }

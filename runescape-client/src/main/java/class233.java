@@ -1,64 +1,114 @@
-import java.util.Comparator;
-import net.runelite.mapping.Export;
+import java.util.Arrays;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("id")
-public class class233 implements Comparator {
-	@ObfuscatedName("ec")
+@ObfuscatedName("iz")
+public class class233 {
+	@ObfuscatedName("wq")
 	@ObfuscatedSignature(
-		descriptor = "Ldp;"
+		descriptor = "Loe;"
 	)
-	@Export("mouseRecorder")
-	static MouseRecorder mouseRecorder;
-
-	class233() {
-	}
-
-	@ObfuscatedName("ac")
+	static JagNetThread field2486;
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "(Lic;Lic;S)I",
-		garbageValue = "-253"
+		descriptor = "Liz;"
 	)
-	int method4418(class228 var1, class228 var2) {
-		return var1.method4336() - var2.method4336();
-	}
-
-	public boolean equals(Object var1) {
-		return super.equals(var1);
-	}
-
-	public int compare(Object var1, Object var2) {
-		return this.method4418((class228)var1, (class228)var2);
-	}
-
-	@ObfuscatedName("ac")
+	static final class233 field2477;
+	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
-		descriptor = "([BI)Ljava/lang/String;",
-		garbageValue = "-1425233568"
+		descriptor = "Liz;"
 	)
-	public static String method4421(byte[] var0) {
-		int var2 = var0.length;
-		StringBuilder var3 = new StringBuilder();
+	static final class233 field2476;
+	@ObfuscatedName("ag")
+	@ObfuscatedSignature(
+		descriptor = "Liz;"
+	)
+	static final class233 field2478;
+	@ObfuscatedName("ak")
+	@ObfuscatedSignature(
+		descriptor = "Liz;"
+	)
+	static final class233 field2484;
+	@ObfuscatedName("ap")
+	@ObfuscatedSignature(
+		descriptor = "Liz;"
+	)
+	static final class233 field2479;
+	@ObfuscatedName("an")
+	@ObfuscatedSignature(
+		descriptor = "Liz;"
+	)
+	static final class233 field2480;
+	@ObfuscatedName("aj")
+	@ObfuscatedSignature(
+		descriptor = "Liz;"
+	)
+	static final class233 field2481;
+	@ObfuscatedName("ae")
+	@ObfuscatedSignature(
+		descriptor = "[Liz;"
+	)
+	static final class233[] field2485;
+	@ObfuscatedName("av")
+	@ObfuscatedGetter(
+		intValue = -1780844367
+	)
+	final int field2482;
+	@ObfuscatedName("ab")
+	@ObfuscatedGetter(
+		intValue = -1921123689
+	)
+	final int field2483;
+	@ObfuscatedName("ai")
+	@ObfuscatedGetter(
+		intValue = -120925093
+	)
+	final int field2475;
 
-		for (int var4 = 0; var4 < var2 + 0; var4 += 3) {
-			int var5 = var0[var4] & 255;
-			var3.append(class400.field4477[var5 >>> 2]);
-			if (var4 < var2 - 1) {
-				int var6 = var0[var4 + 1] & 255;
-				var3.append(class400.field4477[(var5 & 3) << 4 | var6 >>> 4]);
-				if (var4 < var2 - 2) {
-					int var7 = var0[var4 + 2] & 255;
-					var3.append(class400.field4477[(var6 & 15) << 2 | var7 >>> 6]).append(class400.field4477[var7 & 63]);
-				} else {
-					var3.append(class400.field4477[(var6 & 15) << 2]).append("=");
-				}
-			} else {
-				var3.append(class400.field4477[(var5 & 3) << 4]).append("==");
-			}
+	static {
+		field2477 = new class233(0, 8, 8);
+		field2476 = new class233(5, 16, 16);
+		field2478 = new class233(3, 32, 32);
+		field2484 = new class233(2, 48, 48);
+		field2479 = new class233(1, 64, 64);
+		field2480 = new class233(4, 96, 96);
+		field2481 = new class233(6, 128, 128);
+		field2485 = Actor.method2477();
+		Arrays.sort(field2485, new class241());
+	}
+
+	class233(int var1, int var2, int var3) {
+		this.field2482 = var1;
+		this.field2483 = var2;
+		this.field2475 = var3;
+	}
+
+	@ObfuscatedName("ad")
+	@ObfuscatedSignature(
+		descriptor = "(B)I",
+		garbageValue = "124"
+	)
+	int method4441() {
+		return this.field2483 * this.field2475;
+	}
+
+	@ObfuscatedName("bb")
+	@ObfuscatedSignature(
+		descriptor = "(Lnx;IS)V",
+		garbageValue = "303"
+	)
+	public static void method4446(Widget var0, int var1) {
+		ItemComposition var2 = class164.ItemDefinition_get(var1);
+		var0.field3838.equipment[var2.maleModel] = var1 + 512;
+		if (var2.maleModel1 != -1) {
+			var0.field3838.equipment[var2.maleModel1] = 0;
 		}
 
-		String var1 = var3.toString();
-		return var1;
+		if (var2.maleModel2 != -1) {
+			var0.field3838.equipment[var2.maleModel2] = 0;
+		}
+
+		var0.field3838.method6538();
 	}
 }

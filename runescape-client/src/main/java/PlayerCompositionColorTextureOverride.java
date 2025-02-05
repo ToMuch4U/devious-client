@@ -3,57 +3,60 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("hy")
+@ObfuscatedName("gz")
 @Implements("PlayerCompositionColorTextureOverride")
 public class PlayerCompositionColorTextureOverride {
-	@ObfuscatedName("ak")
+	@ObfuscatedName("ai")
+	@ObfuscatedSignature(
+		descriptor = "Lez;"
+	)
+	@Export("World_request")
+	static UrlRequest World_request;
+	@ObfuscatedName("ag")
 	@Export("playerCompositionRecolorTo")
 	public short[] playerCompositionRecolorTo;
-	@ObfuscatedName("ax")
+	@ObfuscatedName("ak")
 	@Export("playerCompositionRetextureTo")
 	public short[] playerCompositionRetextureTo;
 
-	public PlayerCompositionColorTextureOverride(int var1) {
-		ItemComposition var2 = class214.ItemDefinition_get(var1);
-		if (var2.method4066()) {
+	PlayerCompositionColorTextureOverride(int var1) {
+		ItemComposition var2 = class164.ItemDefinition_get(var1);
+		if (var2.method3977()) {
 			this.playerCompositionRecolorTo = new short[var2.recolorTo.length];
 			System.arraycopy(var2.recolorTo, 0, this.playerCompositionRecolorTo, 0, this.playerCompositionRecolorTo.length);
 		}
 
-		if (var2.method4067()) {
+		if (var2.method3978()) {
 			this.playerCompositionRetextureTo = new short[var2.retextureTo.length];
 			System.arraycopy(var2.retextureTo, 0, this.playerCompositionRetextureTo, 0, this.playerCompositionRetextureTo.length);
 		}
 
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "466779098"
+		descriptor = "(II)Lfr;",
+		garbageValue = "65367968"
 	)
-	static void method3598() {
-		Tiles.Tiles_minPlane = 99;
-		World.Tiles_underlays = new short[4][104][104];
-		VertexNormal.Tiles_overlays = new short[4][104][104];
-		SecureRandomFuture.Tiles_shapes = new byte[4][104][104];
-		class199.field2004 = new byte[4][104][104];
-		UserComparator6.field1486 = new int[4][105][105];
-		Tiles.Tiles_underlays2 = new byte[4][105][105];
-		class158.field1739 = new int[105][105];
-		SecureRandomFuture.Tiles_hue = new int[104];
-		class135.Tiles_saturation = new int[104];
-		Tiles.Tiles_lightness = new int[104];
-		WorldMapSection2.Tiles_hueMultiplier = new int[104];
-		Script.field1008 = new int[104];
+	static class143 method3537(int var0) {
+		class143[] var1 = new class143[]{class143.field1663, class143.field1666, class143.field1662, class143.field1667, class143.field1671, class143.field1670, class143.field1668, class143.field1664, class143.field1669};
+		class143 var2 = (class143)class210.findEnumerated(var1, var0);
+		if (var2 == null) {
+			var2 = class143.field1669;
+		}
+
+		return var2;
 	}
 
-	@ObfuscatedName("ao")
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "841575506"
+		descriptor = "([BB)[B",
+		garbageValue = "52"
 	)
-	public static void method3597() {
-		InvDefinition.InvDefinition_cached.clear();
+	static byte[] method3539(byte[] var0) {
+		int var1 = var0.length;
+		byte[] var2 = new byte[var1];
+		System.arraycopy(var0, 0, var2, 0, var1);
+		return var2;
 	}
 }

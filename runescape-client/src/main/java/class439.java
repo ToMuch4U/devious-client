@@ -1,55 +1,72 @@
-import net.runelite.mapping.ObfuscatedGetter;
+import java.util.ArrayList;
+import java.util.Iterator;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("qd")
-public final class class439 implements Comparable {
-	@ObfuscatedName("ac")
-	Object field4666;
-	@ObfuscatedName("al")
-	Object field4664;
-	@ObfuscatedName("ak")
-	@ObfuscatedGetter(
-		longValue = -3195273471768598669L
-	)
-	long field4665;
-	@ObfuscatedName("ax")
-	@ObfuscatedGetter(
-		longValue = -3044479981880177795L
-	)
-	long field4663;
+@ObfuscatedName("qt")
+public class class439 extends SongTask {
+	@ObfuscatedName("aq")
+	ArrayList field4800;
 
-	class439(Object var1, Object var2) {
-		this.field4666 = var1;
-		this.field4664 = var2;
-	}
-
-	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "(Lqd;I)I",
-		garbageValue = "-1884046273"
+		descriptor = "(Lro;Ljava/util/ArrayList;)V"
 	)
-	int method7947(class439 var1) {
-		if (this.field4663 < var1.field4663) {
-			return -1;
+	public class439(SongTask var1, ArrayList var2) {
+		super(var1);
+		super.field4814 = "ClearRequestTask";
+		this.field4800 = var2;
+	}
+
+	@ObfuscatedName("aq")
+	@ObfuscatedSignature(
+		descriptor = "(S)Z",
+		garbageValue = "-4307"
+	)
+	public boolean vmethod8276() {
+		if (this.field4800.isEmpty()) {
+			return true;
 		} else {
-			return this.field4663 > var1.field4663 ? 1 : 0;
+			Iterator var1 = this.field4800.iterator();
+
+			while (var1.hasNext()) {
+				MusicSong var2 = (MusicSong)var1.next();
+
+				try {
+					if (class330.musicSongs.contains(var2)) {
+						if (var2 == null) {
+							class330.musicSongs.remove(var2);
+						} else {
+							if (var2.midiPcmStream.field3627 > 0) {
+								--var2.midiPcmStream.field3627;
+							}
+
+							if (var2.midiPcmStream.field3627 == 0) {
+								var2.midiPcmStream.clear();
+								var2.midiPcmStream.method6190();
+								var2.midiPcmStream.setPcmStreamVolume(0);
+							}
+
+							int var3 = var2.musicTrackGroupId;
+							int var4 = var2.musicTrackFileId;
+							Iterator var5 = class330.field3588.iterator();
+
+							while (var5.hasNext()) {
+								class336 var6 = (class336)var5.next();
+								var6.vmethod6382(var3, var4);
+							}
+
+							class330.musicSongs.remove(var2);
+						}
+					}
+				} catch (Exception var8) {
+					FriendsChat.RunException_sendStackTrace((String)null, var8);
+					this.method8253(var8.getMessage());
+					class330.musicSongs.clear();
+					return true;
+				}
+			}
+
+			return true;
 		}
-	}
-
-	public int hashCode() {
-		return this.field4664.hashCode();
-	}
-
-	public boolean equals(Object var1) {
-		if (var1 instanceof class439) {
-			return this.field4664.equals(((class439)var1).field4664);
-		} else {
-			throw new IllegalArgumentException();
-		}
-	}
-
-	public int compareTo(Object var1) {
-		return this.method7947((class439)var1);
 	}
 }

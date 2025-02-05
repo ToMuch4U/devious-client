@@ -147,7 +147,7 @@ public interface RSModel extends RSRenderable, Model
 
 	@Import("isSingleTile")
 	@Override
-	boolean isClickable();
+	boolean useBoundingBox();
 
 	@Import("bottomY")
 	@Override
@@ -206,4 +206,12 @@ public interface RSModel extends RSRenderable, Model
 	@Import("texIndices3")
 	@Override
 	int[] getTexIndices3();
+
+	@Import("drawFrustum")
+	@Override
+	void drawFrustum(int zero, int xRotate, int yRotate, int zRotate, int xCamera, int yCamera, int zCamera);
+
+	@Import("drawOrtho")
+	@Override
+	void drawOrtho(int zero, int xRotate, int yRotate, int zRotate, int xCamera, int yCamera, int zCamera, int zoom);
 }

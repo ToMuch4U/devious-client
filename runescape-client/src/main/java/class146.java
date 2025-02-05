@@ -1,66 +1,69 @@
+import net.runelite.mapping.Export;
+import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("fm")
-public class class146 extends class145 {
-	@ObfuscatedName("ac")
-	@ObfuscatedGetter(
-		intValue = 1371548903
+@ObfuscatedName("fu")
+public class class146 extends class147 {
+	@ObfuscatedName("ae")
+	@ObfuscatedSignature(
+		descriptor = "Lix;"
 	)
-	int field1651;
-	@ObfuscatedName("al")
-	boolean field1652;
+	@Export("clock")
+	static Clock clock;
+	@ObfuscatedName("cx")
+	@Export("otp")
+	static String otp;
+	@ObfuscatedName("aq")
+	@ObfuscatedGetter(
+		intValue = -328879889
+	)
+	int field1690;
 	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "Lff;"
+		descriptor = "Lfn;"
 	)
-	final class148 this$0;
+	final class150 this$0;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lff;)V"
+		descriptor = "(Lfn;)V"
 	)
-	class146(class148 var1) {
+	class146(class150 var1) {
 		this.this$0 = var1;
-		this.field1651 = -1;
+		this.field1690 = -1;
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "(Lul;I)V",
-		garbageValue = "-11659242"
+		descriptor = "(Lvp;B)V",
+		garbageValue = "118"
 	)
-	void vmethod3414(Buffer var1) {
-		this.field1651 = var1.readUnsignedShort();
-		this.field1652 = var1.readUnsignedByte() == 1;
+	void vmethod3528(Buffer var1) {
+		this.field1690 = var1.readUnsignedShort();
 	}
 
-	@ObfuscatedName("al")
+	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
-		descriptor = "(Lgi;I)V",
-		garbageValue = "21847466"
+		descriptor = "(Lgk;B)V",
+		garbageValue = "3"
 	)
-	void vmethod3415(ClanSettings var1) {
-		var1.method3249(this.field1651, this.field1652);
+	void vmethod3530(ClanSettings var1) {
+		var1.method3390(this.field1690);
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("ae")
 	@ObfuscatedSignature(
-		descriptor = "(II)V",
-		garbageValue = "1923763150"
+		descriptor = "(Lok;III)Z",
+		garbageValue = "145522420"
 	)
-	static void method3162(int var0) {
-		class464.field4776 = var0;
-		class464.field4775 = new class464[var0];
-		class464.field4774 = 0;
-	}
-
-	@ObfuscatedName("ac")
-	@ObfuscatedSignature(
-		descriptor = "(II)Z",
-		garbageValue = "1925208332"
-	)
-	public static boolean method3161(int var0) {
-		return (var0 & 1) != 0;
+	public static boolean method3260(AbstractArchive var0, int var1, int var2) {
+		byte[] var3 = var0.takeFile(var1, var2);
+		if (var3 == null) {
+			return false;
+		} else {
+			DefaultsGroup.SpriteBuffer_decode(var3);
+			return true;
+		}
 	}
 }

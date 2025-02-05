@@ -1,46 +1,36 @@
-import java.util.concurrent.ThreadFactory;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("hl")
-final class class186 implements ThreadFactory {
-	@ObfuscatedName("cl")
-	@Export("otp")
-	static String otp;
+@ObfuscatedName("hj")
+public class class186 extends DualNode {
+	@ObfuscatedName("aq")
+	@ObfuscatedSignature(
+		descriptor = "Lmo;"
+	)
+	@Export("field2007")
+	public static EvictingDualNodeHashTable field2007;
 
-	public Thread newThread(Runnable var1) {
-		return new Thread(var1, "OSRS Maya Anim Load");
+	static {
+		field2007 = new EvictingDualNodeHashTable(64);
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "(III)I",
-		garbageValue = "1663362302"
+		descriptor = "(II)Z",
+		garbageValue = "1150260738"
 	)
-	public static int method3599(int var0, int var1) {
-		int var2;
-		for (var2 = 1; var1 > 1; var1 >>= 1) {
-			if ((var1 & 1) != 0) {
-				var2 = var0 * var2;
-			}
-
-			var0 *= var0;
-		}
-
-		if (var1 == 1) {
-			return var0 * var2;
-		} else {
-			return var2;
-		}
+	@Export("isWorldMapEvent")
+	public static boolean isWorldMapEvent(int var0) {
+		return var0 == 10 || var0 == 11 || var0 == 12 || var0 == 13 || var0 == 14 || var0 == 15 || var0 == 16 || var0 == 17;
 	}
 
-	@ObfuscatedName("ar")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(I)[Lfj;",
-		garbageValue = "865282797"
+		descriptor = "(CI)C",
+		garbageValue = "-2138443279"
 	)
-	static class130[] method3601() {
-		return new class130[]{class130.field1524, class130.field1523, class130.field1525, class130.field1526, class130.field1522};
+	static char method3667(char var0) {
+		return var0 != 181 && var0 != 402 ? Character.toTitleCase(var0) : var0;
 	}
 }

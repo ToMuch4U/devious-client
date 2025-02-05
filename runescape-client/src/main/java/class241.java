@@ -1,129 +1,71 @@
-import net.runelite.mapping.ObfuscatedGetter;
+import java.util.Comparator;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("jr")
-public class class241 {
-	@ObfuscatedName("fw")
-	@ObfuscatedSignature(
-		descriptor = "Lok;"
-	)
-	static Archive field2558;
-	@ObfuscatedName("gk")
-	@ObfuscatedSignature(
-		descriptor = "Lru;"
-	)
-	static GraphicsDefaults field2562;
-	@ObfuscatedName("al")
-	@ObfuscatedSignature(
-		descriptor = "[Led;"
-	)
-	class129[] field2563;
-	@ObfuscatedName("ak")
-	@ObfuscatedGetter(
-		intValue = 1553720975
-	)
-	int field2561;
+@ObfuscatedName("ji")
+public class class241 implements Comparator {
+	class241() {
+	}
 
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "(Lul;I)V"
+		descriptor = "(Liz;Liz;I)I",
+		garbageValue = "-1784501046"
 	)
-	class241(Buffer var1, int var2) {
-		this.field2563 = new class129[var2];
-		this.field2561 = var1.readUnsignedByte();
+	int method4540(class233 var1, class233 var2) {
+		return var1.method4441() - var2.method4441();
+	}
 
-		for (int var3 = 0; var3 < this.field2563.length; ++var3) {
-			class129 var4 = new class129(this.field2561, var1, false);
-			this.field2563[var3] = var4;
+	public boolean equals(Object var1) {
+		return super.equals(var1);
+	}
+
+	public int compare(Object var1, Object var2) {
+		return this.method4540((class233)var1, (class233)var2);
+	}
+
+	@ObfuscatedName("mh")
+	@ObfuscatedSignature(
+		descriptor = "(IIIIIII)V",
+		garbageValue = "1536617207"
+	)
+	static final void method4542(int var0, int var1, int var2, int var3, int var4, int var5) {
+		int var6 = var2 - var0;
+		int var7 = var3 - var1;
+		int var8 = var6 >= 0 ? var6 : -var6;
+		int var9 = var7 >= 0 ? var7 : -var7;
+		int var10 = var8;
+		if (var8 < var9) {
+			var10 = var9;
 		}
 
-		this.method4602();
-	}
-
-	@ObfuscatedName("ac")
-	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "-43"
-	)
-	void method4602() {
-		class129[] var1 = this.field2563;
-
-		for (int var2 = 0; var2 < var1.length; ++var2) {
-			class129 var3 = var1[var2];
-			if (var3.field1521 >= 0) {
-				var3.field1506 = this.field2563[var3.field1521];
-			}
-		}
-
-	}
-
-	@ObfuscatedName("al")
-	@ObfuscatedSignature(
-		descriptor = "(I)I",
-		garbageValue = "2112190855"
-	)
-	public int method4604() {
-		return this.field2563.length;
-	}
-
-	@ObfuscatedName("ak")
-	@ObfuscatedSignature(
-		descriptor = "(II)Led;",
-		garbageValue = "1689947059"
-	)
-	class129 method4611(int var1) {
-		return var1 >= this.method4604() ? null : this.field2563[var1];
-	}
-
-	@ObfuscatedName("ax")
-	@ObfuscatedSignature(
-		descriptor = "(I)[Led;",
-		garbageValue = "-130902547"
-	)
-	class129[] method4606() {
-		return this.field2563;
-	}
-
-	@ObfuscatedName("ao")
-	@ObfuscatedSignature(
-		descriptor = "(Lfk;II)V",
-		garbageValue = "1460583301"
-	)
-	void method4612(class139 var1, int var2) {
-		this.method4608(var1, var2, (boolean[])null, false);
-	}
-
-	@ObfuscatedName("ah")
-	@ObfuscatedSignature(
-		descriptor = "(Lfk;I[ZZI)V",
-		garbageValue = "-2124527943"
-	)
-	void method4608(class139 var1, int var2, boolean[] var3, boolean var4) {
-		int var5 = var1.method3107();
-		int var6 = 0;
-		class129[] var7 = this.method4606();
-
-		for (int var8 = 0; var8 < var7.length; ++var8) {
-			class129 var9 = var7[var8];
-			if (var3 == null || var4 == var3[var6]) {
-				var1.method3089(var2, var9, var6, var5);
+		if (var10 != 0) {
+			int var11 = (var6 << 16) / var10;
+			int var12 = (var7 << 16) / var10;
+			if (var12 <= var11) {
+				var11 = -var11;
+			} else {
+				var12 = -var12;
 			}
 
-			++var6;
-		}
-
-	}
-
-	@ObfuscatedName("aj")
-	@ObfuscatedSignature(
-		descriptor = "(IB)I",
-		garbageValue = "-127"
-	)
-	public static int method4622(int var0) {
-		if (var0 > 0) {
-			return 1;
-		} else {
-			return var0 < 0 ? -1 : 0;
+			int var13 = var5 * var12 >> 17;
+			int var14 = var5 * var12 + 1 >> 17;
+			int var15 = var5 * var11 >> 17;
+			int var16 = var5 * var11 + 1 >> 17;
+			var0 -= Rasterizer2D.Rasterizer2D_xClipStart;
+			var1 -= Rasterizer2D.Rasterizer2D_yClipStart;
+			int var17 = var0 + var13;
+			int var18 = var0 - var14;
+			int var19 = var0 + var6 - var14;
+			int var20 = var0 + var6 + var13;
+			int var21 = var15 + var1;
+			int var22 = var1 - var16;
+			int var23 = var7 + var1 - var16;
+			int var24 = var15 + var7 + var1;
+			Rasterizer3D.method5326(var17, var18, var19);
+			Rasterizer3D.rasterFlat(var21, var22, var23, var17, var18, var19, 0.0F, 0.0F, 0.0F, var4);
+			Rasterizer3D.method5326(var17, var19, var20);
+			Rasterizer3D.rasterFlat(var21, var23, var24, var17, var19, var20, 0.0F, 0.0F, 0.0F, var4);
 		}
 	}
 }

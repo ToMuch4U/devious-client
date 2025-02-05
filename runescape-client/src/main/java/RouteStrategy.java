@@ -1,34 +1,39 @@
-import java.util.Iterator;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
+import net.runelite.rs.ScriptOpcodes;
 
-@ObfuscatedName("iq")
+@ObfuscatedName("jv")
 @Implements("RouteStrategy")
 public abstract class RouteStrategy {
-	@ObfuscatedName("ac")
+	@ObfuscatedName("fn")
+	@ObfuscatedSignature(
+		descriptor = "Lsy;"
+	)
+	static GraphicsDefaults field2497;
+	@ObfuscatedName("aq")
 	@ObfuscatedGetter(
-		intValue = -424258205
+		intValue = -1910215425
 	)
 	@Export("approxDestinationX")
 	public int approxDestinationX;
-	@ObfuscatedName("al")
+	@ObfuscatedName("ad")
 	@ObfuscatedGetter(
-		intValue = 920024279
+		intValue = -2088073837
 	)
 	@Export("approxDestinationY")
 	public int approxDestinationY;
-	@ObfuscatedName("ak")
+	@ObfuscatedName("ag")
 	@ObfuscatedGetter(
-		intValue = -111949365
+		intValue = -1036403129
 	)
 	@Export("approxDestinationSizeX")
 	public int approxDestinationSizeX;
-	@ObfuscatedName("ax")
+	@ObfuscatedName("ak")
 	@ObfuscatedGetter(
-		intValue = -1269252043
+		intValue = -2053854627
 	)
 	@Export("approxDestinationSizeY")
 	public int approxDestinationSizeY;
@@ -36,39 +41,46 @@ public abstract class RouteStrategy {
 	protected RouteStrategy() {
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "(IIILih;B)Z",
-		garbageValue = "0"
+		descriptor = "(IIILip;I)Z",
+		garbageValue = "950007468"
 	)
 	@Export("hasArrived")
 	protected abstract boolean hasArrived(int var1, int var2, int var3, CollisionMap var4);
 
-	@ObfuscatedName("ab")
+	@ObfuscatedName("ao")
 	@ObfuscatedSignature(
-		descriptor = "(I)Ljava/lang/String;",
-		garbageValue = "517814479"
+		descriptor = "(ILdg;ZI)I",
+		garbageValue = "-1393024656"
 	)
-	static String method4341() {
-		StringBuilder var0 = new StringBuilder();
+	static int method4456(int var0, Script var1, boolean var2) {
+		Widget var3 = var2 ? Interpreter.scriptDotWidget : class30.scriptActiveWidget;
+		if (var0 == ScriptOpcodes.CC_GETTARGETMASK) {
+			Interpreter.Interpreter_intStack[++class130.Interpreter_intStackSize - 1] = BoundaryObject.Widget_unpackTargetMask(ClanChannel.getWidgetFlags(var3));
+			return 1;
+		} else if (var0 != ScriptOpcodes.CC_GETOP) {
+			if (var0 == ScriptOpcodes.CC_GETOPBASE) {
+				if (var3.dataText == null) {
+					Interpreter.Interpreter_stringStack[++class337.Interpreter_stringStackSize - 1] = "";
+				} else {
+					Interpreter.Interpreter_stringStack[++class337.Interpreter_stringStackSize - 1] = var3.dataText;
+				}
 
-		Message var2;
-		for (Iterator var1 = Messages.Messages_hashTable.iterator(); var1.hasNext(); var0.append(var2.text).append('\n')) {
-			var2 = (Message)var1.next();
-			if (var2.sender != null && !var2.sender.isEmpty()) {
-				var0.append(var2.sender).append(':');
+				return 1;
+			} else {
+				return 2;
 			}
+		} else {
+			int var4 = Interpreter.Interpreter_intStack[--class130.Interpreter_intStackSize];
+			--var4;
+			if (var3.actions != null && var4 < var3.actions.length && var3.actions[var4] != null) {
+				Interpreter.Interpreter_stringStack[++class337.Interpreter_stringStackSize - 1] = var3.actions[var4];
+			} else {
+				Interpreter.Interpreter_stringStack[++class337.Interpreter_stringStackSize - 1] = "";
+			}
+
+			return 1;
 		}
-
-		return var0.toString();
-	}
-
-	@ObfuscatedName("ay")
-	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "972272925"
-	)
-	static final void method4340() {
-		class436.method7914("You can't add yourself to your own ignore list");
 	}
 }

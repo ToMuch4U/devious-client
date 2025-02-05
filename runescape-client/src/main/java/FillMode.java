@@ -4,49 +4,49 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("uf")
+@ObfuscatedName("vq")
 @Implements("FillMode")
-public enum FillMode implements MouseWheel {
-	@ObfuscatedName("ac")
+public enum FillMode implements Enum {
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "Luf;"
+		descriptor = "Lvq;"
 	)
 	@Export("SOLID")
 	SOLID(0, 0),
-	@ObfuscatedName("al")
+	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
-		descriptor = "Luf;"
+		descriptor = "Lvq;"
 	)
-	field5221(1, 1),
-	@ObfuscatedName("ak")
+	field5444(1, 1),
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "Luf;"
+		descriptor = "Lvq;"
 	)
-	field5222(2, 2);
+	field5446(2, 2);
 
-	@ObfuscatedName("ax")
+	@ObfuscatedName("ak")
 	@ObfuscatedGetter(
-		intValue = 1285038799
+		intValue = -484581119
 	)
-	public final int field5223;
-	@ObfuscatedName("ao")
+	public final int field5443;
+	@ObfuscatedName("ap")
 	@ObfuscatedGetter(
-		intValue = -732230309
+		intValue = -1671682405
 	)
-	final int field5224;
+	final int field5447;
 
 	FillMode(int var3, int var4) {
-		this.field5223 = var3;
-		this.field5224 = var4;
+		this.field5443 = var3;
+		this.field5447 = var4;
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
 		descriptor = "(I)I",
-		garbageValue = "-1243971674"
+		garbageValue = "2071992588"
 	)
 	@Export("rsOrdinal")
 	public int rsOrdinal() {
-		return this.field5224;
+		return this.field5447;
 	}
 }

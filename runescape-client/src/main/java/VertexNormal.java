@@ -1,39 +1,39 @@
-import java.awt.Desktop;
-import java.awt.Desktop.Action;
-import java.net.URI;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("jp")
+@ObfuscatedName("lm")
 @Implements("VertexNormal")
 public class VertexNormal {
-	@ObfuscatedName("ao")
-	@Export("Tiles_overlays")
-	static short[][][] Tiles_overlays;
-	@ObfuscatedName("ac")
+	@ObfuscatedName("wp")
+	@ObfuscatedSignature(
+		descriptor = "Ltw;"
+	)
+	@Export("worldMap")
+	static WorldMap worldMap;
+	@ObfuscatedName("aq")
 	@ObfuscatedGetter(
-		intValue = -1814285237
+		intValue = -34813589
 	)
 	@Export("x")
 	int x;
-	@ObfuscatedName("al")
+	@ObfuscatedName("ad")
 	@ObfuscatedGetter(
-		intValue = 677675313
+		intValue = 1220267967
 	)
 	@Export("y")
 	int y;
-	@ObfuscatedName("ak")
+	@ObfuscatedName("ag")
 	@ObfuscatedGetter(
-		intValue = 1463557097
+		intValue = 143019549
 	)
 	@Export("z")
 	int z;
-	@ObfuscatedName("ax")
+	@ObfuscatedName("ak")
 	@ObfuscatedGetter(
-		intValue = 169341921
+		intValue = 214699869
 	)
 	@Export("magnitude")
 	int magnitude;
@@ -42,7 +42,7 @@ public class VertexNormal {
 	}
 
 	@ObfuscatedSignature(
-		descriptor = "(Ljp;)V"
+		descriptor = "(Llm;)V"
 	)
 	VertexNormal(VertexNormal var1) {
 		this.x = var1.x;
@@ -51,32 +51,25 @@ public class VertexNormal {
 		this.magnitude = var1.magnitude;
 	}
 
-	@ObfuscatedName("al")
+	@ObfuscatedName("hd")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;ZZI)V",
-		garbageValue = "-2141219999"
+		descriptor = "(Lmb;I)V",
+		garbageValue = "860894148"
 	)
-	@Export("openURL")
-	public static void openURL(String var0, boolean var1, boolean var2) {
-		if (var1) {
-			if (Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Action.BROWSE)) {
-				try {
-					Desktop.getDesktop().browse(new URI(var0));
-					return;
-				} catch (Exception var4) {
-				}
-			}
-
-			if (class31.field170.startsWith("win")) {
-				Friend.method8021(var0, 0, "openjs");
-			} else if (class31.field170.startsWith("mac")) {
-				Friend.method8021(var0, 1, "openjs");
-			} else {
-				Friend.method8021(var0, 2, "openjs");
-			}
-		} else {
-			Friend.method8021(var0, 3, "openjs");
-		}
-
+	static void method5914(PacketBufferNode var0) {
+		var0.packetBuffer.writeIntLE(WorldMapSectionType.field2665.hash);
+		var0.packetBuffer.writeIntLE(JagNetThread.field4545.hash);
+		var0.packetBuffer.writeIntME(class195.field2052.hash);
+		var0.packetBuffer.writeInt(ApproximateRouteStrategy.archive2.hash);
+		var0.packetBuffer.writeIntIME(LoginPacket.field1684.hash);
+		var0.packetBuffer.writeIntLE(VarpDefinition.field1881.hash);
+		var0.packetBuffer.writeIntME(PlayerComposition.field3785.hash);
+		var0.packetBuffer.writeIntME(class157.archive9.hash);
+		var0.packetBuffer.writeIntME(WorldEntity.archive12.hash);
+		var0.packetBuffer.writeInt(0);
+		var0.packetBuffer.writeIntIME(class151.field1715.hash);
+		var0.packetBuffer.writeInt(class498.field5069.hash);
+		var0.packetBuffer.writeIntIME(LoginScreenAnimation.archive4.hash);
+		var0.packetBuffer.writeIntME(LoginState.field497.hash);
 	}
 }

@@ -1,82 +1,84 @@
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ft")
-public class class143 extends class145 {
-	@ObfuscatedName("ac")
+@ObfuscatedName("fr")
+public enum class143 implements Enum {
+	@ObfuscatedName("aq")
+	@ObfuscatedSignature(
+		descriptor = "Lfr;"
+	)
+	field1663(0, 0),
+	@ObfuscatedName("ad")
+	@ObfuscatedSignature(
+		descriptor = "Lfr;"
+	)
+	field1666(1, 1),
+	@ObfuscatedName("ag")
+	@ObfuscatedSignature(
+		descriptor = "Lfr;"
+	)
+	field1662(2, 2),
+	@ObfuscatedName("ak")
+	@ObfuscatedSignature(
+		descriptor = "Lfr;"
+	)
+	field1667(3, 3),
+	@ObfuscatedName("ap")
+	@ObfuscatedSignature(
+		descriptor = "Lfr;"
+	)
+	field1671(4, 4),
+	@ObfuscatedName("an")
+	@ObfuscatedSignature(
+		descriptor = "Lfr;"
+	)
+	field1670(5, 5),
+	@ObfuscatedName("aj")
+	@ObfuscatedSignature(
+		descriptor = "Lfr;"
+	)
+	field1668(6, 6),
+	@ObfuscatedName("av")
+	@ObfuscatedSignature(
+		descriptor = "Lfr;"
+	)
+	field1664(7, 7),
+	@ObfuscatedName("ab")
+	@ObfuscatedSignature(
+		descriptor = "Lfr;"
+	)
+	field1669(8, 8);
+
+	@ObfuscatedName("qo")
 	@ObfuscatedGetter(
-		longValue = -2075652897916156131L
+		intValue = 1820594211
 	)
-	long field1645;
-	@ObfuscatedName("al")
-	String field1644;
-	// $FF: synthetic field
-	@ObfuscatedSignature(
-		descriptor = "Lff;"
+	static int field1673;
+	@ObfuscatedName("ai")
+	@ObfuscatedGetter(
+		intValue = 273837669
 	)
-	final class148 this$0;
+	final int field1665;
+	@ObfuscatedName("ae")
+	@ObfuscatedGetter(
+		intValue = -1831211699
+	)
+	final int field1672;
 
-	@ObfuscatedSignature(
-		descriptor = "(Lff;)V"
-	)
-	class143(class148 var1) {
-		this.this$0 = var1;
-		this.field1645 = -1L;
-		this.field1644 = null;
+	class143(int var3, int var4) {
+		this.field1665 = var3;
+		this.field1672 = var4;
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "(Lul;I)V",
-		garbageValue = "-11659242"
+		descriptor = "(I)I",
+		garbageValue = "2071992588"
 	)
-	void vmethod3414(Buffer var1) {
-		if (var1.readUnsignedByte() != 255) {
-			--var1.offset;
-			this.field1645 = var1.readLong();
-		}
-
-		this.field1644 = var1.readStringCp1252NullTerminatedOrNull();
-	}
-
-	@ObfuscatedName("al")
-	@ObfuscatedSignature(
-		descriptor = "(Lgi;I)V",
-		garbageValue = "21847466"
-	)
-	void vmethod3415(ClanSettings var1) {
-		var1.method3242(this.field1645, this.field1644, 0);
-	}
-
-	@ObfuscatedName("ac")
-	@ObfuscatedSignature(
-		descriptor = "(II)F",
-		garbageValue = "1171307082"
-	)
-	public static float method3138(int var0) {
-		var0 &= 16383;
-		return (float)(6.283185307179586D * (double)((float)var0 / 16384.0F));
-	}
-
-	@ObfuscatedName("iu")
-	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "83"
-	)
-	static final void method3142() {
-		if (class183.ClanChat_inClanChat) {
-			if (class358.friendsChat != null) {
-				class358.friendsChat.sort();
-			}
-
-			for (int var0 = 0; var0 < Players.Players_count; ++var0) {
-				Player var1 = Client.players[Players.Players_indices[var0]];
-				var1.clearIsInFriendsChat();
-			}
-
-			class183.ClanChat_inClanChat = false;
-		}
-
+	@Export("rsOrdinal")
+	public int rsOrdinal() {
+		return this.field1672;
 	}
 }

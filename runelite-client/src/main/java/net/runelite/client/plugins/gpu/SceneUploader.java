@@ -37,6 +37,7 @@ import net.runelite.api.GroundObject;
 import net.runelite.api.Model;
 import net.runelite.api.Perspective;
 import net.runelite.api.Point;
+import net.runelite.api.Projection;
 import net.runelite.api.Renderable;
 import net.runelite.api.Scene;
 import net.runelite.api.SceneTileModel;
@@ -133,8 +134,7 @@ class SceneUploader
 			}
 			Point tilePoint = tile.getSceneLocation();
 			int len = upload(sceneTileModel,
-				tilePoint.getX(), tilePoint.getY(),
-				0, 0,
+				tilePoint.getX() << Perspective.LOCAL_COORD_BITS, tilePoint.getY() << Perspective.LOCAL_COORD_BITS,
 				vertexBuffer, uvBuffer, false);
 			sceneTileModel.setBufferLen(len);
 			offset += len;
@@ -203,22 +203,18 @@ class SceneUploader
 	}
 
 	int upload(Scene scene, SceneTilePaint tile, int tileZ, int tileX, int tileY, GpuIntBuffer vertexBuffer, GpuFloatBuffer uvBuffer,
-		int offsetX, int offsetY, boolean padUvs)
+		int lx, int lz, boolean padUvs)
 	{
 		final int[][][] tileHeights = scene.getTileHeights();
+		final int swHeight = tileHeights[tileZ][tileX][tileY];
+		final int seHeight = tileHeights[tileZ][tileX + 1][tileY];
+		final int neHeight = tileHeights[tileZ][tileX + 1][tileY + 1];
+		final int nwHeight = tileHeights[tileZ][tileX][tileY + 1];
 
-		final int localX = offsetX;
-		final int localY = offsetY;
-
-		int swHeight = tileHeights[tileZ][tileX][tileY];
-		int seHeight = tileHeights[tileZ][tileX + 1][tileY];
-		int neHeight = tileHeights[tileZ][tileX + 1][tileY + 1];
-		int nwHeight = tileHeights[tileZ][tileX][tileY + 1];
-
+		final int swColor = tile.getSwColor();
+		final int seColor = tile.getSeColor();
 		final int neColor = tile.getNeColor();
 		final int nwColor = tile.getNwColor();
-		final int seColor = tile.getSeColor();
-		final int swColor = tile.getSwColor();
 
 		if (neColor == 12345678)
 		{
@@ -229,54 +225,63 @@ class SceneUploader
 		uvBuffer.ensureCapacity(24);
 
 		// 0,0
-		int vertexDx = localX;
-		int vertexDy = localY;
-		int vertexDz = swHeight;
-		final int c1 = swColor;
+		final int lx0 = lx;
+		final int ly0 = swHeight;
+		final int lz0 = lz;
+		final int hsl0 = swColor;
 
 		// 1,0
-		int vertexCx = localX + Perspective.LOCAL_TILE_SIZE;
-		int vertexCy = localY;
-		int vertexCz = seHeight;
-		final int c2 = seColor;
+		final int lx1 = lx + Perspective.LOCAL_TILE_SIZE;
+		final int ly1 = seHeight;
+		final int lz1 = lz;
+		final int hsl1 = seColor;
 
 		// 1,1
-		int vertexAx = localX + Perspective.LOCAL_TILE_SIZE;
-		int vertexAy = localY + Perspective.LOCAL_TILE_SIZE;
-		int vertexAz = neHeight;
-		final int c3 = neColor;
+		final int lx2 = lx + Perspective.LOCAL_TILE_SIZE;
+		final int ly2 = neHeight;
+		final int lz2 = lz + Perspective.LOCAL_TILE_SIZE;
+		final int hsl2 = neColor;
 
 		// 0,1
-		int vertexBx = localX;
-		int vertexBy = localY + Perspective.LOCAL_TILE_SIZE;
-		int vertexBz = nwHeight;
-		final int c4 = nwColor;
+		final int lx3 = lx;
+		final int ly3 = nwHeight;
+		final int lz3 = lz + Perspective.LOCAL_TILE_SIZE;
+		final int hsl3 = nwColor;
 
-		vertexBuffer.put(vertexAx, vertexAz, vertexAy, c3);
-		vertexBuffer.put(vertexBx, vertexBz, vertexBy, c4);
-		vertexBuffer.put(vertexCx, vertexCz, vertexCy, c2);
+		vertexBuffer.put(lx2, ly2, lz2, hsl2);
+		vertexBuffer.put(lx3, ly3, lz3, hsl3);
+		vertexBuffer.put(lx1, ly1, lz1, hsl1);
 
-		vertexBuffer.put(vertexDx, vertexDz, vertexDy, c1);
-		vertexBuffer.put(vertexCx, vertexCz, vertexCy, c2);
-		vertexBuffer.put(vertexBx, vertexBz, vertexBy, c4);
+		vertexBuffer.put(lx0, ly0, lz0, hsl0);
+		vertexBuffer.put(lx1, ly1, lz1, hsl1);
+		vertexBuffer.put(lx3, ly3, lz3, hsl3);
 
 		if (padUvs || tile.getTexture() != -1)
 		{
 			int tex = tile.getTexture() + 1;
-			uvBuffer.put(tex, vertexDx, vertexDz, vertexDy);
-			uvBuffer.put(tex, vertexCx, vertexCz, vertexCy);
-			uvBuffer.put(tex, vertexBx, vertexBz, vertexBy);
+			if (tile.isFlat())
+			{
+				uvBuffer.put(tex, lx0, ly0, lz0);
+				uvBuffer.put(tex, lx1, ly1, lz1);
+				uvBuffer.put(tex, lx3, ly3, lz3);
+			}
+			else
+			{
+				uvBuffer.put(tex, lx2, ly2, lz2);
+				uvBuffer.put(tex, lx3, ly3, lz3);
+				uvBuffer.put(tex, lx1, ly1, lz1);
+			}
 
-			uvBuffer.put(tex, vertexDx, vertexDz, vertexDy);
-			uvBuffer.put(tex, vertexCx, vertexCz, vertexCy);
-			uvBuffer.put(tex, vertexBx, vertexBz, vertexBy);
+			uvBuffer.put(tex, lx0, ly0, lz0);
+			uvBuffer.put(tex, lx1, ly1, lz1);
+			uvBuffer.put(tex, lx3, ly3, lz3);
 		}
 
 		return 6;
 	}
 
-	int upload(SceneTileModel sceneTileModel, int tileX, int tileY, int offsetX, int offsetZ,
-			GpuIntBuffer vertexBuffer, GpuFloatBuffer uvBuffer, boolean padUvs)
+	int upload(SceneTileModel sceneTileModel, int lx, int lz,
+		GpuIntBuffer vertexBuffer, GpuFloatBuffer uvBuffer, boolean padUvs)
 	{
 		final int[] faceX = sceneTileModel.getFaceX();
 		final int[] faceY = sceneTileModel.getFaceY();
@@ -297,21 +302,18 @@ class SceneUploader
 		vertexBuffer.ensureCapacity(faceCount * 12);
 		uvBuffer.ensureCapacity(faceCount * 12);
 
-		int baseX = tileX << Perspective.LOCAL_COORD_BITS;
-		int baseY = tileY << Perspective.LOCAL_COORD_BITS;
-
 		int cnt = 0;
 		for (int i = 0; i < faceCount; ++i)
 		{
-			final int triangleA = faceX[i];
-			final int triangleB = faceY[i];
-			final int triangleC = faceZ[i];
+			final int vertex0 = faceX[i];
+			final int vertex1 = faceY[i];
+			final int vertex2 = faceZ[i];
 
-			final int colorA = triangleColorA[i];
-			final int colorB = triangleColorB[i];
-			final int colorC = triangleColorC[i];
+			final int hsl0 = triangleColorA[i];
+			final int hsl1 = triangleColorB[i];
+			final int hsl2 = triangleColorC[i];
 
-			if (colorA == 12345678)
+			if (hsl0 == 12345678)
 			{
 				continue;
 			}
@@ -319,36 +321,45 @@ class SceneUploader
 			cnt += 3;
 
 			// vertexes are stored in scene local, convert to tile local
-			int vertexXA = vertexX[triangleA] - baseX;
-			int vertexYA = vertexY[triangleA];
-			int vertexZA = vertexZ[triangleA] - baseY;
+			int lx0 = vertexX[vertex0] - lx;
+			int ly0 = vertexY[vertex0];
+			int lz0 = vertexZ[vertex0] - lz;
 
-			int vertexXB = vertexX[triangleB] - baseX;
-			int vertexYB = vertexY[triangleB];
-			int vertexZB = vertexZ[triangleB] - baseY;
+			int lx1 = vertexX[vertex1] - lx;
+			int ly1 = vertexY[vertex1];
+			int lz1 = vertexZ[vertex1] - lz;
 
-			int vertexXC = vertexX[triangleC] - baseX;
-			int vertexYC = vertexY[triangleC];
-			int vertexZC = vertexZ[triangleC] - baseY;
+			int lx2 = vertexX[vertex2] - lx;
+			int ly2 = vertexY[vertex2];
+			int lz2 = vertexZ[vertex2] - lz;
 
-			vertexBuffer.put(vertexXA + offsetX, vertexYA, vertexZA + offsetZ, colorA);
-			vertexBuffer.put(vertexXB + offsetX, vertexYB, vertexZB + offsetZ, colorB);
-			vertexBuffer.put(vertexXC + offsetX, vertexYC, vertexZC + offsetZ, colorC);
+			vertexBuffer.put(lx0, ly0, lz0, hsl0);
+			vertexBuffer.put(lx1, ly1, lz1, hsl1);
+			vertexBuffer.put(lx2, ly2, lz2, hsl2);
 
 			if (padUvs || triangleTextures != null)
 			{
 				if (triangleTextures != null && triangleTextures[i] != -1)
 				{
 					int tex = triangleTextures[i] + 1;
-					uvBuffer.put(tex, offsetX, vertexYA, offsetZ);
-					uvBuffer.put(tex, offsetX + 128, vertexYB, offsetZ);
-					uvBuffer.put(tex, offsetX, vertexYC, offsetZ + 128);
+					if (sceneTileModel.isFlat())
+					{
+						uvBuffer.put(tex, vertexX[0] - lx, vertexY[0], vertexZ[0] - lz);
+						uvBuffer.put(tex, vertexX[1] - lx, vertexY[1], vertexZ[1] - lz);
+						uvBuffer.put(tex, vertexX[3] - lx, vertexY[3], vertexZ[3] - lz);
+					}
+					else
+					{
+						uvBuffer.put(tex, vertexX[vertex0] - lx, vertexY[vertex0], vertexZ[vertex0] - lz);
+						uvBuffer.put(tex, vertexX[vertex1] - lx, vertexY[vertex1], vertexZ[vertex1] - lz);
+						uvBuffer.put(tex, vertexX[vertex2] - lx, vertexY[vertex2], vertexZ[vertex2] - lz);
+					}
 				}
 				else
 				{
-					uvBuffer.put(0, 0, 0, 0f);
-					uvBuffer.put(0, 0, 0, 0f);
-					uvBuffer.put(0, 0, 0, 0f);
+					uvBuffer.put(0, 0, 0, 0);
+					uvBuffer.put(0, 0, 0, 0);
+					uvBuffer.put(0, 0, 0, 0);
 				}
 			}
 		}
@@ -571,7 +582,7 @@ class SceneUploader
 		orderedFaces = null;
 	}
 
-	int pushSortedModel(Model model, int orientation, int pitchSin, int pitchCos, int yawSin, int yawCos, int x, int y, int z, GpuIntBuffer vertexBuffer, GpuFloatBuffer uvBuffer)
+	int pushSortedModel(Projection proj, Model model, int orientation, int x, int y, int z, GpuIntBuffer vertexBuffer, GpuFloatBuffer uvBuffer)
 	{
 		final int vertexCount = model.getVerticesCount();
 		final int[] verticesX = model.getVerticesX();
@@ -590,15 +601,6 @@ class SceneUploader
 		final int centerY = client.getCenterY();
 		final int zoom = client.get3dZoom();
 
-		final int cameraX = client.getCameraX2();
-		final int cameraY = client.getCameraY2();
-		final int cameraZ = client.getCameraZ2();
-
-		// remove camera offset from model
-		x += cameraX;
-		y += cameraY;
-		z += cameraZ;
-
 		int orientSine = 0;
 		int orientCosine = 0;
 		if (orientation != 0)
@@ -606,6 +608,9 @@ class SceneUploader
 			orientSine = Perspective.SINE[orientation];
 			orientCosine = Perspective.COSINE[orientation];
 		}
+
+		float[] p = proj.project(x, y, z);
+		int zero = (int) p[2];
 
 		for (int v = 0; v < vertexCount; ++v)
 		{
@@ -620,10 +625,6 @@ class SceneUploader
 				vertexX = i;
 			}
 
-			int d = yawCos * vertexZ - vertexX * yawSin >> 16;
-			d = pitchCos * d + vertexY * pitchSin >> 16;
-			distances[v] = d;
-
 			// move to local position
 			vertexX += x;
 			vertexY += y;
@@ -633,25 +634,10 @@ class SceneUploader
 			modelLocalY[v] = vertexY;
 			modelLocalZ[v] = vertexZ;
 
-			// adjust for camera
-			vertexX -= cameraX;
-			vertexY -= cameraY;
-			vertexZ -= cameraZ;
-
-			final float fpitchSin = pitchSin / 65536f;
-			final float fpitchCos = pitchCos / 65536f;
-
-			final float fyawSin = yawSin / 65536f;
-			final float fyawCos = yawCos / 65536f;
-
-			final float rotatedX = (vertexZ * fyawSin) + (vertexX * fyawCos);
-			final float rotatedZ = (vertexZ * fyawCos) - (vertexX * fyawSin);
-
-			final float var13 = (vertexY * fpitchCos) - (rotatedZ * fpitchSin);
-			final float var12 = (vertexY * fpitchSin) + (rotatedZ * fpitchCos);
-
-			modelCanvasX[v] = rotatedX * zoom / var12 + centerX;
-			modelCanvasY[v] = var13 * zoom / var12 + centerY;
+			p = proj.project(vertexX, vertexY, vertexZ);
+			modelCanvasX[v] = centerX + p[0] * zoom / p[2];
+			modelCanvasY[v] = centerY + p[1] * zoom / p[2];
+			distances[v] = (int) p[2] - zero;
 		}
 
 		final int diameter = model.getDiameter();

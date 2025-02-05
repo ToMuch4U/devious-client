@@ -4,24 +4,32 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("dg")
+@ObfuscatedName("dn")
 @Implements("ChatChannel")
 public class ChatChannel {
-	@ObfuscatedName("lv")
-	@ObfuscatedGetter(
-		intValue = -1313145805
-	)
-	@Export("oculusOrbFocalPointX")
-	static int oculusOrbFocalPointX;
-	@ObfuscatedName("al")
+	@ObfuscatedName("dk")
+	static boolean field1030;
+	@ObfuscatedName("fl")
 	@ObfuscatedSignature(
-		descriptor = "[Lcr;"
+		descriptor = "Loz;"
+	)
+	@Export("archive13")
+	static Archive archive13;
+	@ObfuscatedName("rk")
+	@ObfuscatedSignature(
+		descriptor = "Liv;"
+	)
+	@Export("mouseWheel")
+	static MouseWheel mouseWheel;
+	@ObfuscatedName("ad")
+	@ObfuscatedSignature(
+		descriptor = "[Lck;"
 	)
 	@Export("messages")
 	Message[] messages;
-	@ObfuscatedName("ak")
+	@ObfuscatedName("ag")
 	@ObfuscatedGetter(
-		intValue = 679923983
+		intValue = -89644527
 	)
 	@Export("count")
 	int count;
@@ -30,10 +38,10 @@ public class ChatChannel {
 		this.messages = new Message[100];
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;B)Lcr;",
-		garbageValue = "-1"
+		descriptor = "(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;S)Lck;",
+		garbageValue = "-11369"
 	)
 	@Export("addMessage")
 	Message addMessage(int var1, String var2, String var3, String var4) {
@@ -61,20 +69,20 @@ public class ChatChannel {
 		return var5;
 	}
 
-	@ObfuscatedName("al")
+	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
-		descriptor = "(II)Lcr;",
-		garbageValue = "-1861075879"
+		descriptor = "(II)Lck;",
+		garbageValue = "650895180"
 	)
 	@Export("getMessage")
 	Message getMessage(int var1) {
 		return var1 >= 0 && var1 < this.count ? this.messages[var1] : null;
 	}
 
-	@ObfuscatedName("ak")
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "(I)I",
-		garbageValue = "-1856127113"
+		descriptor = "(B)I",
+		garbageValue = "85"
 	)
 	@Export("size")
 	int size() {

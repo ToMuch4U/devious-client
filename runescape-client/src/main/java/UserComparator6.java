@@ -2,19 +2,13 @@ import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
+import net.runelite.rs.Reflection;
+import net.runelite.rs.ScriptOpcodes;
 
 @ObfuscatedName("ey")
 @Implements("UserComparator6")
 public class UserComparator6 extends AbstractUserComparator {
-	@ObfuscatedName("as")
-	static int[][][] field1486;
-	@ObfuscatedName("jd")
-	@ObfuscatedSignature(
-		descriptor = "Lpu;"
-	)
-	@Export("fontPlain12")
-	static Font fontPlain12;
-	@ObfuscatedName("ac")
+	@ObfuscatedName("aq")
 	@Export("reversed")
 	final boolean reversed;
 
@@ -22,10 +16,10 @@ public class UserComparator6 extends AbstractUserComparator {
 		this.reversed = var1;
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "(Lri;Lri;B)I",
-		garbageValue = "1"
+		descriptor = "(Lsh;Lsh;I)I",
+		garbageValue = "1402807579"
 	)
 	@Export("compareBuddy")
 	int compareBuddy(Buddy var1, Buddy var2) {
@@ -40,17 +34,45 @@ public class UserComparator6 extends AbstractUserComparator {
 		return this.compareBuddy((Buddy)var1, (Buddy)var2);
 	}
 
-	@ObfuscatedName("he")
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "(ZB)V",
-		garbageValue = "97"
+		descriptor = "(Ljava/lang/String;I)Ljava/lang/Class;",
+		garbageValue = "268468568"
 	)
-	static final void method2942(boolean var0) {
-		if (var0) {
-			Client.field558 = Login.field951 ? class141.field1627 : class141.field1629;
+	@Export("loadClassFromDescriptor")
+	static Class loadClassFromDescriptor(String var0) throws ClassNotFoundException {
+		if (var0.equals("B")) {
+			return Byte.TYPE;
+		} else if (var0.equals("I")) {
+			return Integer.TYPE;
+		} else if (var0.equals("S")) {
+			return Short.TYPE;
+		} else if (var0.equals("J")) {
+			return Long.TYPE;
+		} else if (var0.equals("Z")) {
+			return Boolean.TYPE;
+		} else if (var0.equals("F")) {
+			return Float.TYPE;
+		} else if (var0.equals("D")) {
+			return Double.TYPE;
+		} else if (var0.equals("C")) {
+			return Character.TYPE;
 		} else {
-			Client.field558 = class91.clientPreferences.method2527(Login.Login_username) ? class141.field1635 : class141.field1630;
+			return var0.equals("void") ? Void.TYPE : Reflection.findClass(var0);
 		}
+	}
 
+	@ObfuscatedName("bw")
+	@ObfuscatedSignature(
+		descriptor = "(ILdg;ZB)I",
+		garbageValue = "10"
+	)
+	static int method3045(int var0, Script var1, boolean var2) {
+		if (var0 == ScriptOpcodes.LOGOUT) {
+			Client.logoutTimer = 250;
+			return 1;
+		} else {
+			return 2;
+		}
 	}
 }

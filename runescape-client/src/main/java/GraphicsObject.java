@@ -4,71 +4,64 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ch")
+@ObfuscatedName("cb")
 @Implements("GraphicsObject")
 public class GraphicsObject extends Renderable {
-	@ObfuscatedName("aa")
+	@ObfuscatedName("aq")
 	@ObfuscatedGetter(
-		intValue = -1842226835
-	)
-	static int field890;
-	@ObfuscatedName("bt")
-	protected static String field888;
-	@ObfuscatedName("ac")
-	@ObfuscatedGetter(
-		intValue = 1980942277
+		intValue = 1618500387
 	)
 	@Export("id")
 	int id;
-	@ObfuscatedName("al")
+	@ObfuscatedName("ad")
 	@ObfuscatedGetter(
-		intValue = -193799833
+		intValue = 2114524059
 	)
 	@Export("cycleStart")
 	int cycleStart;
-	@ObfuscatedName("ak")
+	@ObfuscatedName("ag")
 	@ObfuscatedGetter(
-		intValue = 488343415
+		intValue = 2101976971
 	)
 	@Export("plane")
 	int plane;
-	@ObfuscatedName("ax")
+	@ObfuscatedName("ak")
 	@ObfuscatedGetter(
-		intValue = 463669607
+		intValue = -1785821565
 	)
 	@Export("x")
 	int x;
-	@ObfuscatedName("ao")
+	@ObfuscatedName("ap")
 	@ObfuscatedGetter(
-		intValue = -1976147247
+		intValue = -2075507115
 	)
 	@Export("y")
 	int y;
-	@ObfuscatedName("ah")
+	@ObfuscatedName("an")
 	@ObfuscatedGetter(
-		intValue = 371756529
+		intValue = -1174215027
 	)
 	@Export("z")
 	int z;
-	@ObfuscatedName("ar")
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
-		descriptor = "Lif;"
+		descriptor = "Lii;"
 	)
 	@Export("sequenceDefinition")
 	SequenceDefinition sequenceDefinition;
-	@ObfuscatedName("ab")
+	@ObfuscatedName("av")
 	@ObfuscatedGetter(
-		intValue = -2020340729
+		intValue = -1066179869
 	)
 	@Export("frame")
 	int frame;
-	@ObfuscatedName("am")
+	@ObfuscatedName("ab")
 	@ObfuscatedGetter(
-		intValue = 597667557
+		intValue = -612227199
 	)
 	@Export("frameCycle")
 	int frameCycle;
-	@ObfuscatedName("av")
+	@ObfuscatedName("ai")
 	@Export("isFinished")
 	boolean isFinished;
 
@@ -82,20 +75,20 @@ public class GraphicsObject extends Renderable {
 		this.y = var4;
 		this.z = var5;
 		this.cycleStart = var7 + var6;
-		int var8 = class406.SpotAnimationDefinition_get(this.id).sequence;
+		int var8 = class178.SpotAnimationDefinition_get(this.id).sequence;
 		if (var8 != -1) {
 			this.isFinished = false;
-			this.sequenceDefinition = class36.SequenceDefinition_get(var8);
+			this.sequenceDefinition = class353.SequenceDefinition_get(var8);
 		} else {
 			this.isFinished = true;
 		}
 
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "(IB)V",
-		garbageValue = "108"
+		descriptor = "(II)V",
+		garbageValue = "1368110058"
 	)
 	@Export("advance")
 	final void advance(int var1) {
@@ -112,7 +105,7 @@ public class GraphicsObject extends Renderable {
 				}
 			} else {
 				this.frame += var1;
-				if (this.frame >= this.sequenceDefinition.method4177()) {
+				if (this.frame >= this.sequenceDefinition.method4059()) {
 					this.isFinished = true;
 				}
 			}
@@ -120,14 +113,14 @@ public class GraphicsObject extends Renderable {
 		}
 	}
 
-	@ObfuscatedName("al")
+	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
-		descriptor = "(B)Ljn;",
-		garbageValue = "0"
+		descriptor = "(I)Llv;",
+		garbageValue = "-543123602"
 	)
 	@Export("getModel")
 	protected final Model getModel() {
-		SpotAnimationDefinition var1 = class406.SpotAnimationDefinition_get(this.id);
+		SpotAnimationDefinition var1 = class178.SpotAnimationDefinition_get(this.id);
 		Model var2;
 		if (!this.isFinished) {
 			var2 = var1.getModel(this.frame);
@@ -136,6 +129,26 @@ public class GraphicsObject extends Renderable {
 		}
 
 		return var2 == null ? null : var2;
+	}
+
+	@ObfuscatedName("aq")
+	@ObfuscatedSignature(
+		descriptor = "(II)I",
+		garbageValue = "2042323302"
+	)
+	public static int method2153(int var0) {
+		return class328.field3561[var0];
+	}
+
+	@ObfuscatedName("az")
+	@ObfuscatedSignature(
+		descriptor = "(B)V",
+		garbageValue = "93"
+	)
+	public static void method2154() {
+		PlayerComposition.PlayerAppearance_cachedModels.clear();
+		PlayerComposition.field3781.clearFiles();
+		PlayerComposition.field3784 = 0;
 	}
 
 	public GraphicsObject() {

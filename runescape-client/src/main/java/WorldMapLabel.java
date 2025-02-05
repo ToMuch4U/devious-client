@@ -4,33 +4,33 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("kd")
+@ObfuscatedName("km")
 @Implements("WorldMapLabel")
 public class WorldMapLabel {
-	@ObfuscatedName("ac")
+	@ObfuscatedName("aq")
 	@Export("text")
 	String text;
-	@ObfuscatedName("al")
+	@ObfuscatedName("ad")
 	@ObfuscatedGetter(
-		intValue = 549349419
+		intValue = 265924559
 	)
 	@Export("width")
 	int width;
-	@ObfuscatedName("ak")
+	@ObfuscatedName("ag")
 	@ObfuscatedGetter(
-		intValue = -1069492799
+		intValue = -2136908715
 	)
 	@Export("height")
 	int height;
-	@ObfuscatedName("ax")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "Lka;"
+		descriptor = "Ljx;"
 	)
 	@Export("size")
 	WorldMapLabelSize size;
 
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/String;IILka;)V"
+		descriptor = "(Ljava/lang/String;IILjx;)V"
 	)
 	WorldMapLabel(String var1, int var2, int var3, WorldMapLabelSize var4) {
 		this.text = var1;
@@ -39,55 +39,42 @@ public class WorldMapLabel {
 		this.size = var4;
 	}
 
-	@ObfuscatedName("ax")
+	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
-		descriptor = "(II)I",
-		garbageValue = "1591685204"
+		descriptor = "([FIFI)F",
+		garbageValue = "784704657"
 	)
-	public static int method5653(int var0) {
-		var0 = (var0 & 1431655765) + (var0 >>> 1 & 1431655765);
-		var0 = (var0 >>> 2 & 858993459) + (var0 & 858993459);
-		var0 = var0 + (var0 >>> 4) & 252645135;
-		var0 += var0 >>> 8;
-		var0 += var0 >>> 16;
-		return var0 & 255;
-	}
+	static float method5003(float[] var0, int var1, float var2) {
+		float var3 = var0[var1];
 
-	@ObfuscatedName("ap")
-	@ObfuscatedSignature(
-		descriptor = "(IIIB)I",
-		garbageValue = "-26"
-	)
-	static int method5654(int var0, int var1, int var2) {
-		if ((Tiles.Tiles_renderFlags[var0][var1][var2] & 8) != 0) {
-			return 0;
-		} else {
-			return var0 > 0 && (Tiles.Tiles_renderFlags[1][var1][var2] & 2) != 0 ? var0 - 1 : var0;
+		for (int var4 = var1 - 1; var4 >= 0; --var4) {
+			var3 = var3 * var2 + var0[var4];
 		}
+
+		return var3;
 	}
 
-	@ObfuscatedName("ks")
+	@ObfuscatedName("be")
 	@ObfuscatedSignature(
-		descriptor = "(Ldc;I)V",
-		garbageValue = "-1071136907"
+		descriptor = "(ILdg;ZI)I",
+		garbageValue = "-14417832"
 	)
-	static void method5655(NPC var0) {
-		var0.field1189 = var0.definition.size;
-		var0.field1216 = var0.definition.rotation;
-		var0.walkSequence = var0.definition.walkSequence;
-		var0.walkBackSequence = var0.definition.walkBackSequence;
-		var0.walkLeftSequence = var0.definition.walkLeftSequence;
-		var0.walkRightSequence = var0.definition.walkRightSequence;
-		var0.idleSequence = var0.definition.idleSequence;
-		var0.turnLeftSequence = var0.definition.turnLeftSequence;
-		var0.turnRightSequence = var0.definition.turnRightSequence;
-		var0.runSequence = var0.definition.field2059;
-		var0.field1217 = var0.definition.field2060;
-		var0.field1202 = var0.definition.field2061;
-		var0.field1201 = var0.definition.field2088;
-		var0.field1196 = var0.definition.field2063;
-		var0.field1203 = var0.definition.field2064;
-		var0.field1219 = var0.definition.field2065;
-		var0.field1205 = var0.definition.field2074;
+	static int method5004(int var0, Script var1, boolean var2) {
+		int var3;
+		if (var0 == 3500) {
+			var3 = Interpreter.Interpreter_intStack[--class130.Interpreter_intStackSize];
+			Interpreter.Interpreter_intStack[++class130.Interpreter_intStackSize - 1] = Client.indexCheck.isValidIndexInRange(var3) ? 1 : 0;
+			return 1;
+		} else if (var0 == 3501) {
+			var3 = Interpreter.Interpreter_intStack[--class130.Interpreter_intStackSize];
+			Interpreter.Interpreter_intStack[++class130.Interpreter_intStackSize - 1] = Client.indexCheck.method4383(var3) ? 1 : 0;
+			return 1;
+		} else if (var0 == 3502) {
+			var3 = Interpreter.Interpreter_intStack[--class130.Interpreter_intStackSize];
+			Interpreter.Interpreter_intStack[++class130.Interpreter_intStackSize - 1] = Client.indexCheck.method4385(var3) ? 1 : 0;
+			return 1;
+		} else {
+			return 2;
+		}
 	}
 }

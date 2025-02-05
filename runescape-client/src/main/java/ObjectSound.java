@@ -3,91 +3,105 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.rs.ScriptOpcodes;
 
-@ObfuscatedName("cj")
+@ObfuscatedName("cc")
 @Implements("ObjectSound")
 public final class ObjectSound extends Node {
-	@ObfuscatedName("ac")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "Lpf;"
+		descriptor = "Lpr;"
 	)
 	@Export("objectSounds")
 	static NodeDeque objectSounds;
-	@ObfuscatedName("al")
+	@ObfuscatedName("fm")
+	@ObfuscatedSignature(
+		descriptor = "Loz;"
+	)
+	static Archive field856;
+	@ObfuscatedName("ud")
 	@ObfuscatedGetter(
-		intValue = 1117438813
+		intValue = -1235649789
+	)
+	static int field853;
+	@ObfuscatedName("ad")
+	@ObfuscatedGetter(
+		intValue = 1547628377
 	)
 	@Export("plane")
 	int plane;
-	@ObfuscatedName("ak")
+	@ObfuscatedName("ag")
 	@ObfuscatedGetter(
-		intValue = -1017683267
+		intValue = 1753203631
 	)
 	@Export("x")
 	int x;
-	@ObfuscatedName("ax")
+	@ObfuscatedName("ak")
 	@ObfuscatedGetter(
-		intValue = 1824721511
+		intValue = -460372864
 	)
 	@Export("y")
 	int y;
-	@ObfuscatedName("ao")
+	@ObfuscatedName("ap")
 	@ObfuscatedGetter(
-		intValue = 1330219904
+		intValue = 1813911287
 	)
 	@Export("maxX")
 	int maxX;
-	@ObfuscatedName("ah")
+	@ObfuscatedName("an")
 	@ObfuscatedGetter(
-		intValue = -1269826265
+		intValue = 749652693
 	)
 	@Export("maxY")
 	int maxY;
-	@ObfuscatedName("ar")
+	@ObfuscatedName("aj")
 	@ObfuscatedGetter(
-		intValue = 17843065
+		intValue = 835963461
 	)
-	int field853;
+	int field845;
+	@ObfuscatedName("av")
+	@ObfuscatedGetter(
+		intValue = -1143258933
+	)
+	int field846;
 	@ObfuscatedName("ab")
 	@ObfuscatedGetter(
-		intValue = -976838243
+		intValue = 591656919
 	)
 	@Export("soundEffectId")
 	int soundEffectId;
-	@ObfuscatedName("am")
+	@ObfuscatedName("ai")
 	@ObfuscatedSignature(
-		descriptor = "Lbx;"
+		descriptor = "Lbz;"
 	)
 	@Export("stream1")
 	RawPcmStream stream1;
-	@ObfuscatedName("av")
+	@ObfuscatedName("ae")
 	@ObfuscatedGetter(
-		intValue = 1835023265
+		intValue = -502571839
 	)
-	int field860;
-	@ObfuscatedName("ag")
+	int field849;
+	@ObfuscatedName("au")
 	@ObfuscatedGetter(
-		intValue = -1270416119
+		intValue = -139704035
 	)
-	int field862;
-	@ObfuscatedName("aa")
+	int field850;
+	@ObfuscatedName("ah")
 	@Export("soundEffectIds")
 	int[] soundEffectIds;
-	@ObfuscatedName("ap")
+	@ObfuscatedName("az")
 	@ObfuscatedGetter(
-		intValue = 109274549
+		intValue = -839235315
 	)
-	int field864;
-	@ObfuscatedName("ay")
+	int field840;
+	@ObfuscatedName("ax")
 	@ObfuscatedSignature(
-		descriptor = "Lbx;"
+		descriptor = "Lbz;"
 	)
 	@Export("stream2")
 	RawPcmStream stream2;
-	@ObfuscatedName("as")
+	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "Liz;"
+		descriptor = "Lho;"
 	)
 	@Export("obj")
 	ObjectComposition obj;
@@ -99,10 +113,10 @@ public final class ObjectSound extends Node {
 	ObjectSound() {
 	}
 
-	@ObfuscatedName("ak")
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "1"
+		descriptor = "(I)V",
+		garbageValue = "1109055507"
 	)
 	@Export("set")
 	void set() {
@@ -110,83 +124,47 @@ public final class ObjectSound extends Node {
 		ObjectComposition var2 = this.obj.transform();
 		if (var2 != null) {
 			this.soundEffectId = var2.ambientSoundId;
-			this.field853 = var2.int7 * 128;
-			this.field860 = var2.int5;
-			this.field862 = var2.int6;
+			this.field845 = var2.int7 * 128;
+			this.field846 = var2.int8 * 16384;
+			this.field849 = var2.int5;
+			this.field850 = var2.int6;
 			this.soundEffectIds = var2.soundEffectIds;
 		} else {
 			this.soundEffectId = -1;
-			this.field853 = 0;
-			this.field860 = 0;
-			this.field862 = 0;
+			this.field845 = 0;
+			this.field846 = 0;
+			this.field849 = 0;
+			this.field850 = 0;
 			this.soundEffectIds = null;
 		}
 
 		if (var1 != this.soundEffectId && this.stream1 != null) {
-			class140.pcmStreamMixer.removeSubStream(this.stream1);
+			class238.pcmStreamMixer.removeSubStream(this.stream1);
 			this.stream1 = null;
 		}
 
 	}
 
-	@ObfuscatedName("bm")
+	@ObfuscatedName("oz")
 	@ObfuscatedSignature(
-		descriptor = "(ILds;ZB)I",
-		garbageValue = "5"
+		descriptor = "(Lnx;I)Lnx;",
+		garbageValue = "-397184281"
 	)
-	static int method1955(int var0, Script var1, boolean var2) {
-		int var3;
-		if (var0 == ScriptOpcodes.CAM_FORCEANGLE) {
-			Interpreter.Interpreter_intStackSize -= 2;
-			var3 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize];
-			int var4 = Interpreter.Interpreter_intStack[Interpreter.Interpreter_intStackSize + 1];
-			if (!Client.isCameraLocked) {
-				Client.camAngleX = var3;
-				Client.camAngleY = var4;
-			}
-
-			return 1;
-		} else if (var0 == ScriptOpcodes.CAM_GETANGLE_XA) {
-			Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = Client.camAngleX;
-			return 1;
-		} else if (var0 == ScriptOpcodes.CAM_GETANGLE_YA) {
-			Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = Client.camAngleY;
-			return 1;
-		} else if (var0 == ScriptOpcodes.CAM_SETFOLLOWHEIGHT) {
-			var3 = Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize];
-			if (var3 < 0) {
-				var3 = 0;
-			}
-
-			Client.camFollowHeight = var3;
-			return 1;
-		} else if (var0 == ScriptOpcodes.CAM_GETFOLLOWHEIGHT) {
-			Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = Client.camFollowHeight;
-			return 1;
+	static Widget method1976(Widget var0) {
+		int var2 = ClanChannel.getWidgetFlags(var0);
+		int var1 = var2 >> 17 & 7;
+		int var3 = var1;
+		if (var1 == 0) {
+			return null;
 		} else {
-			return 2;
-		}
-	}
-
-	@ObfuscatedName("hn")
-	@ObfuscatedSignature(
-		descriptor = "(B)Z",
-		garbageValue = "1"
-	)
-	static boolean method1952() {
-		if (Client.archiveLoaders != null && Client.archiveLoadersDone < Client.archiveLoaders.size()) {
-			while (Client.archiveLoadersDone < Client.archiveLoaders.size()) {
-				ArchiveLoader var0 = (ArchiveLoader)Client.archiveLoaders.get(Client.archiveLoadersDone);
-				if (!var0.isLoaded()) {
-					return false;
+			for (int var4 = 0; var4 < var3; ++var4) {
+				var0 = ModeWhere.widgetDefinition.method6519(var0.parentId);
+				if (var0 == null) {
+					return null;
 				}
-
-				++Client.archiveLoadersDone;
 			}
 
-			return true;
-		} else {
-			return true;
+			return var0;
 		}
 	}
 }

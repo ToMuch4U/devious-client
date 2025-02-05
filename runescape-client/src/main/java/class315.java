@@ -1,39 +1,33 @@
-import net.runelite.mapping.ObfuscatedGetter;
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
 @ObfuscatedName("mm")
-public final class class315 {
-	@ObfuscatedName("al")
-	@ObfuscatedGetter(
-		longValue = -40965535388158667L
-	)
-	static long field3405;
+public class class315 {
+	@ObfuscatedName("aj")
+	@Export("SpriteBuffer_spriteHeights")
+	public static int[] SpriteBuffer_spriteHeights;
 
-	@ObfuscatedName("ah")
+	@ObfuscatedName("jg")
 	@ObfuscatedSignature(
-		descriptor = "(FFFFLfz;B)V",
-		garbageValue = "0"
+		descriptor = "(IIIII)V",
+		garbageValue = "696205402"
 	)
-	static void method5905(float var0, float var1, float var2, float var3, class132 var4) {
-		float var5 = var1 - var0;
-		float var6 = var2 - var1;
-		float var7 = var3 - var2;
-		float var8 = var6 - var5;
-		var4.field1542 = var7 - var6 - var8;
-		var4.field1538 = var8 + var8 + var8;
-		var4.field1546 = var5 + var5 + var5;
-		var4.field1545 = var0;
-	}
+	static final void method6088(int var0, int var1, int var2, int var3) {
+		Client.field625 = 0;
+		int var4 = (SoundCache.localPlayer.x >> 7) + class511.topLevelWorldView.baseX;
+		int var5 = (SoundCache.localPlayer.y >> 7) + class511.topLevelWorldView.baseY;
+		if (var4 >= 3053 && var4 <= 3156 && var5 >= 3056 && var5 <= 3136) {
+			Client.field625 = 1;
+		}
 
-	@ObfuscatedName("aw")
-	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "-1734109525"
-	)
-	public static void method5904() {
-		ItemComposition.ItemDefinition_cached.clear();
-		ItemComposition.ItemDefinition_cachedModels.clear();
-		ItemComposition.ItemDefinition_cachedSprites.clear();
+		if (var4 >= 3072 && var4 <= 3118 && var5 >= 9492 && var5 <= 9535) {
+			Client.field625 = 1;
+		}
+
+		if (Client.field625 == 1 && var4 >= 3139 && var4 <= 3199 && var5 >= 3008 && var5 <= 3062) {
+			Client.field625 = 0;
+		}
+
 	}
 }

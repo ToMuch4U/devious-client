@@ -4,43 +4,40 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("hb")
+@ObfuscatedName("hp")
 @Implements("HorizontalAlignment")
-public enum HorizontalAlignment implements MouseWheel {
-	@ObfuscatedName("ac")
+public enum HorizontalAlignment implements Enum {
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "Lhb;"
+		descriptor = "Lhp;"
 	)
-	field2032(1, 0),
-	@ObfuscatedName("al")
+	field1976(2, 0),
+	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
-		descriptor = "Lhb;"
+		descriptor = "Lhp;"
 	)
 	@Export("HorizontalAlignment_centered")
 	HorizontalAlignment_centered(0, 1),
-	@ObfuscatedName("ak")
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "Lhb;"
+		descriptor = "Lhp;"
 	)
-	field2027(2, 2);
+	field1970(1, 2);
 
-	@ObfuscatedName("gj")
+	@ObfuscatedName("al")
 	@ObfuscatedSignature(
-		descriptor = "Lok;"
+		descriptor = "Lgj;"
 	)
-	static Archive field2028;
-	@ObfuscatedName("jf")
-	@Export("regionMapArchiveIds")
-	static int[] regionMapArchiveIds;
-	@ObfuscatedName("ax")
+	static ClanChannel field1973;
+	@ObfuscatedName("ak")
 	@ObfuscatedGetter(
-		intValue = -328609999
+		intValue = 1640852387
 	)
 	@Export("value")
 	public final int value;
-	@ObfuscatedName("ao")
+	@ObfuscatedName("ap")
 	@ObfuscatedGetter(
-		intValue = -507682681
+		intValue = -1968910549
 	)
 	@Export("id")
 	final int id;
@@ -50,13 +47,28 @@ public enum HorizontalAlignment implements MouseWheel {
 		this.id = var4;
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
 		descriptor = "(I)I",
-		garbageValue = "-1243971674"
+		garbageValue = "2071992588"
 	)
 	@Export("rsOrdinal")
 	public int rsOrdinal() {
 		return this.id;
+	}
+
+	@ObfuscatedName("bt")
+	@ObfuscatedSignature(
+		descriptor = "(IZII)V",
+		garbageValue = "-1336022419"
+	)
+	public static final void method3698(int var0, boolean var1, int var2) {
+		if (var0 >= 8000 && var0 <= 48000) {
+			PcmPlayer.field263 = var0;
+			SecureRandomFuture.PcmPlayer_stereo = var1;
+			class379.field4434 = var2;
+		} else {
+			throw new IllegalArgumentException();
+		}
 	}
 }

@@ -4,126 +4,104 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("rh")
+@ObfuscatedName("sw")
 @Implements("DefaultsGroup")
 public class DefaultsGroup {
-	@ObfuscatedName("ac")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "Lrh;"
+		descriptor = "Lsw;"
 	)
-	static final DefaultsGroup field4747;
-	@ObfuscatedName("al")
+	static final DefaultsGroup field5010;
+	@ObfuscatedName("ad")
+	@ObfuscatedSignature(
+		descriptor = "Lsw;"
+	)
+	static final DefaultsGroup field5011;
+	@ObfuscatedName("ag")
 	@ObfuscatedGetter(
-		intValue = 1604849899
+		intValue = 1592901653
 	)
 	@Export("group")
 	final int group;
 
 	static {
-		field4747 = new DefaultsGroup(3);
+		field5010 = new DefaultsGroup(1);
+		field5011 = new DefaultsGroup(3);
 	}
 
 	DefaultsGroup(int var1) {
 		this.group = var1;
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("au")
 	@ObfuscatedSignature(
-		descriptor = "(IB)Lhj;",
-		garbageValue = "-1"
+		descriptor = "([BI)V",
+		garbageValue = "-1696739276"
 	)
-	public static HealthBarDefinition method8264(int var0) {
-		HealthBarDefinition var1 = (HealthBarDefinition)HealthBarDefinition.HealthBarDefinition_cached.get((long)var0);
-		if (var1 != null) {
-			return var1;
-		} else {
-			byte[] var2 = HealthBarDefinition.HealthBarDefinition_archive.takeFile(33, var0);
-			var1 = new HealthBarDefinition();
-			var1.field1982 = var0;
-			if (var2 != null) {
-				var1.decode(new Buffer(var2));
-			}
+	@Export("SpriteBuffer_decode")
+	static void SpriteBuffer_decode(byte[] var0) {
+		Buffer var1 = new Buffer(var0);
+		var1.offset = var0.length - 2;
+		SpriteBufferProperties.SpriteBuffer_spriteCount = var1.readUnsignedShort();
+		UserComparator4.SpriteBuffer_xOffsets = new int[SpriteBufferProperties.SpriteBuffer_spriteCount];
+		LoginPacket.SpriteBuffer_yOffsets = new int[SpriteBufferProperties.SpriteBuffer_spriteCount];
+		SpriteBufferProperties.SpriteBuffer_spriteWidths = new int[SpriteBufferProperties.SpriteBuffer_spriteCount];
+		class315.SpriteBuffer_spriteHeights = new int[SpriteBufferProperties.SpriteBuffer_spriteCount];
+		SpriteBufferProperties.SpriteBuffer_pixels = new byte[SpriteBufferProperties.SpriteBuffer_spriteCount][];
+		var1.offset = var0.length - 7 - SpriteBufferProperties.SpriteBuffer_spriteCount * 8;
+		SpriteBufferProperties.SpriteBuffer_spriteWidth = var1.readUnsignedShort();
+		SpriteBufferProperties.SpriteBuffer_spriteHeight = var1.readUnsignedShort();
+		int var2 = (var1.readUnsignedByte() & 255) + 1;
 
-			HealthBarDefinition.HealthBarDefinition_cached.put(var1, (long)var0);
-			return var1;
+		int var3;
+		for (var3 = 0; var3 < SpriteBufferProperties.SpriteBuffer_spriteCount; ++var3) {
+			UserComparator4.SpriteBuffer_xOffsets[var3] = var1.readUnsignedShort();
 		}
-	}
 
-	@ObfuscatedName("hl")
-	@ObfuscatedSignature(
-		descriptor = "(II)V",
-		garbageValue = "1882017485"
-	)
-	@Export("updateGameState")
-	static void updateGameState(int var0) {
-		if (var0 != Client.gameState) {
-			if (Client.gameState == 30) {
-				Client.field756.method4232();
+		for (var3 = 0; var3 < SpriteBufferProperties.SpriteBuffer_spriteCount; ++var3) {
+			LoginPacket.SpriteBuffer_yOffsets[var3] = var1.readUnsignedShort();
+		}
+
+		for (var3 = 0; var3 < SpriteBufferProperties.SpriteBuffer_spriteCount; ++var3) {
+			SpriteBufferProperties.SpriteBuffer_spriteWidths[var3] = var1.readUnsignedShort();
+		}
+
+		for (var3 = 0; var3 < SpriteBufferProperties.SpriteBuffer_spriteCount; ++var3) {
+			class315.SpriteBuffer_spriteHeights[var3] = var1.readUnsignedShort();
+		}
+
+		var1.offset = var0.length - 7 - SpriteBufferProperties.SpriteBuffer_spriteCount * 8 - (var2 - 1) * 3;
+		SpriteBufferProperties.SpriteBuffer_spritePalette = new int[var2];
+
+		for (var3 = 1; var3 < var2; ++var3) {
+			SpriteBufferProperties.SpriteBuffer_spritePalette[var3] = var1.readMedium();
+			if (SpriteBufferProperties.SpriteBuffer_spritePalette[var3] == 0) {
+				SpriteBufferProperties.SpriteBuffer_spritePalette[var3] = 1;
 			}
+		}
 
-			if (Client.gameState == 0) {
-				class159.client.method514();
-			}
+		var1.offset = 0;
 
-			if (var0 == 20 || var0 == 40 || var0 == 45 || var0 == 50) {
-				class409.method7554(0);
-				Client.field555 = 0;
-				Client.field732 = 0;
-				Client.timer.method7833(var0);
-				if (var0 != 20) {
-					UserComparator6.method2942(false);
+		for (var3 = 0; var3 < SpriteBufferProperties.SpriteBuffer_spriteCount; ++var3) {
+			int var4 = SpriteBufferProperties.SpriteBuffer_spriteWidths[var3];
+			int var5 = class315.SpriteBuffer_spriteHeights[var3];
+			int var6 = var4 * var5;
+			byte[] var7 = new byte[var6];
+			SpriteBufferProperties.SpriteBuffer_pixels[var3] = var7;
+			int var8 = var1.readUnsignedByte();
+			int var9;
+			if (var8 == 0) {
+				for (var9 = 0; var9 < var6; ++var9) {
+					var7[var9] = var1.readByte();
+				}
+			} else if (var8 == 1) {
+				for (var9 = 0; var9 < var4; ++var9) {
+					for (int var10 = 0; var10 < var5; ++var10) {
+						var7[var9 + var10 * var4] = var1.readByte();
+					}
 				}
 			}
-
-			if (var0 != 20 && var0 != 40 && class11.field59 != null) {
-				class11.field59.close();
-				class11.field59 = null;
-			}
-
-			if (Client.gameState == 25) {
-				Client.field545 = 0;
-				Client.field588 = 0;
-				Client.field589 = 1;
-				Client.field590 = 0;
-				Client.field591 = 1;
-			}
-
-			if (var0 != 5 && var0 != 10) {
-				if (var0 == 20) {
-					int var3 = Client.gameState == 11 ? 4 : 0;
-					ScriptEvent.method2328(class190.archive10, class199.archive8, false, var3);
-				} else if (var0 == 11) {
-					ScriptEvent.method2328(class190.archive10, class199.archive8, false, 4);
-				} else if (var0 == 50) {
-					AbstractWorldMapIcon.setLoginResponseString("", "Updating date of birth...", "");
-					ScriptEvent.method2328(class190.archive10, class199.archive8, false, 7);
-				} else if (Login.clearLoginScreen) {
-					Login.titleboxSprite = null;
-					VarcInt.titlebuttonSprite = null;
-					Login.runesSprite = null;
-					PcmPlayer.leftTitleSprite = null;
-					Login.rightTitleSprite = null;
-					Login.logoSprite = null;
-					Login.title_muteSprite = null;
-					class519.options_buttons_0Sprite = null;
-					class534.options_buttons_2Sprite = null;
-					SecureRandomCallable.worldSelectBackSprites = null;
-					PendingSpawn.worldSelectFlagSprites = null;
-					ModelData0.worldSelectArrows = null;
-					TaskHandler.worldSelectStars = null;
-					Varcs.field1405 = null;
-					class544.loginScreenRunesAnimation.method2464();
-					ItemComposition.method4136(0, 100);
-					class13.method167().method7000(true);
-					Login.clearLoginScreen = false;
-				}
-			} else {
-				boolean var1 = class91.clientPreferences.method2562() >= Client.field717;
-				int var2 = var1 ? 0 : 12;
-				ScriptEvent.method2328(class190.archive10, class199.archive8, true, var2);
-			}
-
-			Client.gameState = var0;
 		}
+
 	}
 }

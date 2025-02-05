@@ -1,50 +1,52 @@
-import java.security.SecureRandom;
 import java.util.concurrent.Callable;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("dz")
+@ObfuscatedName("do")
 @Implements("SecureRandomCallable")
 public class SecureRandomCallable implements Callable {
-	@ObfuscatedName("dq")
-	@ObfuscatedSignature(
-		descriptor = "[Lud;"
-	)
-	@Export("worldSelectBackSprites")
-	static SpritePixels[] worldSelectBackSprites;
-	@ObfuscatedName("uo")
-	@ObfuscatedGetter(
-		intValue = 1269976827
-	)
-	static int field1049;
-
 	SecureRandomCallable() {
 	}
 
 	public Object call() {
-		SecureRandom var2 = new SecureRandom();
-		var2.nextInt();
-		return var2;
+		return class401.method7407();
 	}
 
-	@ObfuscatedName("oy")
+	@ObfuscatedName("me")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "-2097515012"
+		descriptor = "(Lnx;III)V",
+		garbageValue = "-2064856444"
 	)
-	static void method2285() {
-		if (WallDecoration.field2871 != null) {
-			Client.field814 = Client.cycle;
-			WallDecoration.field2871.method7120();
+	@Export("alignWidgetPosition")
+	static void alignWidgetPosition(Widget var0, int var1, int var2) {
+		if (var0.xAlignment == 0) {
+			var0.x = var0.rawX;
+		} else if (var0.xAlignment == 1) {
+			var0.x = var0.rawX + (var1 - var0.width) / 2;
+		} else if (var0.xAlignment == 2) {
+			var0.x = var1 - var0.width - var0.rawX;
+		} else if (var0.xAlignment == 3) {
+			var0.x = var0.rawX * var1 >> 14;
+		} else if (var0.xAlignment == 4) {
+			var0.x = (var0.rawX * var1 >> 14) + (var1 - var0.width) / 2;
+		} else {
+			var0.x = var1 - var0.width - (var0.rawX * var1 >> 14);
+		}
 
-			for (int var0 = 0; var0 < Client.players.length; ++var0) {
-				if (Client.players[var0] != null) {
-					WallDecoration.field2871.method7119(class20.baseX * 64 + (Client.players[var0].x >> 7), class19.baseY * 64 + (Client.players[var0].y >> 7));
-				}
-			}
+		if (var0.yAlignment == 0) {
+			var0.y = var0.rawY;
+		} else if (var0.yAlignment == 1) {
+			var0.y = (var2 - var0.height) / 2 + var0.rawY;
+		} else if (var0.yAlignment == 2) {
+			var0.y = var2 - var0.height - var0.rawY;
+		} else if (var0.yAlignment == 3) {
+			var0.y = var2 * var0.rawY >> 14;
+		} else if (var0.yAlignment == 4) {
+			var0.y = (var2 * var0.rawY >> 14) + (var2 - var0.height) / 2;
+		} else {
+			var0.y = var2 - var0.height - (var2 * var0.rawY >> 14);
 		}
 
 	}

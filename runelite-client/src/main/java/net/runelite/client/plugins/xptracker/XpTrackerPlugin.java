@@ -53,8 +53,8 @@ import net.runelite.api.events.GameTick;
 import net.runelite.api.events.MenuEntryAdded;
 import net.runelite.api.events.NpcDespawned;
 import net.runelite.api.events.StatChanged;
-import net.runelite.api.widgets.WidgetID;
-import static net.runelite.api.widgets.WidgetInfo.TO_GROUP;
+import net.runelite.api.widgets.InterfaceID;
+import net.runelite.api.widgets.WidgetUtil;
 import net.runelite.client.callback.ClientThread;
 import net.runelite.client.config.ConfigManager;
 import net.runelite.client.eventbus.Subscribe;
@@ -499,7 +499,7 @@ public class XpTrackerPlugin extends Plugin
 	{
 		int widgetID = event.getActionParam1();
 
-		if (TO_GROUP(widgetID) != WidgetID.SKILLS_GROUP_ID
+		if (WidgetUtil.componentToInterface(widgetID) != InterfaceID.SKILLS
 			|| !event.getOption().startsWith("View")
 			|| !xpTrackerConfig.skillTabOverlayMenuOptions())
 		{
@@ -508,7 +508,15 @@ public class XpTrackerPlugin extends Plugin
 
 		// Get skill from menu option, eg. "View <col=ff981f>Attack</col> guide"
 		final String skillText = event.getOption().split(" ")[1];
-		final Skill skill = Skill.valueOf(Text.removeTags(skillText).toUpperCase());
+		final Skill skill;
+		try
+		{
+			skill = Skill.valueOf(Text.removeTags(skillText).toUpperCase());
+		}
+		catch (IllegalArgumentException ignored)
+		{
+			return;
+		}
 
 		client.createMenuEntry(-1)
 			.setTarget(skillText)

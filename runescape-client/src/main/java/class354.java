@@ -1,69 +1,68 @@
-import net.runelite.mapping.Export;
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ny")
-public enum class354 implements MouseWheel {
-	@ObfuscatedName("ac")
+@ObfuscatedName("nd")
+public class class354 {
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
 		descriptor = "Lny;"
 	)
-	field3852(0),
-	@ObfuscatedName("al")
+	public class356 field3767;
+	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
-		descriptor = "Lny;"
+		descriptor = "Lnu;"
 	)
-	field3855(1),
+	class350 field3764;
+	@ObfuscatedName("ag")
+	@ObfuscatedSignature(
+		descriptor = "Lbj;"
+	)
+	class27 field3765;
 	@ObfuscatedName("ak")
-	@ObfuscatedSignature(
-		descriptor = "Lny;"
-	)
-	field3849(2),
-	@ObfuscatedName("ax")
-	@ObfuscatedSignature(
-		descriptor = "Lny;"
-	)
-	field3851(3),
-	@ObfuscatedName("ao")
-	@ObfuscatedSignature(
-		descriptor = "Lny;"
-	)
-	field3848(4);
+	public Object[] field3766;
+	@ObfuscatedName("ap")
+	public Object[] field3768;
+	@ObfuscatedName("an")
+	public Object[] field3763;
+	@ObfuscatedName("aj")
+	public Object[] field3769;
 
-	@ObfuscatedName("kg")
-	@ObfuscatedGetter(
-		intValue = -958946113
-	)
-	static int field3856;
-	@ObfuscatedName("ah")
-	@ObfuscatedGetter(
-		intValue = 1156880785
-	)
-	final int field3853;
-
-	class354(int var3) {
-		this.field3853 = var3;
+	class354() {
+		this.field3767 = new class356();
+		this.field3764 = new class350();
+		this.field3765 = new class27();
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
-		descriptor = "(I)I",
-		garbageValue = "-1243971674"
+		descriptor = "(CI)Z",
+		garbageValue = "-2146996983"
 	)
-	@Export("rsOrdinal")
-	public int rsOrdinal() {
-		return this.field3853;
+	public static boolean method6537(char var0) {
+		if ((var0 <= 0 || var0 >= 128) && (var0 < 160 || var0 > 255)) {
+			if (var0 != 0) {
+				char[] var1 = class413.cp1252AsciiExtension;
+
+				for (int var2 = 0; var2 < var1.length; ++var2) {
+					char var3 = var1[var2];
+					if (var0 == var3) {
+						return true;
+					}
+				}
+			}
+
+			return false;
+		} else {
+			return true;
+		}
 	}
 
-	@ObfuscatedName("al")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "(Lud;IIII)V",
-		garbageValue = "902612467"
+		descriptor = "(I)V",
+		garbageValue = "-855787089"
 	)
-	static void method6777(SpritePixels var0, int var1, int var2, int var3) {
-		DemotingHashTable var4 = WorldMapRegion.WorldMapRegion_cachedSprites;
-		long var6 = (long)(var3 << 16 | var1 << 8 | var2);
-		var4.put(var0, var6, var0.pixels.length * 4);
+	public static void method6536() {
+		InvDefinition.InvDefinition_cached.clear();
 	}
 }

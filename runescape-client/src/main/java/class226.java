@@ -1,223 +1,184 @@
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-@ObfuscatedName("it")
-public class class226 implements class29 {
-	@ObfuscatedName("ac")
-	char[] field2374;
-	@ObfuscatedName("al")
-	int[] field2379;
+@ObfuscatedName("il")
+public class class226 {
 	@ObfuscatedName("ak")
-	public int[] field2373;
-	@ObfuscatedName("ax")
-	@ObfuscatedGetter(
-		intValue = 1388234181
+	@ObfuscatedSignature(
+		descriptor = "Lil;"
 	)
-	public int field2376;
-	@ObfuscatedName("ao")
-	int[] field2377;
-	@ObfuscatedName("ah")
-	@ObfuscatedGetter(
-		intValue = -2109755151
-	)
-	int field2378;
-	@ObfuscatedName("ar")
-	@ObfuscatedGetter(
-		intValue = 1767369861
-	)
-	int field2385;
-	@ObfuscatedName("ab")
-	@ObfuscatedGetter(
-		intValue = 1418302057
-	)
-	int field2380;
-	@ObfuscatedName("am")
-	@ObfuscatedGetter(
-		intValue = -1713082771
-	)
-	int field2381;
-	@ObfuscatedName("av")
-	boolean[] field2382;
+	static final class226 field2423;
+	@ObfuscatedName("ad")
+	Map field2426;
 	@ObfuscatedName("ag")
-	boolean[] field2383;
-	@ObfuscatedName("aa")
-	boolean[] field2384;
-	@ObfuscatedName("ap")
-	public char field2375;
-	@ObfuscatedName("ay")
 	@ObfuscatedGetter(
-		intValue = 372049411
+		intValue = -1357104911
 	)
-	public int field2386;
+	int field2424;
 
-	public class226() {
-		this.field2374 = new char[128];
-		this.field2379 = new int[128];
-		this.field2373 = new int[128];
-		this.field2376 = 0;
-		this.field2377 = new int[128];
-		this.field2378 = 0;
-		this.field2385 = 0;
-		this.field2380 = 0;
-		this.field2381 = 0;
-		this.field2382 = new boolean[112];
-		this.field2383 = new boolean[112];
-		this.field2384 = new boolean[112];
+	static {
+		field2423 = new class226();
 	}
 
-	@ObfuscatedName("ac")
-	@ObfuscatedSignature(
-		descriptor = "(II)Z",
-		garbageValue = "-1448724719"
-	)
-	public boolean vmethod4264(int var1) {
-		this.method4253(var1);
-		this.field2382[var1] = true;
-		this.field2383[var1] = true;
-		this.field2384[var1] = false;
-		this.field2373[++this.field2376 - 1] = var1;
-		return true;
-	}
-
-	@ObfuscatedName("al")
-	@ObfuscatedSignature(
-		descriptor = "(II)Z",
-		garbageValue = "-974805318"
-	)
-	public boolean vmethod4251(int var1) {
-		this.field2382[var1] = false;
-		this.field2383[var1] = false;
-		this.field2384[var1] = true;
-		this.field2377[++this.field2378 - 1] = var1;
-		return true;
-	}
-
-	@ObfuscatedName("ak")
-	@ObfuscatedSignature(
-		descriptor = "(CB)Z",
-		garbageValue = "19"
-	)
-	public boolean vmethod4275(char var1) {
-		int var2 = this.field2380 + 1 & 127;
-		if (var2 != this.field2385) {
-			this.field2379[this.field2380] = -1;
-			this.field2374[this.field2380] = var1;
-			this.field2380 = var2;
-		}
-
-		return false;
-	}
-
-	@ObfuscatedName("ax")
-	@ObfuscatedSignature(
-		descriptor = "(ZI)Z",
-		garbageValue = "-672025946"
-	)
-	public boolean vmethod4254(boolean var1) {
-		return false;
-	}
-
-	@ObfuscatedName("aw")
-	@ObfuscatedSignature(
-		descriptor = "(II)V",
-		garbageValue = "1769728274"
-	)
-	void method4253(int var1) {
-		int var2 = this.field2380 + 1 & 127;
-		if (var2 != this.field2385) {
-			this.field2379[this.field2380] = var1;
-			this.field2374[this.field2380] = 0;
-			this.field2380 = var2;
-		}
-
+	class226() {
+		this.field2426 = new HashMap();
+		this.field2424 = 0;
 	}
 
 	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "1"
+		descriptor = "(Lorg/json/JSONObject;ILea;I)V",
+		garbageValue = "-665193983"
 	)
-	public void method4250() {
-		this.field2385 = this.field2381;
-		this.field2381 = this.field2380;
-		this.field2376 = 0;
-		this.field2378 = 0;
-		Arrays.fill(this.field2383, false);
-		Arrays.fill(this.field2384, false);
-	}
+	void method4317(JSONObject var1, int var2, UrlRequester var3) {
+		this.field2426.clear();
 
-	@ObfuscatedName("az")
-	@ObfuscatedSignature(
-		descriptor = "(I)Z",
-		garbageValue = "-192433797"
-	)
-	public final boolean method4256() {
-		if (this.field2385 == this.field2381) {
-			return false;
-		} else {
-			this.field2386 = this.field2379[this.field2385];
-			this.field2375 = this.field2374[this.field2385];
-			this.field2385 = this.field2385 + 1 & 127;
-			return true;
+		JSONObject var4;
+		try {
+			var4 = var1;
+			this.field2424 = var2;
+			var1.getLong("lastfullsyncat");
+			var1.getLong("lastcardupdatedat");
+		} catch (Exception var7) {
+			return;
 		}
-	}
 
-	@ObfuscatedName("at")
-	@ObfuscatedSignature(
-		descriptor = "(II)Z",
-		garbageValue = "1443777028"
-	)
-	public boolean method4272(int var1) {
-		return var1 >= 0 && var1 < 112 ? this.field2383[var1] : false;
-	}
-
-	@ObfuscatedName("af")
-	@ObfuscatedSignature(
-		descriptor = "(II)Z",
-		garbageValue = "-978109184"
-	)
-	public boolean method4280(int var1) {
-		return var1 >= 0 && var1 < 112 ? this.field2382[var1] : false;
+		try {
+			this.method4313(var4.getJSONArray("crmcomponents"), this.field2424, var3);
+		} catch (Exception var6) {
+		}
 	}
 
 	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
-		descriptor = "(II)Z",
-		garbageValue = "1065204501"
+		descriptor = "(Lorg/json/JSONArray;ILea;B)V",
+		garbageValue = "-2"
 	)
-	public boolean method4259(int var1) {
-		return var1 >= 0 && var1 < 112 ? this.field2384[var1] : false;
+	void method4313(JSONArray var1, int var2, UrlRequester var3) throws JSONException {
+		if (var1 != null) {
+			for (int var4 = 0; var4 < var1.length(); ++var4) {
+				JSONObject var5 = var1.getJSONObject(var4);
+				if (var5.getString("game").equals("osrs") && !var5.getBoolean("removed")) {
+					String var6 = var5.getString("platform");
+					if (!var6.equals("mobile") && !var6.equals("android") && !var6.equals("ios")) {
+						class224 var7 = new class224();
+
+						try {
+							var7.method4277(var5, var2, var3);
+						} catch (Exception var9) {
+						}
+
+						if (!var7.field2403.isEmpty()) {
+							String var8 = var5.getString("location");
+							this.field2426.put(var8, var7);
+						}
+					}
+				}
+			}
+
+			this.field2426 = this.method4309();
+			WorldMapData_1.method4861();
+		}
 	}
 
-	@ObfuscatedName("bn")
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "(B)[I",
-		garbageValue = "118"
+		descriptor = "(B)Ljava/util/Map;",
+		garbageValue = "0"
 	)
-	public int[] method4298() {
-		int[] var1 = new int[this.field2376];
+	Map method4309() {
+		HashMap var1 = new HashMap();
+		ArrayList var2 = new ArrayList();
+		var2.addAll(this.field2426.entrySet());
+		boolean var3 = false;
 
-		for (int var2 = 0; var2 < this.field2376; ++var2) {
-			var1[var2] = this.field2373[var2];
+		while (!var3) {
+			var3 = true;
+
+			for (int var7 = 0; var7 < var2.size() - 1; ++var7) {
+				if (((class224)((Entry)var2.get(var7)).getValue()).method4289() > ((class224)((Entry)var2.get(var7 + 1)).getValue()).method4289()) {
+					Entry var4 = (Entry)var2.get(var7);
+					var2.set(var7, var2.get(var7 + 1));
+					var2.set(var7 + 1, var4);
+					var3 = false;
+				}
+			}
+		}
+
+		Iterator var5 = var2.iterator();
+
+		while (var5.hasNext()) {
+			Entry var6 = (Entry)var5.next();
+			var1.put(var6.getKey(), var6.getValue());
 		}
 
 		return var1;
 	}
 
-	@ObfuscatedName("bk")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(B)[I",
-		garbageValue = "-31"
+		descriptor = "(Ljava/lang/String;S)Lif;",
+		garbageValue = "8221"
 	)
-	public int[] method4292() {
-		int[] var1 = new int[this.field2378];
+	class224 method4310(String var1) {
+		return (class224)this.field2426.get(var1);
+	}
 
-		for (int var2 = 0; var2 < this.field2378; ++var2) {
-			var1[var2] = this.field2377[var2];
+	@ObfuscatedName("cr")
+	@ObfuscatedSignature(
+		descriptor = "([BS)[B",
+		garbageValue = "4008"
+	)
+	@Export("decompressBytes")
+	static final byte[] decompressBytes(byte[] var0) {
+		Buffer var1 = new Buffer(var0);
+		int var2 = var1.readUnsignedByte();
+		int var3 = var1.readInt();
+		if (var3 < 0 || AbstractArchive.field4542 != 0 && var3 > AbstractArchive.field4542) {
+			throw new RuntimeException();
+		} else if (var2 == 0) {
+			byte[] var6 = new byte[var3];
+			var1.readBytes(var6, 0, var3);
+			return var6;
+		} else {
+			int var4 = var1.readInt();
+			if (var4 >= 0 && (AbstractArchive.field4542 == 0 || var4 <= AbstractArchive.field4542)) {
+				byte[] var5 = new byte[var4];
+				if (var2 == 1) {
+					BZip2Decompressor.BZip2Decompressor_decompress(var5, var4, var0, var3, 9);
+				} else {
+					AbstractArchive.gzipDecompressor.decompress(var1, var5);
+				}
+
+				return var5;
+			} else {
+				throw new RuntimeException();
+			}
 		}
+	}
 
-		return var1;
+	@ObfuscatedName("kn")
+	@ObfuscatedSignature(
+		descriptor = "(IIIIIIIIIIIIIII)V",
+		garbageValue = "-1758350391"
+	)
+	static void method4318(int var0, int var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8, int var9, int var10, int var11, int var12, int var13) {
+		var1 = var1 * 128 + 64;
+		var2 = var2 * 128 + 64;
+		var3 = var3 * 128 + 64;
+		var4 = var4 * 128 + 64;
+		Projectile var14 = new Projectile(var6, var0, var1, var2, class169.getTileHeight(HttpResponse.worldView, var1, var2, var0) - var7, var9 + Client.cycle, var10 + Client.cycle, var11, var12, var13, var5, var8);
+		var14.setDestination(var3, var4, class169.getTileHeight(HttpResponse.worldView, var3, var4, var0) - var8, var9 + Client.cycle);
+		HttpResponse.worldView.projectiles.addFirst(var14);
 	}
 }

@@ -1,72 +1,81 @@
+import java.util.List;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("io")
+@ObfuscatedName("ie")
 @Implements("FloorOverlayDefinition")
 public class FloorOverlayDefinition extends DualNode {
-	@ObfuscatedName("al")
+	@ObfuscatedName("wa")
+	static List field2278;
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "Llr;"
+		descriptor = "Lok;"
+	)
+	@Export("FloorOverlayDefinition_archive")
+	public static AbstractArchive FloorOverlayDefinition_archive;
+	@ObfuscatedName("ad")
+	@ObfuscatedSignature(
+		descriptor = "Lmo;"
 	)
 	@Export("FloorOverlayDefinition_cached")
 	public static EvictingDualNodeHashTable FloorOverlayDefinition_cached;
-	@ObfuscatedName("ak")
+	@ObfuscatedName("ag")
 	@ObfuscatedGetter(
-		intValue = 206241625
+		intValue = 2130195297
 	)
 	@Export("primaryRgb")
 	public int primaryRgb;
-	@ObfuscatedName("ax")
+	@ObfuscatedName("ak")
 	@ObfuscatedGetter(
-		intValue = -1464717765
+		intValue = -1868876849
 	)
 	@Export("texture")
 	public int texture;
-	@ObfuscatedName("ao")
+	@ObfuscatedName("ap")
 	@Export("hideUnderlay")
 	public boolean hideUnderlay;
-	@ObfuscatedName("ah")
+	@ObfuscatedName("an")
 	@ObfuscatedGetter(
-		intValue = 1588071097
+		intValue = 398762743
 	)
 	@Export("secondaryRgb")
 	public int secondaryRgb;
-	@ObfuscatedName("ar")
+	@ObfuscatedName("aj")
 	@ObfuscatedGetter(
-		intValue = 731732271
+		intValue = 899009769
 	)
 	@Export("hue")
 	public int hue;
-	@ObfuscatedName("ab")
+	@ObfuscatedName("av")
 	@ObfuscatedGetter(
-		intValue = 1347460303
+		intValue = 940491185
 	)
 	@Export("saturation")
 	public int saturation;
-	@ObfuscatedName("am")
+	@ObfuscatedName("ab")
 	@ObfuscatedGetter(
-		intValue = 1295466369
+		intValue = 992973643
 	)
 	@Export("lightness")
 	public int lightness;
-	@ObfuscatedName("av")
+	@ObfuscatedName("ai")
 	@ObfuscatedGetter(
-		intValue = 1358889167
+		intValue = 641939819
 	)
 	@Export("secondaryHue")
 	public int secondaryHue;
-	@ObfuscatedName("ag")
+	@ObfuscatedName("ae")
 	@ObfuscatedGetter(
-		intValue = -1809313821
+		intValue = 893402431
 	)
 	@Export("secondarySaturation")
 	public int secondarySaturation;
-	@ObfuscatedName("aa")
+	@ObfuscatedName("au")
 	@ObfuscatedGetter(
-		intValue = 7366493
+		intValue = -1211510327
 	)
 	@Export("secondaryLightness")
 	public int secondaryLightness;
@@ -82,10 +91,10 @@ public class FloorOverlayDefinition extends DualNode {
 		this.secondaryRgb = -1;
 	}
 
-	@ObfuscatedName("ak")
+	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "-178426447"
+		garbageValue = "2009375911"
 	)
 	@Export("postDecode")
 	void postDecode() {
@@ -99,10 +108,10 @@ public class FloorOverlayDefinition extends DualNode {
 		this.setHsl(this.primaryRgb);
 	}
 
-	@ObfuscatedName("ax")
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "(Lul;IB)V",
-		garbageValue = "-33"
+		descriptor = "(Lvp;II)V",
+		garbageValue = "-2060202740"
 	)
 	@Export("decode")
 	void decode(Buffer var1, int var2) {
@@ -116,10 +125,10 @@ public class FloorOverlayDefinition extends DualNode {
 		}
 	}
 
-	@ObfuscatedName("ao")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(Lul;III)V",
-		garbageValue = "1318940948"
+		descriptor = "(Lvp;III)V",
+		garbageValue = "2006578058"
 	)
 	@Export("decodeNext")
 	void decodeNext(Buffer var1, int var2, int var3) {
@@ -136,10 +145,10 @@ public class FloorOverlayDefinition extends DualNode {
 
 	}
 
-	@ObfuscatedName("ah")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "(IB)V",
-		garbageValue = "2"
+		descriptor = "(II)V",
+		garbageValue = "2059953925"
 	)
 	@Export("setHsl")
 	void setHsl(int var1) {
@@ -169,14 +178,14 @@ public class FloorOverlayDefinition extends DualNode {
 		double var16 = (var8 + var10) / 2.0D;
 		if (var8 != var10) {
 			if (var16 < 0.5D) {
-				var14 = (var10 - var8) / (var8 + var10);
+				var14 = (var10 - var8) / (var10 + var8);
 			}
 
 			if (var16 >= 0.5D) {
 				var14 = (var10 - var8) / (2.0D - var10 - var8);
 			}
 
-			if (var10 == var2) {
+			if (var2 == var10) {
 				var12 = (var4 - var6) / (var10 - var8);
 			} else if (var10 == var4) {
 				var12 = (var6 - var2) / (var10 - var8) + 2.0D;
@@ -187,7 +196,7 @@ public class FloorOverlayDefinition extends DualNode {
 
 		var12 /= 6.0D;
 		this.hue = (int)(256.0D * var12);
-		this.saturation = (int)(var14 * 256.0D);
+		this.saturation = (int)(256.0D * var14);
 		this.lightness = (int)(var16 * 256.0D);
 		if (this.saturation < 0) {
 			this.saturation = 0;
@@ -203,31 +212,31 @@ public class FloorOverlayDefinition extends DualNode {
 
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
-		descriptor = "(I)[Lmi;",
-		garbageValue = "-1928270491"
+		descriptor = "(II)I",
+		garbageValue = "396253425"
 	)
-	static LoginPacket[] method4147() {
-		return new LoginPacket[]{LoginPacket.field3389, LoginPacket.field3386, LoginPacket.field3387, LoginPacket.field3385, LoginPacket.field3391, LoginPacket.field3388};
+	public static int method4035(int var0) {
+		return class496.field5052[var0 & 16383];
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("hw")
 	@ObfuscatedSignature(
-		descriptor = "(Lom;I)V",
-		garbageValue = "490485615"
+		descriptor = "(I)V",
+		garbageValue = "134068715"
 	)
-	public static void method4157(AbstractArchive var0) {
-		ParamComposition.ParamDefinition_archive = var0;
-	}
-
-	@ObfuscatedName("nx")
-	@ObfuscatedSignature(
-		descriptor = "(II)V",
-		garbageValue = "-1802192770"
-	)
-	static final void method4148(int var0) {
-		var0 = Math.min(Math.max(var0, 0), 127);
-		class91.clientPreferences.updateSoundEffectVolume(var0);
+	static void method4034() {
+		World.compass = null;
+		class74.redHintArrowSprite = null;
+		class418.mapSceneSprites = null;
+		FaceNormal.headIconPkSprites = null;
+		ArchiveDiskActionHandler.headIconPrayerSprites = null;
+		class337.headIconHintSprites = null;
+		KeyHandler.mapDotSprites = null;
+		PlayerUpdateManager.crossSprites = null;
+		class446.field4821 = null;
+		UrlRequest.scrollBarSprites = null;
+		class240.field2526 = null;
 	}
 }

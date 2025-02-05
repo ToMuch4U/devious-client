@@ -4,86 +4,87 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
+import net.runelite.rs.ScriptOpcodes;
 
-@ObfuscatedName("ez")
+@ObfuscatedName("ev")
 @Implements("PacketWriter")
 public class PacketWriter {
-	@ObfuscatedName("ac")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "Lre;"
+		descriptor = "Lsp;"
 	)
 	@Export("socket")
 	AbstractSocket socket;
-	@ObfuscatedName("al")
+	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
-		descriptor = "Lpy;"
+		descriptor = "Lpi;"
 	)
 	@Export("packetBufferNodes")
 	IterableNodeDeque packetBufferNodes;
-	@ObfuscatedName("ak")
+	@ObfuscatedName("ag")
 	@ObfuscatedGetter(
-		intValue = -881098545
+		intValue = -2122551751
 	)
 	@Export("bufferSize")
 	int bufferSize;
-	@ObfuscatedName("ax")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "Lul;"
+		descriptor = "Lvp;"
 	)
 	@Export("buffer")
 	Buffer buffer;
-	@ObfuscatedName("ao")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "Lvd;"
+		descriptor = "Lvs;"
 	)
 	@Export("isaacCipher")
 	public IsaacCipher isaacCipher;
-	@ObfuscatedName("ah")
+	@ObfuscatedName("an")
 	@ObfuscatedSignature(
-		descriptor = "Luy;"
+		descriptor = "Lug;"
 	)
 	@Export("packetBuffer")
 	PacketBuffer packetBuffer;
-	@ObfuscatedName("ar")
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
-		descriptor = "Llu;"
+		descriptor = "Lmp;"
 	)
 	@Export("serverPacket")
 	ServerPacket serverPacket;
-	@ObfuscatedName("ab")
+	@ObfuscatedName("av")
 	@ObfuscatedGetter(
-		intValue = 894589585
+		intValue = -870602463
 	)
 	@Export("serverPacketLength")
 	int serverPacketLength;
-	@ObfuscatedName("am")
-	boolean field1432;
-	@ObfuscatedName("av")
+	@ObfuscatedName("ab")
+	boolean field1461;
+	@ObfuscatedName("ai")
 	@ObfuscatedGetter(
-		intValue = -1260788979
+		intValue = -1278220435
 	)
-	int field1429;
-	@ObfuscatedName("ag")
+	int field1457;
+	@ObfuscatedName("ae")
 	@ObfuscatedGetter(
-		intValue = -1395259855
+		intValue = 1102504087
 	)
 	@Export("pendingWrites")
 	int pendingWrites;
-	@ObfuscatedName("aa")
+	@ObfuscatedName("au")
 	@ObfuscatedSignature(
-		descriptor = "Llu;"
+		descriptor = "Lmp;"
 	)
-	ServerPacket field1431;
-	@ObfuscatedName("ap")
+	ServerPacket field1462;
+	@ObfuscatedName("ah")
 	@ObfuscatedSignature(
-		descriptor = "Llu;"
+		descriptor = "Lmp;"
 	)
-	ServerPacket field1420;
-	@ObfuscatedName("ay")
+	ServerPacket field1459;
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "Llu;"
+		descriptor = "Lmp;"
 	)
-	ServerPacket field1433;
+	ServerPacket field1464;
 
 	PacketWriter() {
 		this.packetBufferNodes = new IterableNodeDeque();
@@ -92,15 +93,15 @@ public class PacketWriter {
 		this.packetBuffer = new PacketBuffer(40000);
 		this.serverPacket = null;
 		this.serverPacketLength = 0;
-		this.field1432 = true;
-		this.field1429 = 0;
+		this.field1461 = true;
+		this.field1457 = 0;
 		this.pendingWrites = 0;
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "-633870649"
+		descriptor = "(B)V",
+		garbageValue = "122"
 	)
 	@Export("clearBuffer")
 	final void clearBuffer() {
@@ -108,10 +109,10 @@ public class PacketWriter {
 		this.bufferSize = 0;
 	}
 
-	@ObfuscatedName("al")
+	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "-1725575924"
+		garbageValue = "981239932"
 	)
 	@Export("flush")
 	final void flush() throws IOException {
@@ -136,10 +137,10 @@ public class PacketWriter {
 
 	}
 
-	@ObfuscatedName("ak")
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "(Llx;B)V",
-		garbageValue = "22"
+		descriptor = "(Lmb;B)V",
+		garbageValue = "36"
 	)
 	@Export("addNode")
 	public final void addNode(PacketBufferNode var1) {
@@ -149,20 +150,20 @@ public class PacketWriter {
 		this.bufferSize += var1.index;
 	}
 
-	@ObfuscatedName("ax")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(Lre;I)V",
-		garbageValue = "-584011742"
+		descriptor = "(Lsp;S)V",
+		garbageValue = "-10366"
 	)
 	@Export("setSocket")
 	void setSocket(AbstractSocket var1) {
 		this.socket = var1;
 	}
 
-	@ObfuscatedName("ao")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "-2087446789"
+		garbageValue = "1942660628"
 	)
 	@Export("close")
 	void close() {
@@ -173,81 +174,141 @@ public class PacketWriter {
 
 	}
 
-	@ObfuscatedName("ah")
+	@ObfuscatedName("an")
 	@ObfuscatedSignature(
 		descriptor = "(I)V",
-		garbageValue = "-669241034"
+		garbageValue = "505606497"
 	)
 	@Export("removeSocket")
 	void removeSocket() {
 		this.socket = null;
 	}
 
-	@ObfuscatedName("ar")
+	@ObfuscatedName("aj")
 	@ObfuscatedSignature(
-		descriptor = "(I)Lre;",
-		garbageValue = "-1314055794"
+		descriptor = "(I)Lsp;",
+		garbageValue = "1302914773"
 	)
 	@Export("getSocket")
 	AbstractSocket getSocket() {
 		return this.socket;
 	}
 
-	@ObfuscatedName("ao")
+	@ObfuscatedName("aq")
+	public static int method2920(long var0) {
+		return (int)(var0 >>> 0 & 127L);
+	}
+
+	@ObfuscatedName("by")
 	@ObfuscatedSignature(
-		descriptor = "(Lom;Ljava/lang/String;Ljava/lang/String;I)[Lud;",
-		garbageValue = "1067620942"
+		descriptor = "(ILdg;ZI)I",
+		garbageValue = "2066687441"
 	)
-	public static SpritePixels[] method2826(AbstractArchive var0, String var1, String var2) {
-		if (!var0.isValidFileName(var1, var2)) {
-			return null;
-		} else {
-			int var3 = var0.getGroupId(var1);
-			int var4 = var0.getFileId(var3, var2);
-			SpritePixels[] var5;
-			if (!class164.method3376(var0, var3, var4)) {
-				var5 = null;
-			} else {
-				SpritePixels[] var7 = new SpritePixels[class544.SpriteBuffer_spriteCount];
-
-				for (int var8 = 0; var8 < class544.SpriteBuffer_spriteCount; ++var8) {
-					SpritePixels var9 = var7[var8] = new SpritePixels();
-					var9.width = class159.SpriteBuffer_spriteWidth;
-					var9.height = class500.SpriteBuffer_spriteHeight;
-					var9.xOffset = class326.SpriteBuffer_xOffsets[var8];
-					var9.yOffset = ModelData0.SpriteBuffer_yOffsets[var8];
-					var9.subWidth = class59.SpriteBuffer_spriteWidths[var8];
-					var9.subHeight = class544.SpriteBuffer_spriteHeights[var8];
-					int var10 = var9.subWidth * var9.subHeight;
-					byte[] var11 = AddRequestTask.SpriteBuffer_pixels[var8];
-					var9.pixels = new int[var10];
-
-					for (int var12 = 0; var12 < var10; ++var12) {
-						var9.pixels[var12] = class372.SpriteBuffer_spritePalette[var11[var12] & 255];
-					}
-				}
-
-				class407.method7453();
-				var5 = var7;
+	static int method2940(int var0, Script var1, boolean var2) {
+		int var3;
+		if (var0 == ScriptOpcodes.CAM_FORCEANGLE) {
+			class130.Interpreter_intStackSize -= 2;
+			var3 = Interpreter.Interpreter_intStack[class130.Interpreter_intStackSize];
+			int var4 = Interpreter.Interpreter_intStack[class130.Interpreter_intStackSize + 1];
+			if (!Client.isCameraLocked) {
+				Client.camAngleX = var3;
+				Client.camAngleY = var4;
 			}
 
-			return var5;
+			return 1;
+		} else if (var0 == ScriptOpcodes.CAM_GETANGLE_XA) {
+			Interpreter.Interpreter_intStack[++class130.Interpreter_intStackSize - 1] = Client.camAngleX;
+			return 1;
+		} else if (var0 == ScriptOpcodes.CAM_GETANGLE_YA) {
+			Interpreter.Interpreter_intStack[++class130.Interpreter_intStackSize - 1] = Client.camAngleY;
+			return 1;
+		} else if (var0 == ScriptOpcodes.CAM_SETFOLLOWHEIGHT) {
+			var3 = Interpreter.Interpreter_intStack[--class130.Interpreter_intStackSize];
+			if (var3 < 0) {
+				var3 = 0;
+			}
+
+			Client.camFollowHeight = var3;
+			return 1;
+		} else if (var0 == ScriptOpcodes.CAM_GETFOLLOWHEIGHT) {
+			Interpreter.Interpreter_intStack[++class130.Interpreter_intStackSize - 1] = Client.camFollowHeight;
+			return 1;
+		} else {
+			return 2;
 		}
 	}
 
-	@ObfuscatedName("am")
+	@ObfuscatedName("jm")
 	@ObfuscatedSignature(
-		descriptor = "(Ljava/lang/CharSequence;B)I",
-		garbageValue = "-63"
+		descriptor = "(IIIIZI)V",
+		garbageValue = "-1529308622"
 	)
-	public static int method2809(CharSequence var0) {
-		int var1 = var0.length();
-		int var2 = 0;
-
-		for (int var3 = 0; var3 < var1; ++var3) {
-			var2 = (var2 << 5) - var2 + var0.charAt(var3);
+	@Export("setViewportShape")
+	static final void setViewportShape(int var0, int var1, int var2, int var3, boolean var4) {
+		if (var2 < 1) {
+			var2 = 1;
 		}
 
-		return var2;
+		if (var3 < 1) {
+			var3 = 1;
+		}
+
+		int var5 = var3 - 334;
+		int var6;
+		if (var5 < 0) {
+			var6 = Client.field776;
+		} else if (var5 >= 100) {
+			var6 = Client.field777;
+		} else {
+			var6 = (Client.field777 - Client.field776) * var5 / 100 + Client.field776;
+		}
+
+		int var7 = var3 * var6 * 512 / (var2 * 334);
+		int var8;
+		int var9;
+		short var10;
+		if (var7 < Client.field782) {
+			var10 = Client.field782;
+			var6 = var10 * var2 * 334 / (var3 * 512);
+			if (var6 > Client.field781) {
+				var6 = Client.field781;
+				var8 = var3 * var6 * 512 / (var10 * 334);
+				var9 = (var2 - var8) / 2;
+				if (var4) {
+					Rasterizer2D.Rasterizer2D_resetClip();
+					Rasterizer2D.Rasterizer2D_fillRectangle(var0, var1, var9, var3, -16777216);
+					Rasterizer2D.Rasterizer2D_fillRectangle(var0 + var2 - var9, var1, var9, var3, -16777216);
+				}
+
+				var0 += var9;
+				var2 -= var9 * 2;
+			}
+		} else if (var7 > Client.field783) {
+			var10 = Client.field783;
+			var6 = var10 * var2 * 334 / (var3 * 512);
+			if (var6 < Client.field751) {
+				var6 = Client.field751;
+				var8 = var10 * var2 * 334 / (var6 * 512);
+				var9 = (var3 - var8) / 2;
+				if (var4) {
+					Rasterizer2D.Rasterizer2D_resetClip();
+					Rasterizer2D.Rasterizer2D_fillRectangle(var0, var1, var2, var9, -16777216);
+					Rasterizer2D.Rasterizer2D_fillRectangle(var0, var3 + var1 - var9, var2, var9, -16777216);
+				}
+
+				var1 += var9;
+				var3 -= var9 * 2;
+			}
+		}
+
+		Client.viewportZoom = var3 * var6 / 334;
+		if (var2 != Client.viewportWidth || var3 != Client.viewportHeight) {
+			class193.method3758(var2, var3);
+		}
+
+		Client.viewportOffsetX = var0;
+		Client.viewportOffsetY = var1;
+		Client.viewportWidth = var2;
+		Client.viewportHeight = var3;
 	}
 }

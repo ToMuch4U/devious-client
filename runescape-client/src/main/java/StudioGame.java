@@ -4,52 +4,57 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("np")
+@ObfuscatedName("of")
 @Implements("StudioGame")
-public enum StudioGame implements MouseWheel {
-	@ObfuscatedName("ac")
+public enum StudioGame implements Enum {
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "Lnp;"
+		descriptor = "Lof;"
 	)
 	@Export("runescape")
 	runescape("runescape", "RuneScape", 0),
-	@ObfuscatedName("al")
+	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
-		descriptor = "Lnp;"
+		descriptor = "Lof;"
 	)
 	@Export("stellardawn")
 	stellardawn("stellardawn", "Stellar Dawn", 1),
-	@ObfuscatedName("ak")
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "Lnp;"
+		descriptor = "Lof;"
 	)
 	@Export("game3")
 	game3("game3", "Game 3", 2),
-	@ObfuscatedName("ax")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "Lnp;"
+		descriptor = "Lof;"
 	)
 	@Export("game4")
 	game4("game4", "Game 4", 3),
-	@ObfuscatedName("ao")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "Lnp;"
+		descriptor = "Lof;"
 	)
 	@Export("game5")
 	game5("game5", "Game 5", 4),
-	@ObfuscatedName("ah")
+	@ObfuscatedName("an")
 	@ObfuscatedSignature(
-		descriptor = "Lnp;"
+		descriptor = "Lof;"
 	)
 	@Export("oldscape")
 	oldscape("oldscape", "RuneScape 2007", 5);
 
-	@ObfuscatedName("ar")
+	@ObfuscatedName("mg")
+	@ObfuscatedSignature(
+		descriptor = "Lcp;"
+	)
+	static class67 field4084;
+	@ObfuscatedName("aj")
 	@Export("name")
 	public final String name;
-	@ObfuscatedName("ab")
+	@ObfuscatedName("av")
 	@ObfuscatedGetter(
-		intValue = -490511051
+		intValue = 1132351427
 	)
 	@Export("id")
 	final int id;
@@ -59,37 +64,68 @@ public enum StudioGame implements MouseWheel {
 		this.id = var5;
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
 		descriptor = "(I)I",
-		garbageValue = "-1243971674"
+		garbageValue = "2071992588"
 	)
 	@Export("rsOrdinal")
 	public int rsOrdinal() {
 		return this.id;
 	}
 
-	@ObfuscatedName("al")
+	@ObfuscatedName("ki")
 	@ObfuscatedSignature(
-		descriptor = "(CI)C",
-		garbageValue = "-444646790"
+		descriptor = "(IIIIIIIIIIIIILdb;I)V",
+		garbageValue = "-1758462952"
 	)
-	static char method6812(char var0) {
-		return var0 != 181 && var0 != 402 ? Character.toTitleCase(var0) : var0;
-	}
+	static void method7081(int var0, int var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8, int var9, int var10, int var11, int var12, Player var13) {
+		ObjectComposition var14 = HttpRequest.getObjectDefinition(var6);
+		int var15;
+		int var16;
+		if (var4 != 1 && var4 != 3) {
+			var15 = var14.sizeX;
+			var16 = var14.sizeY;
+		} else {
+			var15 = var14.sizeY;
+			var16 = var14.sizeX;
+		}
 
-	@ObfuscatedName("kw")
-	@ObfuscatedSignature(
-		descriptor = "(S)V",
-		garbageValue = "6526"
-	)
-	@Export("addCancelMenuEntry")
-	static void addCancelMenuEntry() {
-		class91.method2347();
-		Client.menuActions[0] = "Cancel";
-		Client.menuTargets[0] = "";
-		Client.menuOpcodes[0] = 1006;
-		Client.menuShiftClick[0] = false;
-		Client.menuOptionsCount = 1;
+		int var17 = (var15 >> 1) + var1;
+		int var18 = (var15 + 1 >> 1) + var1;
+		int var19 = (var16 >> 1) + var2;
+		int var20 = var2 + (var16 + 1 >> 1);
+		int[][] var21 = HttpResponse.worldView.tileHeights[var0];
+		int var22 = var21[var18][var20] + var21[var17][var20] + var21[var18][var19] + var21[var17][var19] >> 2;
+		int var23 = (var1 << 7) + (var15 << 6);
+		int var24 = (var2 << 7) + (var16 << 6);
+		Model var25 = var14.getModel(var3, var4, var21, var23, var22, var24);
+		if (var25 != null) {
+			class28.method433(HttpResponse.worldView, var0, var1, var2, var5, -1, 0, 0, 31, var7 + 1, var8 + 1);
+			var13.animationCycleStart = var7 + Client.cycle;
+			var13.animationCycleEnd = var8 + Client.cycle;
+			var13.model0 = var25;
+			var13.field1128 = var1 * 128 + var15 * 64;
+			var13.field1130 = var2 * 128 + var16 * 64;
+			var13.tileHeight2 = var22;
+			int var26;
+			if (var9 > var11) {
+				var26 = var9;
+				var9 = var11;
+				var11 = var26;
+			}
+
+			if (var10 > var12) {
+				var26 = var10;
+				var10 = var12;
+				var12 = var26;
+			}
+
+			var13.minX = var9 + var1;
+			var13.maxX = var11 + var1;
+			var13.minY = var10 + var2;
+			var13.maxY = var2 + var12;
+		}
+
 	}
 }

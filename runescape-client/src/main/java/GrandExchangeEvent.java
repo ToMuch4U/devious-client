@@ -4,41 +4,36 @@ import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("od")
+@ObfuscatedName("pm")
 @Implements("GrandExchangeEvent")
 public class GrandExchangeEvent {
-	@ObfuscatedName("qt")
+	@ObfuscatedName("aq")
 	@ObfuscatedGetter(
-		intValue = 2104648447
-	)
-	static int field4389;
-	@ObfuscatedName("ac")
-	@ObfuscatedGetter(
-		intValue = -1541862579
+		intValue = 1025438511
 	)
 	@Export("world")
 	public final int world;
-	@ObfuscatedName("al")
+	@ObfuscatedName("ad")
 	@ObfuscatedGetter(
-		longValue = -2871159385580142853L
+		longValue = 1501500222647193011L
 	)
 	@Export("age")
 	public final long age;
-	@ObfuscatedName("ak")
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "Log;"
+		descriptor = "Lps;"
 	)
 	@Export("grandExchangeOffer")
 	public final GrandExchangeOffer grandExchangeOffer;
-	@ObfuscatedName("ax")
+	@ObfuscatedName("ak")
 	@Export("offerName")
 	String offerName;
-	@ObfuscatedName("ao")
+	@ObfuscatedName("ap")
 	@Export("previousOfferName")
 	String previousOfferName;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lul;BI)V"
+		descriptor = "(Lvp;BI)V"
 	)
 	GrandExchangeEvent(Buffer var1, byte var2, int var3) {
 		this.offerName = var1.readStringCp1252NullTerminated();
@@ -48,8 +43,8 @@ public class GrandExchangeEvent {
 		int var4 = var1.readInt();
 		int var5 = var1.readInt();
 		this.grandExchangeOffer = new GrandExchangeOffer();
-		this.grandExchangeOffer.method7090(2);
-		this.grandExchangeOffer.method7092(var2);
+		this.grandExchangeOffer.method7356(2);
+		this.grandExchangeOffer.method7359(var2);
 		this.grandExchangeOffer.unitPrice = var4;
 		this.grandExchangeOffer.totalQuantity = var5;
 		this.grandExchangeOffer.currentQuantity = 0;
@@ -57,23 +52,32 @@ public class GrandExchangeEvent {
 		this.grandExchangeOffer.id = var3;
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "(S)Ljava/lang/String;",
-		garbageValue = "-12823"
+		descriptor = "(I)Ljava/lang/String;",
+		garbageValue = "1498291142"
 	)
 	@Export("getOfferName")
 	public String getOfferName() {
 		return this.offerName;
 	}
 
-	@ObfuscatedName("al")
+	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
 		descriptor = "(I)Ljava/lang/String;",
-		garbageValue = "407762879"
+		garbageValue = "-2028013046"
 	)
 	@Export("getPreviousOfferName")
 	public String getPreviousOfferName() {
 		return this.previousOfferName;
+	}
+
+	@ObfuscatedName("ag")
+	@ObfuscatedSignature(
+		descriptor = "(Ljava/lang/CharSequence;I)I",
+		garbageValue = "16711935"
+	)
+	public static int method7351(CharSequence var0) {
+		return class423.method7732(var0, 10, true);
 	}
 }

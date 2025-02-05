@@ -42,6 +42,14 @@ import net.runelite.api.coords.WorldPoint;
 public interface Actor extends Renderable, SceneEntity
 {
 	/**
+	 * Get the {@link WorldView} this actor belongs to
+	 * @return
+	 */
+	WorldView getWorldView();
+
+	void setWorldView(WorldView worldView);
+
+	/**
 	 * Gets the combat level of the actor.
 	 *
 	 * @return the combat level
@@ -80,6 +88,16 @@ public interface Actor extends Renderable, SceneEntity
 	 */
 	Actor getInteracting();
 	int getRSInteracting();
+
+	/**
+	 * Gets the previous actor being interacted with.
+	 * If you are no longer interacting with said actor, this is sometimes
+	 * quite useful.
+	 * @return the Actor this Actor was previously interacting with,
+	 * or null if there isn't one
+	 */
+	Actor getLastInteracting();
+
 
 	/**
 	 * Gets the health of the actor in {@link #getHealthScale()} units.

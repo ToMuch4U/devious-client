@@ -3,64 +3,64 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("qu")
+@ObfuscatedName("rl")
 @Implements("IgnoreList")
 public class IgnoreList extends UserList {
-	@ObfuscatedName("ao")
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "Lte;"
+		descriptor = "Luu;"
 	)
-	final LoginType field4671;
+	final LoginType field4914;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lte;)V"
+		descriptor = "(Luu;)V"
 	)
 	public IgnoreList(LoginType var1) {
 		super(400);
-		this.field4671 = var1;
+		this.field4914 = var1;
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "(I)Lrp;",
-		garbageValue = "1002915738"
+		descriptor = "(B)Lsk;",
+		garbageValue = "99"
 	)
 	@Export("newInstance")
 	User newInstance() {
 		return new Ignored();
 	}
 
-	@ObfuscatedName("al")
+	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
-		descriptor = "(II)[Lrp;",
-		garbageValue = "-1086220070"
+		descriptor = "(II)[Lsk;",
+		garbageValue = "-2040243144"
 	)
 	@Export("newTypedArray")
 	User[] newTypedArray(int var1) {
 		return new Ignored[var1];
 	}
 
-	@ObfuscatedName("ak")
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "(Lul;IB)V",
-		garbageValue = "2"
+		descriptor = "(Lvp;II)V",
+		garbageValue = "-2025519979"
 	)
 	@Export("read")
 	public void read(Buffer var1, int var2) {
 		while (var1.offset < var2) {
 			int var3 = var1.readUnsignedByte();
 			if (var3 == 4) {
-				Username var10 = new Username(var1.readStringCp1252NullTerminated(), this.field4671);
+				Username var10 = new Username(var1.readStringCp1252NullTerminated(), this.field4914);
 				if (!var10.hasCleanName()) {
 					throw new IllegalStateException();
 				}
 
 				boolean var11 = false;
-				InvDefinition.friendSystem.removeIgnore(var10.getName(), var11);
+				class135.friendSystem.removeIgnore(var10.getName(), var11);
 			} else {
 				boolean var4 = (var3 & 1) != 0;
-				Username var5 = new Username(var1.readStringCp1252NullTerminated(), this.field4671);
-				Username var6 = new Username(var1.readStringCp1252NullTerminated(), this.field4671);
+				Username var5 = new Username(var1.readStringCp1252NullTerminated(), this.field4914);
+				Username var6 = new Username(var1.readStringCp1252NullTerminated(), this.field4914);
 				var1.readStringCp1252NullTerminated();
 				if (!var5.hasCleanName()) {
 					throw new IllegalStateException();

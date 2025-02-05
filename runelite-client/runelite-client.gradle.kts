@@ -26,6 +26,7 @@
 import org.apache.tools.ant.filters.ReplaceTokens
 import java.text.SimpleDateFormat
 import java.util.Date
+import java.util.Collections.emptyList
 
 plugins {
     id("com.github.johnrengelman.shadow") version "7.1.2"
@@ -33,6 +34,7 @@ plugins {
     java
     kotlin("jvm") version "1.6.21"
     id("org.jetbrains.kotlin.plugin.lombok") version "1.6.21"
+    pmd
 }
 
 repositories {
@@ -74,8 +76,9 @@ dependencies {
     implementation(group = "net.java.dev.jna", name = "jna", version = "5.9.0")
     implementation(group = "net.java.dev.jna", name = "jna-platform", version = "5.9.0")
     implementation(group = "net.runelite", name = "discord", version = "1.4")
-    implementation(group = "net.runelite", name = "rlawt", version = "1.4")
-    implementation(group = "net.runelite.pushingpixels", name = "substance", version = "8.0.02")
+    implementation(group = "net.runelite", name = "rlawt", version = "1.5")
+    implementation(group = "net.runelite", name = "flatlaf", version = ProjectVersions.flatLafVersion)
+    implementation(group = "net.runelite", name = "flatlaf-extras", version = ProjectVersions.flatLafVersion)
     implementation(group = "net.sf.jopt-simple", name = "jopt-simple", version = "5.0.4")
     implementation(group = "org.madlonkay", name = "desktopsupport", version = "0.6.0")
     implementation(group = "org.apache.commons", name = "commons-text", version = "1.9")
@@ -97,8 +100,10 @@ dependencies {
     implementation(group = "org.lwjgl", name = "lwjgl-opengl")
     implementation(group = "org.lwjgl", name = "lwjgl-opencl")
 
+    implementation(group = "net.sourceforge.pmd", name = "pmd-core", version = "7.2.0")
+    implementation(group = "net.sourceforge.pmd", name = "pmd-java", version = "7.2.0")
+
     runtimeOnly(project(":runescape-api"))
-    runtimeOnly(group = "net.runelite.pushingpixels", name = "trident", version = "1.5.00")
     runtimeOnly(group = "net.runelite.jocl", name = "jocl", version = "1.0", classifier = "macos-x64")
     runtimeOnly(group = "net.runelite.jocl", name = "jocl", version = "1.0", classifier = "macos-arm64")
 
@@ -209,5 +214,17 @@ tasks {
         classpath = project.sourceSets.main.get().runtimeClasspath
         enableAssertions = true
         mainClass.set("net.unethicalite.client.Unethicalite")
+    }
+
+    withType<JavaCompile> {
+        options.encoding = "UTF-8"
+    }
+
+    withType<Pmd> {
+        ruleSetFiles = files("${project.projectDir}/pmd-ruleset.xml")
+        ruleSets = emptyList()
+        ignoreFailures = false
+        isConsoleOutput = true
+        enabled = false
     }
 }

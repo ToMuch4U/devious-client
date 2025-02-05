@@ -159,7 +159,7 @@ public enum MenuAction
 	 */
 	WIDGET_TYPE_5(29),
 	/**
-	 * Performs a Continue
+	 * Performs a continue
 	 */
 	WIDGET_CONTINUE(30),
 	/**
@@ -243,6 +243,12 @@ public enum MenuAction
 	 * Using a widget on another widget
 	 */
 	WIDGET_TARGET_ON_WIDGET(58),
+
+	/**
+	 * Submenu parent that is also a widget.
+	 * see {@link #RUNELITE_SUBMENU}
+	 */
+	RUNELITE_SUBMENU_WIDGET(998),
 
 	/**
 	 * Menu action for high priority runelite options

@@ -1,69 +1,70 @@
-import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("fa")
-public class class144 extends class145 {
-	@ObfuscatedName("ac")
+@ObfuscatedName("fk")
+public class class144 extends class147 {
+	@ObfuscatedName("aq")
 	@ObfuscatedGetter(
-		intValue = -279574085
+		intValue = 220879453
 	)
-	int field1647;
+	int field1679;
+	@ObfuscatedName("ad")
+	@ObfuscatedGetter(
+		intValue = 1092215929
+	)
+	int field1677;
+	@ObfuscatedName("ag")
+	@ObfuscatedGetter(
+		intValue = -1641898427
+	)
+	int field1676;
+	@ObfuscatedName("ak")
+	@ObfuscatedGetter(
+		intValue = -234504907
+	)
+	int field1680;
 	// $FF: synthetic field
 	@ObfuscatedSignature(
-		descriptor = "Lff;"
+		descriptor = "Lfn;"
 	)
-	final class148 this$0;
+	final class150 this$0;
 
 	@ObfuscatedSignature(
-		descriptor = "(Lff;)V"
+		descriptor = "(Lfn;)V"
 	)
-	class144(class148 var1) {
+	class144(class150 var1) {
 		this.this$0 = var1;
-		this.field1647 = -1;
+		this.field1679 = -1;
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "(Lul;I)V",
-		garbageValue = "-11659242"
+		descriptor = "(Lvp;B)V",
+		garbageValue = "118"
 	)
-	void vmethod3414(Buffer var1) {
-		this.field1647 = var1.readUnsignedShort();
+	void vmethod3528(Buffer var1) {
+		this.field1679 = var1.readUnsignedShort();
+		this.field1677 = var1.readInt();
+		this.field1676 = var1.readUnsignedByte();
+		this.field1680 = var1.readUnsignedByte();
 	}
 
-	@ObfuscatedName("al")
+	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
-		descriptor = "(Lgi;I)V",
-		garbageValue = "21847466"
+		descriptor = "(Lgk;B)V",
+		garbageValue = "3"
 	)
-	void vmethod3415(ClanSettings var1) {
-		var1.method3243(this.field1647);
+	void vmethod3530(ClanSettings var1) {
+		var1.method3363(this.field1679, this.field1677, this.field1676, this.field1680);
 	}
 
-	@ObfuscatedName("ax")
+	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "1547227801"
+		descriptor = "(B)V",
+		garbageValue = "-33"
 	)
-	@Export("savePreferences")
-	static void savePreferences() {
-		AccessFile var0 = null;
-
-		try {
-			var0 = class17.getPreferencesFile("", UrlRequester.field1436.name, true);
-			Buffer var1 = class91.clientPreferences.toBuffer();
-			var0.write(var1.array, 0, var1.offset);
-		} catch (Exception var3) {
-		}
-
-		try {
-			if (var0 != null) {
-				var0.closeSync(true);
-			}
-		} catch (Exception var2) {
-		}
-
+	public static void method3244() {
+		VarbitComposition.VarbitDefinition_cached.clear();
 	}
 }

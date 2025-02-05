@@ -3,65 +3,69 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("lh")
+@ObfuscatedName("kf")
 @Implements("WorldMapCacheName")
 public class WorldMapCacheName {
-	@ObfuscatedName("ac")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "Llh;"
+		descriptor = "Lkf;"
 	)
-	public static final WorldMapCacheName field3095;
-	@ObfuscatedName("al")
+	public static final WorldMapCacheName field2740;
+	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
-		descriptor = "Llh;"
+		descriptor = "Lkf;"
 	)
-	public static final WorldMapCacheName field3091;
+	public static final WorldMapCacheName field2738;
+	@ObfuscatedName("ag")
+	@ObfuscatedSignature(
+		descriptor = "Lkf;"
+	)
+	public static final WorldMapCacheName field2739;
 	@ObfuscatedName("ak")
 	@ObfuscatedSignature(
-		descriptor = "Llh;"
+		descriptor = "Lkf;"
 	)
-	public static final WorldMapCacheName field3090;
-	@ObfuscatedName("ax")
+	static final WorldMapCacheName field2742;
+	@ObfuscatedName("ap")
 	@ObfuscatedSignature(
-		descriptor = "Llh;"
+		descriptor = "Lkf;"
 	)
-	static final WorldMapCacheName field3093;
-	@ObfuscatedName("ao")
-	@ObfuscatedSignature(
-		descriptor = "Llh;"
-	)
-	public static final WorldMapCacheName field3094;
-	@ObfuscatedName("ah")
+	public static final WorldMapCacheName field2741;
+	@ObfuscatedName("an")
 	@Export("name")
 	public final String name;
 
 	static {
-		field3095 = new WorldMapCacheName("details");
-		field3091 = new WorldMapCacheName("compositemap");
-		field3090 = new WorldMapCacheName("compositetexture");
-		field3093 = new WorldMapCacheName("area");
-		field3094 = new WorldMapCacheName("labels");
+		field2740 = new WorldMapCacheName("details");
+		field2738 = new WorldMapCacheName("compositemap");
+		field2739 = new WorldMapCacheName("compositetexture");
+		field2742 = new WorldMapCacheName("area");
+		field2741 = new WorldMapCacheName("labels");
 	}
 
 	WorldMapCacheName(String var1) {
 		this.name = var1;
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
-		descriptor = "(I[BLrw;B)V",
-		garbageValue = "21"
+		descriptor = "(II)Lgx;",
+		garbageValue = "-1032055852"
 	)
-	static void method5717(int var0, byte[] var1, ArchiveDisk var2) {
-		ArchiveDiskAction var3 = new ArchiveDiskAction();
-		var3.type = 0;
-		var3.key = (long)var0;
-		var3.data = var1;
-		var3.archiveDisk = var2;
-		synchronized(ArchiveDiskActionHandler.ArchiveDiskActionHandler_requestQueue) {
-			ArchiveDiskActionHandler.ArchiveDiskActionHandler_requestQueue.addFirst(var3);
-		}
+	@Export("getInvDefinition")
+	public static InvDefinition getInvDefinition(int var0) {
+		InvDefinition var1 = (InvDefinition)InvDefinition.InvDefinition_cached.get((long)var0);
+		if (var1 != null) {
+			return var1;
+		} else {
+			byte[] var2 = class292.InvDefinition_archive.takeFile(5, var0);
+			var1 = new InvDefinition();
+			if (var2 != null) {
+				var1.decode(new Buffer(var2));
+			}
 
-		class87.method2311();
+			InvDefinition.InvDefinition_cached.put(var1, (long)var0);
+			return var1;
+		}
 	}
 }

@@ -1,76 +1,65 @@
+import java.awt.image.BufferedImage;
+import java.awt.image.PixelGrabber;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import javax.imageio.ImageIO;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("hv")
+@ObfuscatedName("hu")
 public class class199 extends DualNode {
-	@ObfuscatedName("ac")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "Llr;"
+		descriptor = "Lmo;"
 	)
-	@Export("field2007")
-	static EvictingDualNodeHashTable field2007;
-	@ObfuscatedName("ar")
-	static byte[][][] field2004;
-	@ObfuscatedName("fe")
+	@Export("field2136")
+	public static EvictingDualNodeHashTable field2136;
+	@ObfuscatedName("fh")
 	@ObfuscatedSignature(
-		descriptor = "Lhi;"
+		descriptor = "Loz;"
 	)
-	@Export("js5SocketTask")
-	static Task js5SocketTask;
-	@ObfuscatedName("fn")
-	@ObfuscatedSignature(
-		descriptor = "Lok;"
-	)
-	static Archive field2009;
-	@ObfuscatedName("ff")
-	@ObfuscatedSignature(
-		descriptor = "Lok;"
-	)
-	@Export("archive8")
-	static Archive archive8;
+	@Export("archive6")
+	static Archive archive6;
 
 	static {
-		field2007 = new EvictingDualNodeHashTable(64);
+		field2136 = new EvictingDualNodeHashTable(64);
 	}
 
-	@ObfuscatedName("ji")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "(Ldj;ZI)V",
-		garbageValue = "-74786800"
+		descriptor = "([BI)Lvg;",
+		garbageValue = "-733013164"
 	)
-	@Export("addPlayerToScene")
-	static void addPlayerToScene(Player var0, boolean var1) {
-		if (var0 != null && var0.isVisible() && !var0.isHidden) {
-			var0.isUnanimated = false;
-			if ((Client.isLowDetail && Players.Players_count > 50 || Players.Players_count > 200) && var1 && var0.movementSequence == var0.idleSequence) {
-				var0.isUnanimated = true;
+	@Export("readSpritePixelsFromBytes")
+	public static final SpritePixels readSpritePixelsFromBytes(byte[] var0) {
+		BufferedImage var1 = null;
+
+		try {
+			Class var2 = ImageIO.class;
+			synchronized(ImageIO.class) {
+				var1 = ImageIO.read(new ByteArrayInputStream(var0));
 			}
 
-			int var2 = var0.x >> 7;
-			int var3 = var0.y >> 7;
-			if (var2 >= 0 && var2 < 104 && var3 >= 0 && var3 < 104) {
-				long var4 = GrandExchangeOfferAgeComparator.calculateTag(0, 0, 0, false, var0.index);
-				if (var0.model0 != null && Client.cycle >= var0.animationCycleStart && Client.cycle < var0.animationCycleEnd) {
-					var0.isUnanimated = false;
-					var0.tileHeight = class115.getTileHeight(var0.x, var0.y, class87.Client_plane);
-					var0.playerCycle = Client.cycle;
-					class10.scene.addNullableObject(class87.Client_plane, var0.x, var0.y, var0.tileHeight, 60, var0, var0.rotation, var4, var0.minX, var0.minY, var0.maxX, var0.maxY);
-				} else {
-					if ((var0.x & 127) == 64 && (var0.y & 127) == 64) {
-						if (Client.tileLastDrawnActor[var2][var3] == Client.viewportDrawCount) {
-							return;
-						}
-
-						Client.tileLastDrawnActor[var2][var3] = Client.viewportDrawCount;
-					}
-
-					var0.tileHeight = class115.getTileHeight(var0.x, var0.y, class87.Client_plane);
-					var0.playerCycle = Client.cycle;
-					class10.scene.drawEntity(class87.Client_plane, var0.x, var0.y, var0.tileHeight, 60, var0, var0.rotation, var4, var0.isWalking);
-				}
-			}
+			int var6 = var1.getWidth();
+			int var7 = var1.getHeight();
+			int[] var4 = new int[var7 * var6];
+			PixelGrabber var5 = new PixelGrabber(var1, 0, 0, var6, var7, var4, 0, var6);
+			var5.grabPixels();
+			return new SpritePixels(var4, var6, var7);
+		} catch (IOException var9) {
+		} catch (InterruptedException var10) {
 		}
 
+		return new SpritePixels(0, 0);
+	}
+
+	@ObfuscatedName("pm")
+	@ObfuscatedSignature(
+		descriptor = "(II)V",
+		garbageValue = "620280580"
+	)
+	static void method3809(int var0) {
+		Client.oculusOrbState = var0;
 	}
 }

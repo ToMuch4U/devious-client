@@ -1,147 +1,136 @@
 import javax.imageio.ImageIO;
 import net.runelite.mapping.Export;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
-import net.runelite.rs.ScriptOpcodes;
 
-@ObfuscatedName("be")
+@ObfuscatedName("bo")
 public class class30 {
-	@ObfuscatedName("ac")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "Lom;"
+		descriptor = "Lnx;"
 	)
-	@Export("FloorOverlayDefinition_archive")
-	static AbstractArchive FloorOverlayDefinition_archive;
+	@Export("scriptActiveWidget")
+	static Widget scriptActiveWidget;
+	@ObfuscatedName("iz")
+	@ObfuscatedGetter(
+		intValue = 1323524365
+	)
+	@Export("Players_count")
+	static int Players_count;
+	@ObfuscatedName("jn")
+	static int[] field147;
 
 	static {
 		ImageIO.setUseCache(false);
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("bs")
 	@ObfuscatedSignature(
-		descriptor = "(B)[Lnq;",
-		garbageValue = "-42"
+		descriptor = "(Lbk;I)V",
+		garbageValue = "1908706038"
 	)
-	static class360[] method445() {
-		return new class360[]{class360.field3904, class360.field3906};
-	}
-
-	@ObfuscatedName("ak")
-	@ObfuscatedSignature(
-		descriptor = "(Ltp;ILjava/lang/String;B)Ljava/lang/String;",
-		garbageValue = "42"
-	)
-	static String method448(IterableNodeHashTable var0, int var1, String var2) {
-		if (var0 == null) {
-			return var2;
-		} else {
-			ObjectNode var3 = (ObjectNode)var0.get((long)var1);
-			return var3 == null ? var2 : (String)var3.obj;
+	@Export("PcmStream_disable")
+	static final void PcmStream_disable(PcmStream var0) {
+		var0.active = false;
+		if (var0.sound != null) {
+			var0.sound.position = 0;
 		}
-	}
 
-	@ObfuscatedName("ar")
-	@ObfuscatedSignature(
-		descriptor = "(I)[Lsz;",
-		garbageValue = "-651272604"
-	)
-	static class468[] method449() {
-		return new class468[]{class468.field4805, class468.field4811, class468.field4806, class468.field4808};
-	}
-
-	@ObfuscatedName("aw")
-	@ObfuscatedSignature(
-		descriptor = "(ILds;ZI)I",
-		garbageValue = "2111489575"
-	)
-	static int method447(int var0, Script var1, boolean var2) {
-		Widget var3 = class33.widgetDefinition.method6240(Interpreter.Interpreter_intStack[--Interpreter.Interpreter_intStackSize]);
-		if (var0 == ScriptOpcodes.IF_GETX) {
-			Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var3.x;
-			return 1;
-		} else if (var0 == ScriptOpcodes.IF_GETY) {
-			Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var3.y;
-			return 1;
-		} else if (var0 == ScriptOpcodes.IF_GETWIDTH) {
-			Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var3.width;
-			return 1;
-		} else if (var0 == ScriptOpcodes.IF_GETHEIGHT) {
-			Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var3.height;
-			return 1;
-		} else if (var0 == ScriptOpcodes.IF_GETHIDE) {
-			Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var3.isHidden ? 1 : 0;
-			return 1;
-		} else if (var0 == ScriptOpcodes.IF_GETLAYER) {
-			Interpreter.Interpreter_intStack[++Interpreter.Interpreter_intStackSize - 1] = var3.parentId;
-			return 1;
-		} else {
-			return 2;
-		}
-	}
-
-	@ObfuscatedName("ih")
-	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "106"
-	)
-	static void method446() {
-		if (class434.worldMap != null) {
-			class434.worldMap.method8664(class87.Client_plane, class20.baseX * 64 + (TextureProvider.localPlayer.x >> 7), class19.baseY * 64 + (TextureProvider.localPlayer.y >> 7), false);
-			class434.worldMap.loadCache();
+		for (PcmStream var1 = var0.firstSubStream(); var1 != null; var1 = var0.nextSubStream()) {
+			PcmStream_disable(var1);
 		}
 
 	}
 
-	@ObfuscatedName("ke")
+	@ObfuscatedName("kv")
 	@ObfuscatedSignature(
-		descriptor = "(III)V",
-		garbageValue = "-1209602899"
+		descriptor = "(IIIIIII)V",
+		garbageValue = "249019892"
 	)
-	@Export("updateItemPile")
-	static final void updateItemPile(int var0, int var1) {
-		NodeDeque var2 = Client.groundItems[class87.Client_plane][var0][var1];
-		if (var2 == null) {
-			class10.scene.removeGroundItemPile(class87.Client_plane, var0, var1);
-		} else {
-			long var3 = -99999999L;
-			TileItem var5 = null;
-
-			TileItem var6;
-			for (var6 = (TileItem)var2.last(); var6 != null; var6 = (TileItem)var2.previous()) {
-				ItemComposition var7 = class214.ItemDefinition_get(var6.id);
-				long var11 = (long)var7.price;
-				if (var7.isStackable == 1) {
-					var11 *= var6.quantity < Integer.MAX_VALUE ? (long)(var6.quantity + 1) : (long)var6.quantity;
-				}
-
-				if (var11 > var3) {
-					var3 = var11;
-					var5 = var6;
+	static void method446(int var0, int var1, int var2, int var3, int var4, int var5) {
+		NodeDeque var6 = HttpResponse.worldView.groundItems[var0][var1][var2];
+		if (var6 != null) {
+			for (TileItem var7 = (TileItem)var6.last(); var7 != null; var7 = (TileItem)var6.previous()) {
+				if ((var3 & 32767) == var7.id && var4 == var7.quantity) {
+					var7.quantity = var5;
+					break;
 				}
 			}
 
-			if (var5 == null) {
-				class10.scene.removeGroundItemPile(class87.Client_plane, var0, var1);
+			WorldMapRenderer.updateItemPile(var0, var1, var2);
+		}
+
+	}
+
+	@ObfuscatedName("mu")
+	@ObfuscatedSignature(
+		descriptor = "(IIIIII)V",
+		garbageValue = "-1948030057"
+	)
+	@Export("drawScrollBar")
+	static final void drawScrollBar(int var0, int var1, int var2, int var3, int var4) {
+		UrlRequest.scrollBarSprites[0].drawAt(var0, var1);
+		UrlRequest.scrollBarSprites[1].drawAt(var0, var3 + var1 - 16);
+		Rasterizer2D.Rasterizer2D_fillRectangle(var0, var1 + 16, 16, var3 - 32, Client.field693);
+		int var5 = var3 * (var3 - 32) / var4;
+		if (var5 < 8) {
+			var5 = 8;
+		}
+
+		int var6 = (var3 - 32 - var5) * var2 / (var4 - var3);
+		Rasterizer2D.Rasterizer2D_fillRectangle(var0, var6 + var1 + 16, 16, var5, Client.field583);
+		Rasterizer2D.Rasterizer2D_drawVerticalLine(var0, var6 + var1 + 16, var5, Client.field747);
+		Rasterizer2D.Rasterizer2D_drawVerticalLine(var0 + 1, var6 + var1 + 16, var5, Client.field747);
+		Rasterizer2D.Rasterizer2D_drawHorizontalLine(var0, var6 + var1 + 16, 16, Client.field747);
+		Rasterizer2D.Rasterizer2D_drawHorizontalLine(var0, var6 + var1 + 17, 16, Client.field747);
+		Rasterizer2D.Rasterizer2D_drawVerticalLine(var0 + 15, var6 + var1 + 16, var5, Client.field584);
+		Rasterizer2D.Rasterizer2D_drawVerticalLine(var0 + 14, var6 + var1 + 17, var5 - 1, Client.field584);
+		Rasterizer2D.Rasterizer2D_drawHorizontalLine(var0, var5 + var6 + var1 + 15, 16, Client.field584);
+		Rasterizer2D.Rasterizer2D_drawHorizontalLine(var0 + 1, var6 + var5 + var1 + 14, 15, Client.field584);
+	}
+
+	@ObfuscatedName("nb")
+	@ObfuscatedSignature(
+		descriptor = "(Lnx;I)V",
+		garbageValue = "-1265045225"
+	)
+	static final void method451(Widget var0) {
+		int var1 = var0.contentType;
+		if (var1 == 324) {
+			if (Client.field790 == -1) {
+				Client.field790 = var0.spriteId2;
+				Client.field665 = var0.spriteId;
+			}
+
+			if (Client.playerAppearance.gender == 1) {
+				var0.spriteId2 = Client.field790;
 			} else {
-				var2.addLast(var5);
-				TileItem var13 = null;
-				TileItem var8 = null;
-
-				for (var6 = (TileItem)var2.last(); var6 != null; var6 = (TileItem)var2.previous()) {
-					if (var5.id != var6.id) {
-						if (var13 == null) {
-							var13 = var6;
-						}
-
-						if (var6.id != var13.id && var8 == null) {
-							var8 = var6;
-						}
-					}
-				}
-
-				long var9 = GrandExchangeOfferAgeComparator.calculateTag(var0, var1, 3, false, 0);
-				class10.scene.newGroundItemPile(class87.Client_plane, var0, var1, class115.getTileHeight(var0 * 128 + 64, var1 * 128 + 64, class87.Client_plane), var5, var9, var13, var8);
+				var0.spriteId2 = Client.field665;
 			}
+
+		} else if (var1 == 325) {
+			if (Client.field790 == -1) {
+				Client.field790 = var0.spriteId2;
+				Client.field665 = var0.spriteId;
+			}
+
+			if (Client.playerAppearance.gender == 1) {
+				var0.spriteId2 = Client.field665;
+			} else {
+				var0.spriteId2 = Client.field790;
+			}
+
+		} else if (var1 == 327) {
+			var0.modelAngleX = 150;
+			var0.modelAngleY = (int)(Math.sin((double)Client.cycle / 40.0D) * 256.0D) & 2047;
+			var0.modelType = 5;
+			var0.modelId = 0;
+		} else if (var1 == 328) {
+			var0.modelAngleX = 150;
+			var0.modelAngleY = (int)(Math.sin((double)Client.cycle / 40.0D) * 256.0D) & 2047;
+			var0.modelType = 5;
+			var0.modelId = 1;
 		}
 	}
 }

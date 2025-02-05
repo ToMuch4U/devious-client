@@ -7,21 +7,22 @@ import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("dm")
+@ObfuscatedName("dd")
 @Implements("SecureRandomFuture")
 public class SecureRandomFuture {
-	@ObfuscatedName("ah")
-	@Export("Tiles_shapes")
-	static byte[][][] Tiles_shapes;
-	@ObfuscatedName("av")
-	@Export("Tiles_hue")
-	static int[] Tiles_hue;
-	@ObfuscatedName("ir")
-	static int[] field1000;
-	@ObfuscatedName("ac")
+	@ObfuscatedName("an")
+	@Export("PcmPlayer_stereo")
+	public static boolean PcmPlayer_stereo;
+	@ObfuscatedName("aj")
+	@ObfuscatedSignature(
+		descriptor = "Lok;"
+	)
+	@Export("ItemDefinition_modelArchive")
+	static AbstractArchive ItemDefinition_modelArchive;
+	@ObfuscatedName("aq")
 	@Export("executor")
 	ExecutorService executor;
-	@ObfuscatedName("al")
+	@ObfuscatedName("ad")
 	@Export("future")
 	Future future;
 
@@ -30,10 +31,10 @@ public class SecureRandomFuture {
 		this.future = this.executor.submit(new SecureRandomCallable());
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "(B)V",
-		garbageValue = "75"
+		descriptor = "(I)V",
+		garbageValue = "-847803201"
 	)
 	@Export("shutdown")
 	void shutdown() {
@@ -41,124 +42,164 @@ public class SecureRandomFuture {
 		this.executor = null;
 	}
 
-	@ObfuscatedName("al")
+	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
 		descriptor = "(I)Z",
-		garbageValue = "1952225914"
+		garbageValue = "-390046423"
 	)
 	@Export("isDone")
 	boolean isDone() {
 		return this.future.isDone();
 	}
 
-	@ObfuscatedName("ak")
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "(I)Ljava/security/SecureRandom;",
-		garbageValue = "862228801"
+		descriptor = "(S)Ljava/security/SecureRandom;",
+		garbageValue = "128"
 	)
 	@Export("get")
 	SecureRandom get() {
 		try {
 			return (SecureRandom)this.future.get();
-		} catch (Exception var4) {
-			SecureRandom var3 = new SecureRandom();
-			var3.nextInt();
-			return var3;
+		} catch (Exception var2) {
+			return class401.method7407();
 		}
 	}
 
-	@ObfuscatedName("al")
+	@ObfuscatedName("nr")
 	@ObfuscatedSignature(
-		descriptor = "(ILrw;Lok;I)V",
-		garbageValue = "-1154223283"
+		descriptor = "(IB)V",
+		garbageValue = "-66"
 	)
-	static void method2199(int var0, ArchiveDisk var1, Archive var2) {
-		ArchiveDiskAction var3 = new ArchiveDiskAction();
-		var3.type = 1;
-		var3.key = (long)var0;
-		var3.archiveDisk = var1;
-		var3.archive = var2;
-		synchronized(ArchiveDiskActionHandler.ArchiveDiskActionHandler_requestQueue) {
-			ArchiveDiskActionHandler.ArchiveDiskActionHandler_requestQueue.addFirst(var3);
-		}
-
-		class87.method2311();
-	}
-
-	@ObfuscatedName("ax")
-	@ObfuscatedSignature(
-		descriptor = "(IIIII)V",
-		garbageValue = "1191570763"
-	)
-	@Export("itemContainerSetItem")
-	static void itemContainerSetItem(int var0, int var1, int var2, int var3) {
-		ItemContainer var4 = (ItemContainer)ItemContainer.itemContainers.get((long)var0);
-		if (var4 == null) {
-			var4 = new ItemContainer();
-			ItemContainer.itemContainers.put(var4, (long)var0);
-		}
-
-		if (var4.ids.length <= var1) {
-			int[] var5 = new int[var1 + 1];
-			int[] var6 = new int[var1 + 1];
-
-			int var7;
-			for (var7 = 0; var7 < var4.ids.length; ++var7) {
-				var5[var7] = var4.ids[var7];
-				var6[var7] = var4.quantities[var7];
-			}
-
-			for (var7 = var4.ids.length; var7 < var1; ++var7) {
-				var5[var7] = -1;
-				var6[var7] = 0;
-			}
-
-			var4.ids = var5;
-			var4.quantities = var6;
-		}
-
-		var4.ids[var1] = var2;
-		var4.quantities[var1] = var3;
-	}
-
-	@ObfuscatedName("ah")
-	@ObfuscatedSignature(
-		descriptor = "(II)F",
-		garbageValue = "469992378"
-	)
-	static final float method2200(int var0) {
-		float var1 = 10075.0F - (float)var0;
-		return (1.0075567F * var1 - 75.56675F) / var1;
-	}
-
-	@ObfuscatedName("ah")
-	@Export("Entity_unpackID")
-	public static int Entity_unpackID(long var0) {
-		return (int)(var0 >>> 17 & 4294967295L);
-	}
-
-	@ObfuscatedName("nn")
-	@ObfuscatedSignature(
-		descriptor = "(IIIILud;Lmp;B)V",
-		garbageValue = "23"
-	)
-	@Export("drawSpriteOnMinimap")
-	static final void drawSpriteOnMinimap(int var0, int var1, int var2, int var3, SpritePixels var4, SpriteMask var5) {
-		if (var4 != null) {
-			int var6 = Client.camAngleY & 2047;
-			int var7 = var3 * var3 + var2 * var2;
-			if (var7 <= 6400) {
-				int var8 = Rasterizer3D.Rasterizer3D_sine[var6];
-				int var9 = Rasterizer3D.Rasterizer3D_cosine[var6];
-				int var10 = var9 * var2 + var3 * var8 >> 16;
-				int var11 = var3 * var9 - var8 * var2 >> 16;
-				if (var7 > 2500) {
-					var4.method9697(var10 + var5.width / 2 - var4.width / 2, var5.height / 2 - var11 - var4.height / 2, var0, var1, var5.width, var5.height, var5.xStarts, var5.xWidths);
-				} else {
-					var4.drawTransBgAt(var0 + var10 + var5.width / 2 - var4.width / 2, var5.height / 2 + var1 - var11 - var4.height / 2);
+	@Export("changeGameOptions")
+	static final void changeGameOptions(int var0) {
+		class31.method462();
+		class237.method4496();
+		int var1 = MilliClock.VarpDefinition_get(var0).type;
+		if (var1 != 0) {
+			int var2 = Varps.Varps_main[var0];
+			if (var1 == 1) {
+				if (var2 == 1) {
+					InvDefinition.method3555(0.9D);
 				}
 
+				if (var2 == 2) {
+					InvDefinition.method3555(0.8D);
+				}
+
+				if (var2 == 3) {
+					InvDefinition.method3555(0.7D);
+				}
+
+				if (var2 == 4) {
+					InvDefinition.method3555(0.6D);
+				}
 			}
+
+			if (var1 == 3) {
+				if (var2 == 0) {
+					Script.setMusicVolume(255);
+				}
+
+				if (var2 == 1) {
+					Script.setMusicVolume(192);
+				}
+
+				if (var2 == 2) {
+					Script.setMusicVolume(128);
+				}
+
+				if (var2 == 3) {
+					Script.setMusicVolume(64);
+				}
+
+				if (var2 == 4) {
+					Script.setMusicVolume(0);
+				}
+			}
+
+			if (var1 == 4) {
+				if (var2 == 0) {
+					class105.method2785(127);
+				}
+
+				if (var2 == 1) {
+					class105.method2785(96);
+				}
+
+				if (var2 == 2) {
+					class105.method2785(64);
+				}
+
+				if (var2 == 3) {
+					class105.method2785(32);
+				}
+
+				if (var2 == 4) {
+					class105.method2785(0);
+				}
+			}
+
+			if (var1 == 5) {
+				Client.leftClickOpensMenu = var2 == 1;
+			}
+
+			if (var1 == 6) {
+				Client.chatEffects = var2;
+			}
+
+			if (var1 == 9) {
+			}
+
+			if (var1 == 10) {
+				if (var2 == 0) {
+					class148.method3278(127);
+				}
+
+				if (var2 == 1) {
+					class148.method3278(96);
+				}
+
+				if (var2 == 2) {
+					class148.method3278(64);
+				}
+
+				if (var2 == 3) {
+					class148.method3278(32);
+				}
+
+				if (var2 == 4) {
+					class148.method3278(0);
+				}
+			}
+
+			if (var1 == 17) {
+				Client.followerIndex = var2 & 65535;
+			}
+
+			if (var1 == 18) {
+				AttackOption[] var3 = new AttackOption[]{AttackOption.AttackOption_alwaysRightClick, AttackOption.field1384, AttackOption.field1385, AttackOption.AttackOption_dependsOnCombatLevels, AttackOption.AttackOption_hidden};
+				Client.playerAttackOption = (AttackOption)class210.findEnumerated(var3, var2);
+				if (Client.playerAttackOption == null) {
+					Client.playerAttackOption = AttackOption.AttackOption_dependsOnCombatLevels;
+				}
+			}
+
+			if (var1 == 19) {
+				if (var2 == -1) {
+					Client.combatTargetPlayerIndex = -1;
+				} else {
+					Client.combatTargetPlayerIndex = var2 & 2047;
+				}
+			}
+
+			if (var1 == 22) {
+				Client.npcAttackOption = (AttackOption)class210.findEnumerated(class142.method3233(), var2);
+				if (Client.npcAttackOption == null) {
+					Client.npcAttackOption = AttackOption.AttackOption_dependsOnCombatLevels;
+				}
+			}
+
 		}
 	}
 }

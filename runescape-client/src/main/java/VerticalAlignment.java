@@ -1,45 +1,38 @@
-import java.util.Iterator;
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
 import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("hr")
+@ObfuscatedName("hx")
 @Implements("VerticalAlignment")
-public enum VerticalAlignment implements MouseWheel {
-	@ObfuscatedName("ac")
+public enum VerticalAlignment implements Enum {
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "Lhr;"
+		descriptor = "Lhx;"
 	)
-	field2096(1, 0),
-	@ObfuscatedName("al")
+	field2044(0, 0),
+	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
-		descriptor = "Lhr;"
+		descriptor = "Lhx;"
 	)
 	@Export("VerticalAlignment_centered")
-	VerticalAlignment_centered(0, 1),
-	@ObfuscatedName("ak")
+	VerticalAlignment_centered(2, 1),
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "Lhr;"
+		descriptor = "Lhx;"
 	)
-	field2094(2, 2);
+	field2043(1, 2);
 
-	@ObfuscatedName("tb")
-	@ObfuscatedSignature(
-		descriptor = "Lgi;"
-	)
-	@Export("guestClanSettings")
-	static ClanSettings guestClanSettings;
-	@ObfuscatedName("ax")
+	@ObfuscatedName("ak")
 	@ObfuscatedGetter(
-		intValue = -1606831967
+		intValue = 1881852725
 	)
 	@Export("value")
 	public final int value;
-	@ObfuscatedName("ao")
+	@ObfuscatedName("ap")
 	@ObfuscatedGetter(
-		intValue = 1239612337
+		intValue = 1807067017
 	)
 	@Export("id")
 	final int id;
@@ -49,62 +42,25 @@ public enum VerticalAlignment implements MouseWheel {
 		this.id = var4;
 	}
 
-	@ObfuscatedName("ac")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
 		descriptor = "(I)I",
-		garbageValue = "-1243971674"
+		garbageValue = "2071992588"
 	)
 	@Export("rsOrdinal")
 	public int rsOrdinal() {
 		return this.id;
 	}
 
-	@ObfuscatedName("co")
+	@ObfuscatedName("az")
 	@ObfuscatedSignature(
-		descriptor = "(II)V",
-		garbageValue = "900742897"
+		descriptor = "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;I)V",
+		garbageValue = "-1478826917"
 	)
-	@Export("runWidgetOnLoadListener")
-	static void runWidgetOnLoadListener(int var0) {
-		if (var0 != -1) {
-			if (class33.widgetDefinition.loadInterface(var0)) {
-				Widget[] var1 = class33.widgetDefinition.Widget_interfaceComponents[var0];
-
-				for (int var2 = 0; var2 < var1.length; ++var2) {
-					Widget var3 = var1[var2];
-					if (var3.onLoad != null) {
-						ScriptEvent var4 = new ScriptEvent();
-						var4.widget = var3;
-						var4.args = var3.onLoad;
-						ArchiveDisk.runScript(var4, 5000000, 0);
-					}
-				}
-
-			}
-		}
-	}
-
-	@ObfuscatedName("na")
-	@ObfuscatedSignature(
-		descriptor = "(I)V",
-		garbageValue = "-1054734987"
-	)
-	static final void method3841() {
-		for (int var0 = 0; var0 < Players.Players_count; ++var0) {
-			Player var1 = Client.players[Players.Players_indices[var0]];
-			var1.clearIsFriend();
-		}
-
-		Iterator var2 = Messages.Messages_hashTable.iterator();
-
-		while (var2.hasNext()) {
-			Message var3 = (Message)var2.next();
-			var3.clearIsFromFriend();
-		}
-
-		if (class358.friendsChat != null) {
-			class358.friendsChat.clearFriends();
-		}
-
+	@Export("setLoginResponseString")
+	static void setLoginResponseString(String var0, String var1, String var2) {
+		Login.Login_response1 = var0;
+		Login.Login_response2 = var1;
+		Login.Login_response3 = var2;
 	}
 }

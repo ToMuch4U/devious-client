@@ -1,25 +1,19 @@
-import net.runelite.mapping.Export;
+import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("le")
-public class class306 {
-	@ObfuscatedName("ah")
-	@Export("PcmPlayer_stereo")
-	public static boolean PcmPlayer_stereo;
-	@ObfuscatedName("ay")
-	@ObfuscatedSignature(
-		descriptor = "Lnm;"
+@ObfuscatedName("ls")
+public abstract class class306 implements class308 {
+	@ObfuscatedName("aq")
+	@ObfuscatedGetter(
+		intValue = -1467707507
 	)
-	@Export("scriptActiveWidget")
-	static Widget scriptActiveWidget;
+	protected int field3247;
 
-	@ObfuscatedName("ac")
 	@ObfuscatedSignature(
-		descriptor = "(B)Llx;",
-		garbageValue = "28"
+		descriptor = "(Lof;Lpe;I)V"
 	)
-	static PacketBufferNode method5863() {
-		return PacketBufferNode.PacketBufferNode_packetBufferNodeCount == 0 ? new PacketBufferNode() : PacketBufferNode.PacketBufferNode_packetBufferNodes[--PacketBufferNode.PacketBufferNode_packetBufferNodeCount];
+	protected class306(StudioGame var1, Language var2, int var3) {
+		this.field3247 = var3;
 	}
 }

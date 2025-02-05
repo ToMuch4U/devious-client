@@ -1,48 +1,69 @@
-import java.util.Iterator;
+import net.runelite.mapping.Export;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("qw")
-public class class418 extends SongTask {
+@ObfuscatedName("qe")
+public class class418 {
+	@ObfuscatedName("km")
 	@ObfuscatedSignature(
-		descriptor = "(Lqm;)V"
+		descriptor = "[Lvv;"
 	)
-	public class418(SongTask var1) {
-		super(var1);
-		super.field4572 = "StartSongTask";
+	@Export("mapSceneSprites")
+	static IndexedSprite[] mapSceneSprites;
+	@ObfuscatedName("aq")
+	@ObfuscatedSignature(
+		descriptor = "Lqi;"
+	)
+	public class423 field4681;
+	@ObfuscatedName("ad")
+	@ObfuscatedSignature(
+		descriptor = "Lqo;"
+	)
+	public class422 field4682;
+	@ObfuscatedName("ag")
+	@ObfuscatedSignature(
+		descriptor = "Lqo;"
+	)
+	public class422 field4684;
+
+	public class418() {
+		this.field4681 = new class423();
+		this.field4682 = new class422();
+		this.field4684 = new class422(1.0F, 1.0F, 1.0F);
 	}
 
-	@ObfuscatedName("ac")
-	@ObfuscatedSignature(
-		descriptor = "(B)Z",
-		garbageValue = "-90"
-	)
-	public boolean vmethod7780() {
-		Iterator var1 = class319.musicSongs.iterator();
+	public String toString() {
+		return "[" + this.field4681.toString() + "|" + this.field4682.toString() + "|" + this.field4684.toString() + "]";
+	}
 
-		while (var1.hasNext()) {
-			MusicSong var2 = (MusicSong)var1.next();
-			if (var2 != null && !var2.field3545 && var2.midiPcmStream != null) {
-				try {
-					var2.midiPcmStream.method5974();
-					var2.midiPcmStream.setPcmStreamVolume(0);
-					if (var2.field3548 != null) {
-						var2.midiPcmStream.setMusicTrack(var2.field3548, var2.musicTrackBoolean);
-					}
-
-					var2.field3548 = null;
-					var2.field3549 = null;
-					var2.musicTrackArchive = null;
-					var2.field3545 = true;
-				} catch (Exception var4) {
-					class190.RunException_sendStackTrace((String)null, var4);
-					this.method7773(var4.getMessage());
-					return true;
-				}
-			}
+	public boolean equals(Object var1) {
+		if (var1 == null) {
+			return false;
+		} else if (this == var1) {
+			return true;
+		} else if (!(var1 instanceof class418)) {
+			return false;
+		} else {
+			class418 var2 = (class418)var1;
+			return this.field4681.equals(var2.field4681) && this.field4682.method7724(var2.field4682) && this.field4684.method7724(var2.field4684);
 		}
+	}
 
-		super.field4573 = true;
-		return true;
+	public int hashCode() {
+		boolean var1 = true;
+		byte var2 = 1;
+		int var3 = var2 * 31 + this.field4681.hashCode();
+		var3 = 31 * var3 + this.field4682.hashCode();
+		var3 = 31 * var3 + this.field4684.hashCode();
+		return var3;
+	}
+
+	@ObfuscatedName("aq")
+	@ObfuscatedSignature(
+		descriptor = "(III)I",
+		garbageValue = "-1680130408"
+	)
+	public static int method7673(int var0, int var1) {
+		return (int)(Math.atan2((double)var0, (double)var1) * 325.94932345220167D) & 2047;
 	}
 }

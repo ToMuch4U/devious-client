@@ -1,35 +1,29 @@
 import net.runelite.mapping.Export;
 import net.runelite.mapping.Implements;
-import net.runelite.mapping.ObfuscatedGetter;
 import net.runelite.mapping.ObfuscatedName;
 import net.runelite.mapping.ObfuscatedSignature;
 
-@ObfuscatedName("ra")
+@ObfuscatedName("sv")
 @Implements("TriBool")
 public class TriBool {
-	@ObfuscatedName("ac")
+	@ObfuscatedName("aq")
 	@ObfuscatedSignature(
-		descriptor = "Lra;"
+		descriptor = "Lsv;"
 	)
 	@Export("TriBool_unknown")
 	public static final TriBool TriBool_unknown;
-	@ObfuscatedName("al")
+	@ObfuscatedName("ad")
 	@ObfuscatedSignature(
-		descriptor = "Lra;"
+		descriptor = "Lsv;"
 	)
 	@Export("TriBool_true")
 	public static final TriBool TriBool_true;
-	@ObfuscatedName("ak")
+	@ObfuscatedName("ag")
 	@ObfuscatedSignature(
-		descriptor = "Lra;"
+		descriptor = "Lsv;"
 	)
 	@Export("TriBool_false")
 	public static final TriBool TriBool_false;
-	@ObfuscatedName("vd")
-	@ObfuscatedGetter(
-		intValue = -1581283721
-	)
-	static int field4718;
 
 	static {
 		TriBool_unknown = new TriBool();
@@ -38,5 +32,18 @@ public class TriBool {
 	}
 
 	TriBool() {
+	}
+
+	@ObfuscatedName("nu")
+	@ObfuscatedSignature(
+		descriptor = "(Lnx;I)V",
+		garbageValue = "-1273536850"
+	)
+	@Export("invalidateWidget")
+	public static void invalidateWidget(Widget var0) {
+		if (var0 != null && var0.cycle == Client.field720) {
+			Client.validRootWidgets[var0.rootIndex] = true;
+		}
+
 	}
 }

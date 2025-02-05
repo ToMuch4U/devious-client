@@ -54,8 +54,8 @@ import net.runelite.api.events.GameTick;
 import net.runelite.api.events.PostClientTick;
 import net.runelite.api.events.ScriptCallbackEvent;
 import net.runelite.api.hooks.Callbacks;
+import net.runelite.api.widgets.ComponentID;
 import net.runelite.api.widgets.Widget;
-import static net.runelite.api.widgets.WidgetInfo.WORLD_MAP_VIEW;
 import net.runelite.api.widgets.WidgetItem;
 import net.runelite.api.worldmap.WorldMap;
 import net.runelite.client.Notifier;
@@ -72,7 +72,6 @@ import net.runelite.client.ui.overlay.OverlayRenderer;
 import net.runelite.client.ui.overlay.infobox.InfoBoxManager;
 import net.runelite.client.util.DeferredEventBus;
 import net.runelite.client.util.LinkBrowser;
-import net.runelite.client.util.OSType;
 import net.runelite.client.util.RSTimeUnit;
 
 /**
@@ -257,7 +256,7 @@ public class Hooks implements Callbacks
 	 */
 	private void checkWorldMap()
 	{
-		Widget widget = client.getWidget(WORLD_MAP_VIEW);
+		Widget widget = client.getWidget(ComponentID.WORLD_MAP_MAPVIEW);
 
 		if (widget != null)
 		{
@@ -455,8 +454,7 @@ public class Hooks implements Callbacks
 	private Image screenshot(Image src)
 	{
 		// scale source image to the size of the client ui
-		final AffineTransform transform = OSType.getOSType() == OSType.MacOS ? new AffineTransform() :
-			clientUi.getGraphicsConfiguration().getDefaultTransform();
+		final AffineTransform transform = clientUi.getGraphicsConfiguration().getDefaultTransform();
 		int swidth = src.getWidth(null);
 		int sheight = src.getHeight(null);
 		int twidth = (int) (swidth * transform.getScaleX() + .5);
@@ -513,6 +511,12 @@ public class Hooks implements Callbacks
 	}
 
 	@Override
+	public void serverTick()
+	{
+		shouldProcessGameTick = true;
+	}
+
+	@Override
 	public void updateNpcs()
 	{
 		if (ignoreNextNpcUpdate)
@@ -527,7 +531,7 @@ public class Hooks implements Callbacks
 			// The NPC update event seem to run every server tick,
 			// but having the game tick event after all packets
 			// have been processed is typically more useful.
-			shouldProcessGameTick = true;
+			//shouldProcessGameTick = true;
 		}
 
 		// Replay deferred events, otherwise if two npc
